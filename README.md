@@ -4,9 +4,10 @@
 
 * Jednak moduł STM32 zamiast 2 AVRów: [STM32F103C8T6](https://kamami.pl/zestawy-uruchomieniowe-stm32/1192915-kamod-bluepill-plytka-rozwojowa-z-mikrokontrolerem-stm32f103c8t6-kompatybilna-z-weact-bluepill-5906623487998.html)
   * RS-485 (ten wymaga podłączenia do padów 5V-tolerant)
-  * Piny podłączone w kwarca mogą być użyte, ale powinny mieć jednakowy stan, więc są traktowane razem jako jedno wyjście - połączone na płytce.
+  * Piny podłączone do kwarca mogą być użyte, ale powinny mieć jednakowy stan, więc są traktowane razem jako jedno wyjście - połączone na płytce.
 * Gotowe moduły step-down i RS-485 (ten wymaga podłączenia do padów 5V-tolerant)
 * Kabel między-modułowy wymaga 2 przewodów: UART i 5V (opcjonalnie GND)
+  * Albo może: zrezygnować z 2 IO na rzecz połączeń między-modułowych (wtedy też można usunąć `Shared RS-485+IO` z poniższej tabeli).
 * Zaciski IO mogą być w jednym kawałku: https://mou.sr/4oknD5P
 * Tabela z zasobami:
 
