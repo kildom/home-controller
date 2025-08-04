@@ -30,6 +30,10 @@
       * W module zasilającym jest pull-down
       * W drugim zączu jest pull-up
       * W ten sposób kontroller będzie rozróżniał, czy został podłączony do moduły zasilającego i jest przekaźnikiem, czy też został podłączony do innego modułu i jest końcowym urządzeniem.
+    * Inna opcja:
+      * Użyć kabla z wieloma złączkami (jak stary kabel IDE)
+      * Każdy moduł ma jedno złącze
+      * Przewody RS-485 idą innym kablem (między modułowy będzie mieć wtedy 6 pinów, a RS-485 ma 4)
 * Moduł zasilający
   * Stabilizator 12V->5V
   * Driver RS-485
