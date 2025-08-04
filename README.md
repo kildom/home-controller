@@ -30,7 +30,7 @@
       * W module zasilającym jest pull-down
       * W drugim zączu jest pull-up
       * W ten sposób kontroller będzie rozróżniał, czy został podłączony do moduły zasilającego i jest przekaźnikiem, czy też został podłączony do innego modułu i jest końcowym urządzeniem.
-    * Inna opcja:
+    * **Inna opcja**:
       * Użyć kabla z wieloma złączkami (jak stary kabel IDE)
       * Każdy moduł ma jedno złącze
       * Przewody RS-485 idą innym kablem (między modułowy będzie mieć wtedy 6 pinów, a RS-485 ma 4)
@@ -47,6 +47,10 @@
     * Obudowa: [Kradex Z103J 88x34x62mm](https://botland.com.pl/obudowy/10131-obudowa-modulowa-kradex-z103j-88x34x62mm-na-szyne-din-jasna-5905275012343.html),
     * Zaciski: [TBJ05-03-1-G-G](https://www.tme.eu/pl/details/tbj05-03-1-g-g) (albo podobne na 6 torów)
     * Wszystkie zaciski powinny być z jednej strony (od strony niskiego napięcia)
+  * **INNA OPCJA**
+    * Dodać złącza na płytce dla gotowych układłów step-down i RS-485 i pozbyć się modułu zasilającego, np:
+    * https://botland.com.pl/przetwornice-step-down/1349-d24v6f5-przetwornica-step-down-5v-06a-pololu-2107-5904422372132.html
+    * https://kamami.pl/konwertery-rs485/574850-modttl-rs485-modul-konwertera-uart-rs-485-5906623456826.html
 
 # Stare informacje
 
