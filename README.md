@@ -1,5 +1,37 @@
 # home-controller
 
+# Najnowsze ustalenia
+
+* Jednak moduł STM32 zamiast 2 AVRów: [STM32F103C8T6](https://kamami.pl/zestawy-uruchomieniowe-stm32/1192915-kamod-bluepill-plytka-rozwojowa-z-mikrokontrolerem-stm32f103c8t6-kompatybilna-z-weact-bluepill-5906623487998.html)
+  * RS-485 (ten wymaga podłączenia do padów 5V-tolerant)
+  * Piny podłączone w kwarca mogą być użyte, ale powinny mieć jednakowy stan, więc są traktowane razem jako jedno wyjście - połączone na płytce.
+* Gotowe moduły step-down i RS-485 (ten wymaga podłączenia do padów 5V-tolerant)
+* Kabel między-modułowy wymaga 2 przewodów: UART i 5V (opcjonalnie GND)
+* Zaciski IO mogą być w jednym kawałku: https://mou.sr/4oknD5P
+* Tabela z zasobami:
+
+|                        | szt. | zaciski 230V | zaciski 12V | Pin µC    | zaciski 230V | zaciski 12V | Pin µC |
+| ---------------------- | ---- | ------------ | ----------- | --------- | ------------ | ----------- | ------ |
+| Common 230V            | 1    | 1            |             |           | 1            | 0           | 0      |
+| Relays 230V common     | 9    | 1            |             | 1         | 9            | 0           | 9      |
+| Relays 230V individual | 1    | 2            |             | 1         | 2            | 0           | 1      |
+| Relays 12V             | 1    |              | 2           | 1         | 0            | 2           | 1      |
+| RS-485                 | 1    |              |             | 3         | 0            | 0           | 3      |
+| LED \*                 | 2    |              | 2           | 2         | 0            | 4           | 4      |
+| OC                     | 2    |              | 1           | 1         | 0            | 2           | 2      |
+| IO                     | 12   |              | 1           | 1         | 0            | 12          | 12     |
+| int. UART              | 1    |              |             | 2         | 0            | 0           | 2      |
+| GND                    | 1    |              | 2           |           | 0            | 2           | 0      |
+| 12V                    | 1    |              | 1           |           | 0            | 1           | 0      |
+| alt 12V                | 1    |              | 1           |           | 0            | 1           | 0      |
+| Shared RS-485+OC       | 1    |              |             | \-1       | 0            | 0           | \-1    |
+| Shared RS-485+IO       | 2    |              |             | \-1       | 0            | 0           | \-2    |
+|                        |      |              |             | **RAZEM** | **12**       | **24**      | **31** |
+|                        |      |              |             | MAX       | 12           | 24          | 31     |
+|                        |      |              |             | Pozostało | 0            | 0           | 0      |
+
+# Inne
+
 * Obudowa: [Kradex ZD1004J](https://botland.com.pl/obudowy/24954-obudowa-modulowa-kradex-zd1004j-abs-v0-na-szyne-din-652x898x716mm-jasnoszara-5905275033614.html)
 * Przekaźniki: FORWARD INDUSTRIAL FRM18A-5
 * Zaciski 230V: AK3001/6-KD-5.0/KIES
