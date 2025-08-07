@@ -1,0 +1,84 @@
+
+
+<!doctype html>
+<html lang="en" style="height: 100%;">
+  <head>
+    <meta charset="utf-8" />
+    <title>My CheerpX Linux</title>
+    <script src="https://cxrtnc.leaningtech.com/1.1.5/cx.js"></script>
+    <script type="module">
+
+      // const cloudDevice = await CheerpX.CloudDevice.create(
+      //   "wss://disks.webvm.io/debian_large_20230522_5044875331.ext2"
+      // );
+      // const idbDevice = await CheerpX.IDBDevice.create("block1");
+      
+      // const cloudDevice = await CheerpX.HttpBytesDevice.create(
+      //   "cheerpXImage.ext2"
+      // );
+      // const idbDevice = await CheerpX.IDBDevice.create("block_local");
+
+      const cloudDevice = await CheerpX.HttpBytesDevice.create(
+        "ext2.img"
+      );
+      const idbDevice = await CheerpX.IDBDevice.create("block_ext2_img");
+      
+      const overlayDevice = await CheerpX.OverlayDevice.create(
+        cloudDevice,
+        idbDevice
+      );
+      
+      // Direct acces to files in your HTTP server
+      const webDevice = await CheerpX.WebDevice.create("/_temp/tmp");
+      // Convenient access to JavaScript binary data and strings
+      const dataDevice = await CheerpX.DataDevice.create();
+      const idbDevice2 = await CheerpX.IDBDevice.create("block2");
+
+      const cx = await CheerpX.Linux.create({
+        mounts: [
+          { type: "ext2", path: "/", dev: overlayDevice },
+          { type: "dir", path: "/app", dev: webDevice },
+          { type: "dir", path: "/data", dev: dataDevice },
+          { type: "dir", path: "/my", dev: idbDevice2 },
+          { type: "devs", path: "/dev" },
+          {type:"devpts", path:"/dev/pts"},
+          {type:"proc", path:"/proc"},
+          {type:"sys", path:"/sys"},
+        ],
+      });
+
+      // Interact with a console
+      cx.setConsole(document.getElementById("console"));
+
+      // await cx.run("/home/user/gcc-arm-none-eabi-5_4-2016q3/bin/arm-none-eabi-gcc", ["examples/c/helloworld.c"], {
+      //   env: [
+      //     "HOME=/home/user",
+      //     "USER=user",
+      //     "SHELL=/bin/bash",
+      //     "EDITOR=vim",
+      //     "LANG=en_US.UTF-8",
+      //     "LC_ALL=C",
+      //   ],
+      //   cwd: "/home/user",
+      //   uid: 1000,
+      //   gid: 1000,
+      // });
+      await cx.run("/bin/bash", ["--login"], {
+        env: [
+          "HOME=/home/user",
+          "USER=user",
+          "SHELL=/bin/bash",
+          "EDITOR=vim",
+          "LANG=en_US.UTF-8",
+          "LC_ALL=C",
+        ],
+        cwd: "/home/user",
+        uid: 1000,
+        gid: 1000,
+      });
+    </script>
+  </head>
+  <body style="height: 100%; background: black;">
+    <pre id="console" style="height: 100%;"></pre>
+  </body>
+</html>
