@@ -1,0 +1,17 @@
+docker build -t audit-container-32 .
+
+docker run -it --rm \
+  --cap-add=AUDIT_CONTROL \
+  --cap-add=SYS_ADMIN \
+  --security-opt apparmor=unconfined \
+  audit-container-32
+
+
+docker run -it --rm \
+  --cap-add=AUDIT_CONTROL \
+  --cap-add=SYS_ADMIN \
+  --security-opt apparmor=unconfined \
+  audit-container-32
+
+root@cb1068eb9b43:/# service auditd start
+Starting audit daemon: auditd failed!

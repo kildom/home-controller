@@ -1,0 +1,24 @@
+# FROM --platform=i386 docker.io/i386/debian:bookworm
+
+# RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+#     --mount=type=cache,target=/var/lib/apt,sharing=locked \
+#     apt-get update && apt-get install -y build-essential
+
+# COPY fanotify_monitor.c /root/fanotify_monitor.c
+# RUN gcc /root/fanotify_monitor.c -o /root/fanotify_monitor
+
+# # Assume your my_secret_tool is already built or installed
+# # Here we fake it with a simple shell script that touches a file
+
+# RUN echo -e '#!/bin/bash\n touch /tmp/secret_file\n cat /etc/passwd > /tmp/secret_file\n sleep 1' > /root/my_secret_tool && \
+#     chmod +x /root/my_secret_tool
+
+# CMD ["/bin/bash"]
+
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get install --reinstall -y $ARM_BUILD_PACKAGES && \
+    apt-get install -y build-essential
+
+COPY fanotify_monitor.c /root/fanotify_monitor.c
+RUN gcc /root/fanotify_monitor.c -o /root/fanotify_monitor
