@@ -1,3 +1,8 @@
+# Deprecated: Use GCC toolchain on Rapsberry Pi
+
+---------------------------------
+
+## old stuff 
 
 Newest GCC crashes using CheerpX.
 
