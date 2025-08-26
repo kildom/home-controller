@@ -6,7 +6,7 @@
   * Step-down 12->5V
   * alt 12V
   * Moduł RS-485
-  * Mały mikrokontroler (np. AVR) jako gateway między int. UART i RS-485
+  * Mały mikrokontroler (np. AVR albo STM32C011F4P6) jako gateway między int. UART i RS-485
   * Złącza: GND, in 12V, in alt 12V, out 12V, out 5V, D+, D-, int. UART
   * Dzięki temu znika z tabeli poniżej: RS-485 i alt 12V
   * Gateway może informować local nodes: Output fifo full, voltage: 12V in, out, alt, 5V
