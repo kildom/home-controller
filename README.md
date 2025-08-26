@@ -9,6 +9,7 @@
   * Mały mikrokontroler (np. AVR) jako gateway między int. UART i RS-485
   * Złącza: GND, in 12V, in alt 12V, out 12V, out 5V, D+, D-, int. UART
   * Dzięki temu znika z tabeli poniżej: RS-485 i alt 12V
+  * Gateway może informować local nodes: Output fifo full, voltage: 12V in, out, alt, 5V
 * Jednak moduł STM32 zamiast 2 AVRów: [STM32F103C8T6](https://kamami.pl/zestawy-uruchomieniowe-stm32/1192915-kamod-bluepill-plytka-rozwojowa-z-mikrokontrolerem-stm32f103c8t6-kompatybilna-z-weact-bluepill-5906623487998.html)
   * RS-485 (ten wymaga podłączenia do padów 5V-tolerant)
   * Piny podłączone do kwarca mogą być użyte, ale powinny mieć jednakowy stan, więc są traktowane razem jako jedno wyjście - połączone na płytce.
