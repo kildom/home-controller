@@ -1,0 +1,285 @@
+(footprint "DG128-5.0-03P-14-00A-H"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at -0.6 -6 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d2dcac66-d773-46df-b69d-8e280597155b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "DG128-5.0-03P-14-00A(H)"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "53bd8803-7165-445e-81aa-fcdc938dfc28")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.tme.eu/pl/details/dg128-5.0-03p14/listwy-zaciskowe-do-druku/degson-electronics/dg128-5-0-03p-14-00a-h/"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0b66acd8-56fe-444b-b8b6-41313489e701")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "756c0363-01d9-42f8-8a43-9e732cea0892")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -3.1 -3.5)
+		(end -3.1 -2.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "215f1481-9736-4fa5-bceb-9f14256a2c00")
+	)
+	(fp_line
+		(start -3.1 -2.5)
+		(end -2.5 -2.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "7a3c839b-a752-4de7-9a92-f211d99b0b29")
+	)
+	(fp_line
+		(start -3.1 2.7)
+		(end -3.1 3.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "1f625710-74ad-4352-8c59-35a95f349662")
+	)
+	(fp_line
+		(start -3.1 3.7)
+		(end -2.5 3.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "7f3cf664-519b-4e48-807f-c44001f2f893")
+	)
+	(fp_line
+		(start -2.5 -5)
+		(end 12.5 -5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "a65b08bb-5795-4993-acbf-2066e760dae0")
+	)
+	(fp_line
+		(start -2.5 -3.5)
+		(end -3.1 -3.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "d90935fd-6344-4c2b-befd-92ad1c3070fd")
+	)
+	(fp_line
+		(start -2.5 2.7)
+		(end -3.1 2.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "e5f4a993-e463-4346-9556-52206668d8d9")
+	)
+	(fp_line
+		(start -2.5 5.2)
+		(end -2.5 -5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "0c5f6935-a4d4-4ed5-9c42-0d1e95092260")
+	)
+	(fp_line
+		(start -1 4.2)
+		(end 1 4.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "0d14d313-028f-4961-837e-100485c4a8f9")
+	)
+	(fp_line
+		(start -1 5.2)
+		(end -1 4.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "720a1070-742e-4381-8d99-058bb9b6d7cc")
+	)
+	(fp_line
+		(start 1 4.2)
+		(end 1 5.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "7c0504e7-656f-454b-a54a-4c8190674d11")
+	)
+	(fp_line
+		(start 4 4.2)
+		(end 6 4.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "256084ca-aa87-470e-87b9-195c4e46db64")
+	)
+	(fp_line
+		(start 4 5.2)
+		(end 4 4.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "dc3c0e69-3bf7-445a-becf-4de327c9ad68")
+	)
+	(fp_line
+		(start 6 4.2)
+		(end 6 5.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "deb28cd7-3e74-475f-8d69-45dd6d28936a")
+	)
+	(fp_line
+		(start 9 4.2)
+		(end 11 4.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "06b1d2e9-c297-4b98-94cb-69fad9e7ffdb")
+	)
+	(fp_line
+		(start 9 5.2)
+		(end 9 4.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "f2fbda7d-79cf-4239-8aa3-280a66deae6e")
+	)
+	(fp_line
+		(start 11 4.2)
+		(end 11 5.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "2f54985c-2ce7-4d6b-b339-52ed1e78ddbf")
+	)
+	(fp_line
+		(start 12.5 -5)
+		(end 12.5 5.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "a1012c5a-0d96-4d5a-87cb-a45a8140afd6")
+	)
+	(fp_line
+		(start 12.5 5.2)
+		(end -2.5 5.2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "e7ba73a7-409c-4c6a-9a9c-f94745d86a04")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 4.8 -3.4 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "6fff13a3-567b-4c01-8279-4308af7fe27a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 3.3 3.3)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2044cc91-8d1b-4232-b0ae-024a2c8786b5")
+	)
+	(pad "2" thru_hole circle
+		(at 5 0)
+		(size 3.3 3.3)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "04925b18-c9e2-455e-9f48-23cd472ca6ab")
+	)
+	(pad "3" thru_hole circle
+		(at 10 0)
+		(size 3.3 3.3)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a1926614-7b54-4349-96c9-e4a6b358bfd7")
+	)
+	(embedded_fonts no)
+)
