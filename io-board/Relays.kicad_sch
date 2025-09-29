@@ -468,6 +468,252 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "NPN_1"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q1"
+				(at 5.08 1.2701 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "NPN"
+				(at 5.08 -1.2699 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 63.5 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+				(at 63.5 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "NPN"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Type" "GUMMELPOON"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=C 2=B 3=E"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "simulation"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "NPN_1_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy 0.635 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.905) (xy 0.635 -1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 0.635) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635) (xy 2.54 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778) (xy 1.27 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 -1.27) (xy 2.794 -1.27)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 -1.27) (xy 2.794 -1.27)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "NPN_1_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin open_collector line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin open_emitter line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Relay:Fujitsu_FTR-LYAA005x"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -761,250 +1007,6 @@
 						)
 					)
 					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Simulation_SPICE:NPN"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Q"
-				(at -2.54 7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "NPN"
-				(at -2.54 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 63.5 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-				(at 63.5 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Device" "NPN"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Type" "GUMMELPOON"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Pins" "1=C 2=B 3=E"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "simulation"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "NPN_0_1"
-				(polyline
-					(pts
-						(xy -2.54 0) (xy 0.635 0)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 1.905) (xy 0.635 -1.905) (xy 0.635 -1.905)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 0.635) (xy 2.54 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 -0.635) (xy 2.54 -2.54) (xy 2.54 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 1.27 0)
-					(radius 2.8194)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778) (xy 1.27 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.794 -1.27) (xy 2.794 -1.27)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.794 -1.27) (xy 2.794 -1.27)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "NPN_1_1"
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin open_collector line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin open_emitter line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "E"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1486,16 +1488,6 @@
 	)
 	(wire
 		(pts
-			(xy 26.67 88.9) (xy 35.56 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "147c1157-06d2-4602-b7fd-b2c42294b89a")
-	)
-	(wire
-		(pts
 			(xy 135.89 106.68) (xy 135.89 107.95)
 		)
 		(stroke
@@ -1756,16 +1748,6 @@
 	)
 	(wire
 		(pts
-			(xy 26.67 48.26) (xy 35.56 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2f4b1717-1795-4722-8f13-8be870104e08")
-	)
-	(wire
-		(pts
 			(xy 144.78 72.39) (xy 144.78 68.58)
 		)
 		(stroke
@@ -1926,16 +1908,6 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 50.8) (xy 118.11 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4e99f467-ec3f-4d22-9587-4b6c9434d6cd")
-	)
-	(wire
-		(pts
 			(xy 261.62 121.92) (xy 245.11 121.92)
 		)
 		(stroke
@@ -2056,16 +2028,6 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 50.8) (xy 187.96 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7511e960-48a8-42db-aa9c-af7cf77a1d0c")
-	)
-	(wire
-		(pts
 			(xy 53.34 146.05) (xy 53.34 147.32)
 		)
 		(stroke
@@ -2103,16 +2065,6 @@
 			(type default)
 		)
 		(uuid "81b76849-0574-44ed-882d-2bc8d1243953")
-	)
-	(wire
-		(pts
-			(xy 109.22 168.91) (xy 118.11 168.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "81ce774a-ab3d-42e9-ae1c-b747111f02e3")
 	)
 	(wire
 		(pts
@@ -2203,16 +2155,6 @@
 			(type default)
 		)
 		(uuid "8f66fd05-aac8-4148-a637-8606c9635f48")
-	)
-	(wire
-		(pts
-			(xy 109.22 129.54) (xy 118.11 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "95ab487a-f7f2-40e6-8296-7cf2e7ea3f13")
 	)
 	(wire
 		(pts
@@ -2366,16 +2308,6 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 132.08) (xy 187.96 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c6241059-2f16-48e9-b74e-992ba6863ba4")
-	)
-	(wire
-		(pts
 			(xy 43.18 88.9) (xy 45.72 88.9)
 		)
 		(stroke
@@ -2393,16 +2325,6 @@
 			(type default)
 		)
 		(uuid "cc348ad1-766c-4694-8bb9-cf78b3343215")
-	)
-	(wire
-		(pts
-			(xy 179.07 91.44) (xy 187.96 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cd7c5956-d0b5-4ce7-a44e-c67a72db650a")
 	)
 	(wire
 		(pts
@@ -2576,16 +2498,6 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 90.17) (xy 118.11 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e983ef17-1ad5-4a63-9c56-daa1253b99ce")
-	)
-	(wire
-		(pts
 			(xy 214.63 114.3) (xy 214.63 110.49)
 		)
 		(stroke
@@ -2593,16 +2505,6 @@
 			(type default)
 		)
 		(uuid "ee0f6adf-a384-4717-b090-41692bfa6e88")
-	)
-	(wire
-		(pts
-			(xy 26.67 168.91) (xy 35.56 168.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eecfa95a-1e69-4319-b5de-3a09aaec71bb")
 	)
 	(wire
 		(pts
@@ -2683,16 +2585,6 @@
 			(type default)
 		)
 		(uuid "f990d24d-7474-4758-bc21-0d34d6398d29")
-	)
-	(wire
-		(pts
-			(xy 26.67 129.54) (xy 35.56 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f9eebfd9-090d-425e-a036-9a49177a67f9")
 	)
 	(wire
 		(pts
@@ -2804,16 +2696,6 @@
 		)
 		(uuid "3a262d48-eed6-45a8-928b-5a524a560a9f")
 	)
-	(label "REL11-IN"
-		(at 179.07 132.08 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4aa7491b-ef60-4a09-b9dd-b3221769fa08")
-	)
 	(label "REL6-OUT"
 		(at 245.11 119.38 0)
 		(effects
@@ -2823,16 +2705,6 @@
 			(justify left bottom)
 		)
 		(uuid "4e793fbc-bde3-4262-a7f7-d2b3a276a017")
-	)
-	(label "REL1-IN"
-		(at 26.67 48.26 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "51d281df-d88f-48e6-aa09-11dac2f5aa2d")
 	)
 	(label "REL2-OUT"
 		(at 245.11 109.22 0)
@@ -2874,16 +2746,6 @@
 		)
 		(uuid "64f08836-f001-4ed7-aeaf-0f5d1431a299")
 	)
-	(label "REL9-IN"
-		(at 179.07 50.8 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6c54acf1-05c6-4e49-8f76-7e5efd34c58f")
-	)
 	(label "REL10-OUT1"
 		(at 179.07 69.85 0)
 		(effects
@@ -2894,36 +2756,6 @@
 		)
 		(uuid "6e721eba-fd52-4fa1-b769-20e9fe8b0c4c")
 	)
-	(label "REL6-IN"
-		(at 109.22 90.17 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "738faf7b-5ee8-4983-8493-d43a95d5bec9")
-	)
-	(label "REL4-IN"
-		(at 26.67 168.91 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7903ba05-c366-4ba1-8431-246ed3a5f29d")
-	)
-	(label "REL8-IN"
-		(at 109.22 168.91 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7b4cf01f-272c-4946-9f1b-c9668082293c")
-	)
 	(label "REL7-OUT"
 		(at 245.11 121.92 0)
 		(effects
@@ -2933,16 +2765,6 @@
 			(justify left bottom)
 		)
 		(uuid "7f71e2a5-b2a4-4ba9-a3d7-a4face8d75c3")
-	)
-	(label "REL7-IN"
-		(at 109.22 129.54 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7f745299-7cff-46c1-a962-b920dee95e51")
 	)
 	(label "REL3-OUT"
 		(at 26.67 123.19 0)
@@ -2964,16 +2786,6 @@
 		)
 		(uuid "866ff26e-66a7-4a83-bfdb-3297d48cff98")
 	)
-	(label "REL5-IN"
-		(at 109.22 50.8 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "8894bfa7-5c36-47df-885b-6154b787bba5")
-	)
 	(label "REL-COM"
 		(at 109.22 68.58 0)
 		(effects
@@ -2983,16 +2795,6 @@
 			(justify left bottom)
 		)
 		(uuid "8a958411-b4b4-47d3-972c-78cfe3f7c0fd")
-	)
-	(label "REL10-IN"
-		(at 179.07 91.44 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "8c8f9963-7960-42b7-b533-cbf7bafef190")
 	)
 	(label "REL10-OUT2"
 		(at 245.11 104.14 0)
@@ -3074,16 +2876,6 @@
 		)
 		(uuid "e44ae6db-075b-434b-8572-e8521ac75259")
 	)
-	(label "REL3-IN"
-		(at 26.67 129.54 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e4f6b339-ea28-4b92-8942-f82258884767")
-	)
 	(label "REL4-OUT"
 		(at 245.11 114.3 0)
 		(effects
@@ -3124,16 +2916,6 @@
 		)
 		(uuid "fa4aa292-50a0-46f3-bed7-f49ed57f1edb")
 	)
-	(label "REL2-IN"
-		(at 26.67 88.9 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ff9a8ca4-29ca-4ef6-b84d-b213b460b860")
-	)
 	(global_label "REL11-OUT2"
 		(shape input)
 		(at 185.42 125.73 180)
@@ -3169,6 +2951,248 @@
 		(uuid "8748d230-3590-4fd3-9587-8a734fa8320a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 170.1582 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL2-IN"
+		(shape input)
+		(at 35.56 88.9 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b4062")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 24.4105 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL1-IN"
+		(shape input)
+		(at 35.56 48.26 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b4063")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 24.4105 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL4-IN"
+		(shape input)
+		(at 35.56 168.91 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b4064")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 24.4105 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL3-IN"
+		(shape input)
+		(at 35.56 129.54 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b4065")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 24.4105 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL8-IN"
+		(shape input)
+		(at 118.11 168.91 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b4066")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.9605 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL7-IN"
+		(shape input)
+		(at 118.11 129.54 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b4067")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.9605 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL9-IN"
+		(shape input)
+		(at 187.96 50.8 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b4068")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 176.8105 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL6-IN"
+		(shape input)
+		(at 118.11 90.17 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b4069")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.9605 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL5-IN"
+		(shape input)
+		(at 118.11 50.8 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b406a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.9605 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL11-IN"
+		(shape input)
+		(at 187.96 132.08 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b406b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.601 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "REL10-IN"
+		(shape input)
+		(at 187.96 91.44 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb208990-e524-49da-9e80-5079d03b406c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.601 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3373,106 +3397,6 @@
 			(project "io-board"
 				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
 					(reference "R10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:NPN")
-		(at 133.35 50.8 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "097dca8d-0d90-429e-9064-3cae7c92d7c3")
-		(property "Reference" "Q5"
-			(at 138.43 49.5299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "NPN"
-			(at 138.43 52.0699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Footprints:TO-92-3"
-			(at 196.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 196.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-			(at 133.35 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "NPN"
-			(at 133.35 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "GUMMELPOON"
-			(at 133.35 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=C 2=B 3=E"
-			(at 133.35 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5b7f8a93-0c3e-4246-a0de-238db3faa5e2")
-		)
-		(pin "2"
-			(uuid "140ed2e1-abf3-4f68-ad63-07366b77c91c")
-		)
-		(pin "3"
-			(uuid "2fca6a19-50bf-43a2-894f-9a6ab1747083")
-		)
-		(instances
-			(project "io-board"
-				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
-					(reference "Q5")
 					(unit 1)
 				)
 			)
@@ -3935,6 +3859,107 @@
 		)
 	)
 	(symbol
+		(lib_name "NPN_1")
+		(lib_id "Simulation_SPICE:NPN")
+		(at 133.35 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1c76a8b2-f2cc-4a4d-bd46-051b0e05d1eb")
+		(property "Reference" "Q6"
+			(at 138.43 88.8999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN"
+			(at 138.43 91.4399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 196.85 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+			(at 196.85 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(at 133.35 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 133.35 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 133.35 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=C 2=B 3=E"
+			(at 133.35 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a6efb691-f0d8-489b-b7bf-58b240395fb2")
+		)
+		(pin "2"
+			(uuid "851d3401-3eb4-4876-a996-921d08392339")
+		)
+		(pin "3"
+			(uuid "4838ac3c-103a-4623-8eea-636945c7399b")
+		)
+		(instances
+			(project "io-board"
+				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
+					(reference "Q6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 121.92 90.17 90)
 		(unit 1)
@@ -4140,6 +4165,107 @@
 			(project "io-board"
 				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
 					(reference "K7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "NPN_1")
+		(lib_id "Simulation_SPICE:NPN")
+		(at 50.8 168.91 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "23e8dc01-db35-47ef-a6a6-331e0d7d460f")
+		(property "Reference" "Q4"
+			(at 55.88 167.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN"
+			(at 55.88 170.1799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 114.3 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+			(at 114.3 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(at 50.8 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 50.8 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 50.8 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=C 2=B 3=E"
+			(at 50.8 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "01f7deb4-d6c9-48e0-864e-50c245b14f83")
+		)
+		(pin "2"
+			(uuid "c40a4c01-b907-4e46-9d6d-f4a19b507fbd")
+		)
+		(pin "3"
+			(uuid "f680b598-b5bb-40a0-a5d4-926c3cb43882")
+		)
+		(instances
+			(project "io-board"
+				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
+					(reference "Q4")
 					(unit 1)
 				)
 			)
@@ -4360,6 +4486,208 @@
 			(project "io-board"
 				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
 					(reference "D9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "NPN_1")
+		(lib_id "Simulation_SPICE:NPN")
+		(at 203.2 50.8 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2dbb80ef-cc8c-4fe2-bbf1-ddda4c25bbb3")
+		(property "Reference" "Q9"
+			(at 208.28 49.5299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN"
+			(at 208.28 52.0699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 266.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+			(at 266.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(at 203.2 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 203.2 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 203.2 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=C 2=B 3=E"
+			(at 203.2 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "966422a0-4573-4fa6-9fb7-91000c157bb5")
+		)
+		(pin "2"
+			(uuid "0b1a634b-6bcc-48c1-b5a7-ee03ee0dd302")
+		)
+		(pin "3"
+			(uuid "80eb2af6-6d9c-4fcf-b338-a2b867bd2143")
+		)
+		(instances
+			(project "io-board"
+				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
+					(reference "Q9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "NPN_1")
+		(lib_id "Simulation_SPICE:NPN")
+		(at 203.2 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2e60b18a-7515-48f6-b93a-706a3be7866e")
+		(property "Reference" "Q11"
+			(at 208.28 130.8099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN"
+			(at 208.28 133.3499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 266.7 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+			(at 266.7 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(at 203.2 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 203.2 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 203.2 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=C 2=B 3=E"
+			(at 203.2 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8450b53f-5026-4865-9a98-8e4d639eb9df")
+		)
+		(pin "2"
+			(uuid "38996620-7123-4436-8c12-5084fbd8ac44")
+		)
+		(pin "3"
+			(uuid "1515e01c-c247-4139-a155-8db5050cd2e5")
+		)
+		(instances
+			(project "io-board"
+				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
+					(reference "Q11")
 					(unit 1)
 				)
 			)
@@ -4587,6 +4915,107 @@
 		)
 	)
 	(symbol
+		(lib_name "NPN_1")
+		(lib_id "Simulation_SPICE:NPN")
+		(at 133.35 50.8 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4d83e364-0546-4430-972a-53eac0dc5484")
+		(property "Reference" "Q5"
+			(at 138.43 49.5299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN"
+			(at 138.43 52.0699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 196.85 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+			(at 196.85 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(at 133.35 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 133.35 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 133.35 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=C 2=B 3=E"
+			(at 133.35 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "caa9e751-08e4-42a1-b2de-88ffd5451d1c")
+		)
+		(pin "2"
+			(uuid "768c4cb7-3255-45ad-b96d-684e27e8c38f")
+		)
+		(pin "3"
+			(uuid "4b553679-1b94-4083-8187-f4560ef819b8")
+		)
+		(instances
+			(project "io-board"
+				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
+					(reference "Q5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 135.89 57.15 0)
 		(unit 1)
@@ -4713,106 +5142,6 @@
 			(project "io-board"
 				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
 					(reference "#PWR03")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:NPN")
-		(at 203.2 50.8 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5aae47a0-b24e-4386-9205-a7c0cd16b33e")
-		(property "Reference" "Q9"
-			(at 208.28 49.5299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "NPN"
-			(at 208.28 52.0699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Footprints:TO-92-3"
-			(at 266.7 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 266.7 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-			(at 203.2 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "NPN"
-			(at 203.2 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "GUMMELPOON"
-			(at 203.2 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=C 2=B 3=E"
-			(at 203.2 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0e6011d0-d185-4efb-b0a2-90ef2d9061f9")
-		)
-		(pin "2"
-			(uuid "cc3eae60-03cf-473a-8382-a7ea86a55fb2")
-		)
-		(pin "3"
-			(uuid "5c97d4c1-0897-4a1f-96a5-fc4f5a048a6e")
-		)
-		(instances
-			(project "io-board"
-				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
-					(reference "Q9")
 					(unit 1)
 				)
 			)
@@ -4968,306 +5297,6 @@
 			(project "io-board"
 				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
 					(reference "D11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:NPN")
-		(at 133.35 129.54 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5f5687cf-744e-4921-ac54-1a6179cfa723")
-		(property "Reference" "Q7"
-			(at 138.43 128.2699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "NPN"
-			(at 138.43 130.8099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Footprints:TO-92-3"
-			(at 196.85 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 196.85 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-			(at 133.35 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "NPN"
-			(at 133.35 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "GUMMELPOON"
-			(at 133.35 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=C 2=B 3=E"
-			(at 133.35 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bca91535-a049-4e53-8796-cb4d217a4b04")
-		)
-		(pin "2"
-			(uuid "e573c5ae-b0b8-4ecb-9de4-8837c4dddc40")
-		)
-		(pin "3"
-			(uuid "8815ab0e-5641-4404-98d8-2c2ced54cba0")
-		)
-		(instances
-			(project "io-board"
-				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
-					(reference "Q7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:NPN")
-		(at 133.35 168.91 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "62c448b4-f2eb-4aa7-9065-6af95d4b4af9")
-		(property "Reference" "Q8"
-			(at 138.43 167.6399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "NPN"
-			(at 138.43 170.1799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Footprints:TO-92-3"
-			(at 196.85 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 196.85 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-			(at 133.35 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "NPN"
-			(at 133.35 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "GUMMELPOON"
-			(at 133.35 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=C 2=B 3=E"
-			(at 133.35 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e8c51b55-aa36-4ea2-90f8-54d9c4dc9928")
-		)
-		(pin "2"
-			(uuid "605b8fd5-cbe0-425e-8fc0-19286c69a7a7")
-		)
-		(pin "3"
-			(uuid "039085ea-167f-41b1-a725-591a44a5bc0b")
-		)
-		(instances
-			(project "io-board"
-				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
-					(reference "Q8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:NPN")
-		(at 50.8 129.54 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "680fa81a-6e1b-4610-b073-961c755ac537")
-		(property "Reference" "Q3"
-			(at 55.88 128.2699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "NPN"
-			(at 55.88 130.8099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Footprints:TO-92-3"
-			(at 114.3 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 114.3 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-			(at 50.8 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "NPN"
-			(at 50.8 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "GUMMELPOON"
-			(at 50.8 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=C 2=B 3=E"
-			(at 50.8 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "36303eb2-db0e-4b4c-9490-a470474f2b50")
-		)
-		(pin "2"
-			(uuid "822d03c6-7f68-4bd2-baf5-c437db621ec5")
-		)
-		(pin "3"
-			(uuid "18c69d28-ef5a-403c-96f7-29ffd8023bfd")
-		)
-		(instances
-			(project "io-board"
-				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
-					(reference "Q3")
 					(unit 1)
 				)
 			)
@@ -5483,6 +5512,107 @@
 			(project "io-board"
 				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
 					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "NPN_1")
+		(lib_id "Simulation_SPICE:NPN")
+		(at 133.35 129.54 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7527b880-2e44-49d4-a079-3fbb56ac6640")
+		(property "Reference" "Q7"
+			(at 138.43 128.2699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN"
+			(at 138.43 130.8099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 196.85 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+			(at 196.85 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(at 133.35 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 133.35 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 133.35 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=C 2=B 3=E"
+			(at 133.35 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8ed49b20-2ac4-4233-987d-25a60eeecfed")
+		)
+		(pin "2"
+			(uuid "6d3d7773-bc25-40f0-9ce9-0f2b4f855904")
+		)
+		(pin "3"
+			(uuid "edb39ae1-769b-4e02-82f5-dbfe0550918e")
+		)
+		(instances
+			(project "io-board"
+				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
+					(reference "Q7")
 					(unit 1)
 				)
 			)
@@ -5852,17 +5982,18 @@
 		)
 	)
 	(symbol
+		(lib_name "NPN_1")
 		(lib_id "Simulation_SPICE:NPN")
-		(at 203.2 91.44 0)
+		(at 50.8 129.54 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "899bf9bb-688d-4b76-8b82-e2fe90ec9810")
-		(property "Reference" "Q10"
-			(at 208.28 90.1699 0)
+		(uuid "8736e0b0-fcc5-404b-a21b-675d221a84d0")
+		(property "Reference" "Q3"
+			(at 55.88 128.2699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5871,7 +6002,7 @@
 			)
 		)
 		(property "Value" "NPN"
-			(at 208.28 92.7099 0)
+			(at 55.88 130.8099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5879,8 +6010,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TO-92-3"
-			(at 266.7 91.44 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 114.3 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5889,7 +6020,7 @@
 			)
 		)
 		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 266.7 91.44 0)
+			(at 114.3 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5898,7 +6029,7 @@
 			)
 		)
 		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-			(at 203.2 91.44 0)
+			(at 50.8 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5907,7 +6038,7 @@
 			)
 		)
 		(property "Sim.Device" "NPN"
-			(at 203.2 91.44 0)
+			(at 50.8 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5916,7 +6047,7 @@
 			)
 		)
 		(property "Sim.Type" "GUMMELPOON"
-			(at 203.2 91.44 0)
+			(at 50.8 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5925,7 +6056,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=C 2=B 3=E"
-			(at 203.2 91.44 0)
+			(at 50.8 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5934,18 +6065,18 @@
 			)
 		)
 		(pin "1"
-			(uuid "a949ca73-c036-4ed8-9b71-86065bb71b76")
+			(uuid "5f9eedc3-1d41-4488-b45a-7c8c8e916e9b")
 		)
 		(pin "2"
-			(uuid "ebdac8ac-3b28-4a8c-87c0-2445eeaac644")
+			(uuid "a8ef1800-afb7-4838-b4f7-ad39e3437cfe")
 		)
 		(pin "3"
-			(uuid "740fe89f-b62f-49a0-bf49-6fe3a7ea3290")
+			(uuid "0671edee-9132-40f4-b87e-44c7a6a75559")
 		)
 		(instances
 			(project "io-board"
 				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
-					(reference "Q10")
+					(reference "Q3")
 					(unit 1)
 				)
 			)
@@ -6347,6 +6478,107 @@
 		)
 	)
 	(symbol
+		(lib_name "NPN_1")
+		(lib_id "Simulation_SPICE:NPN")
+		(at 203.2 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a9342630-c5f1-4991-9e95-706b597a9f32")
+		(property "Reference" "Q10"
+			(at 208.28 90.1699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN"
+			(at 208.28 92.7099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 266.7 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+			(at 266.7 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(at 203.2 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 203.2 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 203.2 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=C 2=B 3=E"
+			(at 203.2 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e3728c8c-db82-4b54-986f-cd034121103c")
+		)
+		(pin "2"
+			(uuid "0243e701-51c6-4023-91a7-7d7dfb8fd35c")
+		)
+		(pin "3"
+			(uuid "c30e73f0-419e-4855-839f-188e9b74c794")
+		)
+		(instances
+			(project "io-board"
+				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
+					(reference "Q10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:D")
 		(at 62.23 115.57 270)
 		(unit 1)
@@ -6513,6 +6745,7 @@
 		)
 	)
 	(symbol
+		(lib_name "NPN_1")
 		(lib_id "Simulation_SPICE:NPN")
 		(at 50.8 88.9 0)
 		(unit 1)
@@ -6521,7 +6754,7 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "afe1e695-7f60-414a-836f-65b6464e86ec")
+		(uuid "b32a12cf-9bf7-4f22-bfba-51a07c1efd6e")
 		(property "Reference" "Q2"
 			(at 55.88 87.6299 0)
 			(effects
@@ -6540,7 +6773,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TO-92-3"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 114.3 88.9 0)
 			(effects
 				(font
@@ -6595,13 +6828,13 @@
 			)
 		)
 		(pin "1"
-			(uuid "962e806a-1845-402a-8247-fc0c8d574941")
+			(uuid "4ef96013-7d44-4e02-94ef-7e2d6536a441")
 		)
 		(pin "2"
-			(uuid "fbc890d9-0b67-43a5-8e66-64144b707b34")
+			(uuid "7edede4d-16f8-4d79-a95a-e90795aca5a4")
 		)
 		(pin "3"
-			(uuid "28ff5a6c-a227-4dc7-bcbf-95703eb381a5")
+			(uuid "a7d8528c-0e67-46e8-bb02-53116001af26")
 		)
 		(instances
 			(project "io-board"
@@ -6833,106 +7066,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:NPN")
-		(at 133.35 90.17 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c3a6043a-e85f-4204-a54c-1eed9c37657e")
-		(property "Reference" "Q6"
-			(at 138.43 88.8999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "NPN"
-			(at 138.43 91.4399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Footprints:TO-92-3"
-			(at 196.85 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 196.85 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-			(at 133.35 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "NPN"
-			(at 133.35 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "GUMMELPOON"
-			(at 133.35 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=C 2=B 3=E"
-			(at 133.35 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ae1eef2a-9d4a-4a62-bdcd-05756d050845")
-		)
-		(pin "2"
-			(uuid "dd6ec2db-2e9a-4be6-9027-8608d0ff9430")
-		)
-		(pin "3"
-			(uuid "cfc2d895-0016-4a2c-adf6-53739f8a75c6")
-		)
-		(instances
-			(project "io-board"
-				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
-					(reference "Q6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+12V")
 		(at 205.74 68.58 0)
 		(unit 1)
@@ -6998,106 +7131,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:NPN")
-		(at 203.2 132.08 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c89c5d11-bde1-4355-a9a4-54add2e205a8")
-		(property "Reference" "Q11"
-			(at 208.28 130.8099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "NPN"
-			(at 208.28 133.3499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Footprints:TO-92-3"
-			(at 266.7 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 266.7 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-			(at 203.2 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "NPN"
-			(at 203.2 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "GUMMELPOON"
-			(at 203.2 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=C 2=B 3=E"
-			(at 203.2 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b6fae25a-8f92-4d1d-97bb-df299b20bb86")
-		)
-		(pin "2"
-			(uuid "79d5ed09-d2b0-49a2-a68d-7d945806a4f4")
-		)
-		(pin "3"
-			(uuid "d8a84521-43fd-495e-b575-1315493be4da")
-		)
-		(instances
-			(project "io-board"
-				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
-					(reference "Q11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
+		(lib_name "NPN_1")
 		(lib_id "Simulation_SPICE:NPN")
 		(at 50.8 48.26 0)
 		(unit 1)
@@ -7125,7 +7159,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TO-92-3"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 114.3 48.26 0)
 			(effects
 				(font
@@ -8366,106 +8400,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:NPN")
-		(at 50.8 168.91 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "fdf2362a-74f7-4f72-8fb8-e688781ae264")
-		(property "Reference" "Q4"
-			(at 55.88 167.6399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "NPN"
-			(at 55.88 170.1799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Footprints:TO-92-3"
-			(at 114.3 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 114.3 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
-			(at 50.8 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "NPN"
-			(at 50.8 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "GUMMELPOON"
-			(at 50.8 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=C 2=B 3=E"
-			(at 50.8 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4d56e58a-063a-4d6d-bf65-acf56d8b329c")
-		)
-		(pin "2"
-			(uuid "d4d64d37-48d5-42db-aded-e850aedbe4bf")
-		)
-		(pin "3"
-			(uuid "bbb34594-30e1-43cd-bde9-a10eebdd4b9e")
-		)
-		(instances
-			(project "io-board"
-				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
-					(reference "Q4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 191.77 132.08 90)
 		(unit 1)
@@ -8596,6 +8530,107 @@
 			(project "io-board"
 				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
 					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "NPN_1")
+		(lib_id "Simulation_SPICE:NPN")
+		(at 133.35 168.91 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ffb0be5f-1611-408d-a25b-3ab52615c986")
+		(property "Reference" "Q8"
+			(at 138.43 167.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN"
+			(at 138.43 170.1799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 196.85 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+			(at 196.85 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(at 133.35 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 133.35 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 133.35 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=C 2=B 3=E"
+			(at 133.35 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c47f5934-08f2-4d9b-b32d-2140440545a3")
+		)
+		(pin "2"
+			(uuid "0a78d2ef-7cfc-448d-8eae-96dd8b0bf81f")
+		)
+		(pin "3"
+			(uuid "b69528fd-562d-49ca-918b-793ecb477168")
+		)
+		(instances
+			(project "io-board"
+				(path "/5a6848ff-426f-432e-bc4d-b6eef5e4348a/6d448004-438c-45a8-8ad9-7793f700aba9"
+					(reference "Q8")
 					(unit 1)
 				)
 			)

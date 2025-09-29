@@ -488,6 +488,20 @@
         "wire_width": 6
       },
       {
+        "clearance": 0.3,
+        "diff_pair_gap": 0.5,
+        "diff_pair_width": 0.4,
+        "microvia_diameter": 0.9,
+        "microvia_drill": 0.5,
+        "name": "ESD",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.3,
+        "via_diameter": 1.3,
+        "via_drill": 0.8
+      },
+      {
         "clearance": 1.2,
         "diff_pair_gap": 1.5,
         "diff_pair_width": 1.0,
@@ -495,7 +509,7 @@
         "microvia_drill": 1.0,
         "name": "HighPower",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 2.0,
         "via_diameter": 3.0,
@@ -511,6 +525,22 @@
       {
         "netclass": "HighPower",
         "pattern": "/Relays/REL.*-(COM|OUT.*)"
+      },
+      {
+        "netclass": "ESD",
+        "pattern": "/ESD.*"
+      },
+      {
+        "netclass": "ESD",
+        "pattern": "___/IO-IN.+"
+      },
+      {
+        "netclass": "ESD",
+        "pattern": "x.*"
+      },
+      {
+        "netclass": "ESD",
+        "pattern": "/LED.-PWM"
       }
     ]
   },
@@ -665,6 +695,42 @@
     [
       "e1542026-4c37-4378-84e5-429896c8a957",
       "IO4"
+    ],
+    [
+      "e8344a09-988a-4764-aec0-77d83b82efa0",
+      "IO5"
+    ],
+    [
+      "1272f569-a0a5-44c5-a80e-9e76d4b32715",
+      "IO6"
+    ],
+    [
+      "1d9a633e-17cb-470d-a6ff-83a88c5c2868",
+      "IO7"
+    ],
+    [
+      "8bd3b39e-a889-4c36-b4fc-a66092e1b111",
+      "IO8"
+    ],
+    [
+      "b659d338-200f-4c62-aa3a-607371426b36",
+      "IO9"
+    ],
+    [
+      "54948edd-14bf-42b5-91b1-ff857e052f21",
+      "IO10"
+    ],
+    [
+      "cab0c593-2b0b-484f-afa5-e7586929b90b",
+      "IO11"
+    ],
+    [
+      "333f4fb9-2ea8-49d4-b7cc-d04719025af8",
+      "IO12"
+    ],
+    [
+      "61973274-9cce-47d2-8e49-717ae3820e73",
+      "IO13"
     ]
   ],
   "text_variables": {}
