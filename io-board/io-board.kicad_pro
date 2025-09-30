@@ -541,6 +541,10 @@
       {
         "netclass": "ESD",
         "pattern": "/LED.-PWM"
+      },
+      {
+        "netclass": "ESD",
+        "pattern": "Net-(Q12-B)"
       }
     ]
   },
@@ -731,6 +735,22 @@
     [
       "61973274-9cce-47d2-8e49-717ae3820e73",
       "IO13"
+    ],
+    [
+      "5680163a-59ef-49fe-bd7d-0718bd629dd1",
+      "LED_Driver1"
+    ],
+    [
+      "e46419f4-efe2-457e-998d-7494f8c6e183",
+      "LED_Driver2"
+    ],
+    [
+      "42236bee-c8bf-4e47-ac8c-436153478c99",
+      "OC1"
+    ],
+    [
+      "578b8280-25c4-4457-bfea-b89e16c26652",
+      "OC2"
     ]
   ],
   "text_variables": {}
