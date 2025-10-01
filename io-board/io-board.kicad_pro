@@ -483,8 +483,8 @@
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.5,
-        "via_diameter": 1.3,
-        "via_drill": 0.8,
+        "via_diameter": 1.2,
+        "via_drill": 0.6,
         "wire_width": 6
       },
       {
@@ -498,8 +498,8 @@
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.3,
-        "via_diameter": 1.3,
-        "via_drill": 0.8
+        "via_diameter": 1.2,
+        "via_drill": 0.6
       },
       {
         "clearance": 1.2,
@@ -545,6 +545,10 @@
       {
         "netclass": "ESD",
         "pattern": "Net-(Q12-B)"
+      },
+      {
+        "netclass": "ESD",
+        "pattern": "Net-(D1-A)"
       }
     ]
   },

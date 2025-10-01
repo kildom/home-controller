@@ -131,8 +131,8 @@
 		(uuid "943ab596-bcee-4a7b-92ce-67e986486f60")
 	)
 	(fp_line
-		(start -25.18 -9.07)
-		(end 25.18 -9.07)
+		(start -25.4 -8.89)
+		(end 25.4 -8.89)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -141,8 +141,8 @@
 		(uuid "65328ef4-8242-48e7-8490-153f847d85b5")
 	)
 	(fp_line
-		(start -25.18 9.07)
-		(end -25.18 -9.07)
+		(start -25.4 -6.35)
+		(end -25.4 -8.89)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -151,8 +151,28 @@
 		(uuid "cb5d0436-eb52-4f40-9b85-2d1ec120c6d6")
 	)
 	(fp_line
-		(start 25.18 -9.07)
-		(end 25.18 9.07)
+		(start -25.4 6.35)
+		(end 25.4 6.35)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "5527a752-1a37-4ddb-9dfe-0ca94441cffb")
+	)
+	(fp_line
+		(start -25.4 8.89)
+		(end -25.4 6.35)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "434fd135-1ab8-4720-be99-b9d104e4e552")
+	)
+	(fp_line
+		(start 25.4 -8.89)
+		(end 25.4 -6.35)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -161,14 +181,34 @@
 		(uuid "4d21dc91-71e7-4f32-8693-ba55ec89b520")
 	)
 	(fp_line
-		(start 25.18 9.07)
-		(end -25.18 9.07)
+		(start 25.4 -6.35)
+		(end -25.4 -6.35)
 		(stroke
 			(width 0.05)
 			(type default)
 		)
 		(layer "F.CrtYd")
 		(uuid "049286b6-049f-43ee-9bee-96b7c9d184b6")
+	)
+	(fp_line
+		(start 25.4 6.35)
+		(end 25.4 8.89)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "35f38eb9-b935-4e9a-983a-a5ac9242f0f7")
+	)
+	(fp_line
+		(start 25.4 8.89)
+		(end -25.4 8.89)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "eabaf20e-0d2d-4e94-89f6-c57fdfb59cc7")
 	)
 	(pad "1" thru_hole oval
 		(at -24.13 7.62)
