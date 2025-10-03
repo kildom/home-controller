@@ -41,10 +41,10 @@
 			(layerselection 0x00000000_00000000_55555555_5755f5ff)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
 			(disableapertmacros no)
-			(usegerberextensions no)
-			(usegerberattributes yes)
-			(usegerberadvancedattributes yes)
-			(creategerberjobfile yes)
+			(usegerberextensions yes)
+			(usegerberattributes no)
+			(usegerberadvancedattributes no)
+			(creategerberjobfile no)
 			(dashed_line_dash_ratio 12.000000)
 			(dashed_line_gap_ratio 3.000000)
 			(svgprecision 4)
@@ -67,14 +67,14 @@
 			(sketchpadsonfab no)
 			(plotpadnumbers no)
 			(hidednponfab no)
-			(sketchdnponfab yes)
-			(crossoutdnponfab yes)
-			(subtractmaskfromsilk no)
+			(sketchdnponfab no)
+			(crossoutdnponfab no)
+			(subtractmaskfromsilk yes)
 			(outputformat 1)
 			(mirror no)
-			(drillshape 1)
+			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "")
+			(outputdirectory "Production/")
 		)
 	)
 	(net 0 "")
@@ -196,6 +196,9 @@
 	(net 116 "/LED2-FB")
 	(net 117 "/OC1-IN")
 	(net 118 "/OC2-IN")
+	(net 119 "unconnected-(H5-Pin_1-Pad1)")
+	(net 120 "unconnected-(H6-Pin_1-Pad1)")
+	(net 121 "unconnected-(H7-Pin_1-Pad1)")
 	(footprint "MountingHole:MountingHole_3.5mm"
 		(locked yes)
 		(layer "F.Cu")
@@ -206,7 +209,7 @@
 		(property "Reference" "H2"
 			(at 1.417233 -2.86694 0)
 			(layer "F.SilkS")
-			(uuid "df1f2f52-2063-4ec9-8606-a7b8a152363f")
+			(uuid "ba7ff75e-9498-4ca7-96b1-0c0455b38380")
 			(effects
 				(font
 					(size 1 1)
@@ -217,7 +220,7 @@
 		(property "Value" "MountingHole"
 			(at 0 4.45 0)
 			(layer "F.Fab")
-			(uuid "1186039b-f1c5-4e8e-bf67-879f8af44fdd")
+			(uuid "e31f4cba-1a3b-4ef3-a7cd-3a8836690a3e")
 			(effects
 				(font
 					(size 1 1)
@@ -229,7 +232,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "559ce93b-e627-46f3-816c-1b0c3cec51ef")
+			(uuid "c8052354-da64-46ab-a656-8631819f31ad")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -241,7 +244,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f19f397a-ed40-40fb-bd58-4330159445a5")
+			(uuid "33b960ba-19d3-4275-a888-f56163e1902d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -293,6 +296,113 @@
 			(drill 3.5)
 			(layers "*.Cu" "*.Mask")
 			(uuid "40977d6b-7948-43cf-872f-9cd6fa400fd8")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "Footprints:stencil-holder"
+		(layer "F.Cu")
+		(uuid "02655bcf-f729-4674-a3a5-6ff57af9eb25")
+		(at 104.082043 32.063295)
+		(property "Reference" "H6"
+			(at -1.904036 -0.546608 0)
+			(unlocked yes)
+			(layer "F.SilkS")
+			(uuid "aaa70e5b-bfb0-4c60-9046-7eeb565a915c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Value" "Conn_01x01"
+			(at 0 1 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6f556f76-2d28-4f59-b20b-c4697660d0eb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6208fe4a-83ad-4ac0-a71a-3b7c2d430921")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad83618b-13c4-4bbd-ae17-65ef8fe318c5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "Connector*:*_1x??_*")
+		(path "/59a6ab61-5171-4267-8b31-cca5c15802ce")
+		(sheetname "/")
+		(sheetfile "io-board.kicad_sch")
+		(attr through_hole)
+		(fp_circle
+			(center 0 0)
+			(end 0.45 0)
+			(stroke
+				(width 0)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Paste")
+			(uuid "a43dcfd0-f0a8-4d9e-9628-7950bc6435cb")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 0.45 0)
+			(stroke
+				(width 0)
+				(type solid)
+			)
+			(fill yes)
+			(layer "B.Paste")
+			(uuid "1ed58ae0-87bc-4950-aa57-387ff639334b")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 2.5 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(uuid "83d8b033-6cd5-46e6-aa2a-a5140e774a7a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 2 2)
+			(drill 0.8)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 120 "unconnected-(H6-Pin_1-Pad1)")
+			(pinfunction "Pin_1")
+			(pintype "passive")
+			(uuid "90dfe878-c0f9-47c8-9043-43fc2079e2df")
 		)
 		(embedded_fonts no)
 	)
@@ -5982,6 +6092,113 @@
 			)
 		)
 	)
+	(footprint "Footprints:stencil-holder"
+		(layer "F.Cu")
+		(uuid "550992ee-e0e3-482f-b757-03b1ead020ba")
+		(at 43.446079 91.996518)
+		(property "Reference" "H7"
+			(at -1.991461 0.108436 0)
+			(unlocked yes)
+			(layer "F.SilkS")
+			(uuid "0d99ed4a-b234-43cf-b6ea-a58c7d867126")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Value" "Conn_01x01"
+			(at 0 1 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6004e831-9609-49d2-b3ed-62fc2505b8d3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef6f30b2-232d-4175-ac17-9c19160bac94")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "857e7da0-7bfb-423b-9a70-297a6aa2f88e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "Connector*:*_1x??_*")
+		(path "/cf08d3e4-456f-4077-aefb-2385507e296b")
+		(sheetname "/")
+		(sheetfile "io-board.kicad_sch")
+		(attr through_hole)
+		(fp_circle
+			(center 0 0)
+			(end 0.45 0)
+			(stroke
+				(width 0)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Paste")
+			(uuid "8cc504b6-5b7c-470c-bf3e-1186103de30f")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 0.45 0)
+			(stroke
+				(width 0)
+				(type solid)
+			)
+			(fill yes)
+			(layer "B.Paste")
+			(uuid "4bde5c68-d4ab-4c32-82e8-479c10f181cc")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 2.5 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(uuid "d7061784-5ba9-43d3-8a54-0ceb8d68389b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 2 2)
+			(drill 0.8)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 121 "unconnected-(H7-Pin_1-Pad1)")
+			(pinfunction "Pin_1")
+			(pintype "passive")
+			(uuid "4bc60ce7-c5f9-42e3-bf5c-2f774a2e901b")
+		)
+		(embedded_fonts no)
+	)
 	(footprint "Package_TO_SOT_SMD:SOT-23"
 		(layer "F.Cu")
 		(uuid "55606d2d-cdd0-44c1-b322-31a15039d906")
@@ -7551,6 +7768,113 @@
 			)
 		)
 	)
+	(footprint "Footprints:stencil-holder"
+		(layer "F.Cu")
+		(uuid "648861de-f771-4115-b43f-bd61141e420c")
+		(at 42.581478 32.391268)
+		(property "Reference" "H5"
+			(at -2.068586 -1.162324 0)
+			(unlocked yes)
+			(layer "F.SilkS")
+			(uuid "c46d0477-a1ec-4c13-a15a-cae7d79630b8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Value" "Conn_01x01"
+			(at 0 1 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "376a3c90-e00d-49d8-88ab-1c8dcf4aea7e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a6e3e40a-30f2-4936-8b4f-a53fe8304573")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b5216288-3063-4a36-9b48-6cc35b9b21f7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "Connector*:*_1x??_*")
+		(path "/4f916e09-b44b-4595-811a-09f6f37be4d0")
+		(sheetname "/")
+		(sheetfile "io-board.kicad_sch")
+		(attr through_hole)
+		(fp_circle
+			(center 0 0)
+			(end 0.45 0)
+			(stroke
+				(width 0)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Paste")
+			(uuid "424d9f80-7553-40a7-a7d6-891260dbca7e")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 0.45 0)
+			(stroke
+				(width 0)
+				(type solid)
+			)
+			(fill yes)
+			(layer "B.Paste")
+			(uuid "17e93a63-fa13-4473-a7f1-4ea3e1e75aa5")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 2.5 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(uuid "81880621-b5c0-47b3-ab07-0f94cf349fca")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 2 2)
+			(drill 0.8)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 119 "unconnected-(H5-Pin_1-Pad1)")
+			(pinfunction "Pin_1")
+			(pintype "passive")
+			(uuid "42f58fab-e924-48d0-b03e-3fa385b73861")
+		)
+		(embedded_fonts no)
+	)
 	(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "64bc8d80-aabe-421c-824f-f614e22e20fb")
@@ -8123,7 +8447,7 @@
 		(property "Reference" "H3"
 			(at 4 3 0)
 			(layer "F.SilkS")
-			(uuid "f7294671-21bf-437c-86c1-145e1d3a018b")
+			(uuid "d081df57-da3d-4892-89df-24939cd55bad")
 			(effects
 				(font
 					(size 1 1)
@@ -8134,7 +8458,7 @@
 		(property "Value" "MountingHole"
 			(at 0 4.45 0)
 			(layer "F.Fab")
-			(uuid "7e278ce2-464b-4336-b87b-31627782e75c")
+			(uuid "867114d6-1d13-43c9-b8b4-5a229d4d5c31")
 			(effects
 				(font
 					(size 1 1)
@@ -8146,7 +8470,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3169c641-7b93-4cdd-bd52-ca4851078ae3")
+			(uuid "9b9d120c-ee1e-4203-af66-92c05b6e2da0")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8158,7 +8482,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b5b38288-95c9-4f4e-812d-0db91c8d57bb")
+			(uuid "62286504-cccc-4326-ab49-2edb3accfbdf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8221,9 +8545,9 @@
 		(descr "Mounting Hole 3.5mm, no annular, generated by kicad-footprint-generator mountinghole.py")
 		(tags "mountinghole")
 		(property "Reference" "H1"
-			(at -2.735449 -2.54965 0)
+			(at -1.38072 -2.805144 0)
 			(layer "F.SilkS")
-			(uuid "9aa4cd0c-1631-477f-976d-139b5220e51f")
+			(uuid "5b6da170-f89a-4b02-b21b-6450ee2803f1")
 			(effects
 				(font
 					(size 1 1)
@@ -8234,7 +8558,7 @@
 		(property "Value" "MountingHole"
 			(at 0 4.45 0)
 			(layer "F.Fab")
-			(uuid "aa34e1ad-9faf-49cc-b2ba-bb6507e3f05c")
+			(uuid "1ce34297-ad8d-45e1-af06-566b72e12729")
 			(effects
 				(font
 					(size 1 1)
@@ -8246,7 +8570,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "347d2316-176b-409c-af6c-f33c9e8544ef")
+			(uuid "d5a297eb-38de-402c-9df5-fb2c5c346769")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8258,7 +8582,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8203a8c5-e5af-44da-ac65-a4ab6d6ce8c2")
+			(uuid "c0a0048e-c252-421e-85b6-2f178efa6f00")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20058,7 +20382,7 @@
 		(property "Reference" "H4"
 			(at -2.948589 2.4017 0)
 			(layer "F.SilkS")
-			(uuid "667c0842-199c-4f0c-b379-7b937310896b")
+			(uuid "88d71fdf-dba3-4bac-9123-b44d96ec7b4b")
 			(effects
 				(font
 					(size 1 1)
@@ -20069,7 +20393,7 @@
 		(property "Value" "MountingHole"
 			(at 0 4.45 0)
 			(layer "F.Fab")
-			(uuid "9b5323b5-cca5-494f-86fb-a2a1fded2223")
+			(uuid "b38bd945-043f-4c4f-8ee6-add09e26743c")
 			(effects
 				(font
 					(size 1 1)
@@ -20081,7 +20405,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "62a1edb3-c81d-4419-9ba8-97f19b9b0453")
+			(uuid "043e35f6-7d28-48aa-a1a3-4cc153e5e197")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20093,7 +20417,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4285036e-a522-4ed7-88c9-ad62289c78f1")
+			(uuid "17b68d61-fa06-4e51-adaf-534aaa972982")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -43997,12 +44321,13 @@
 				(xy 108.478813 34.71961) (xy 108.478817 34.719606) (xy 108.478821 34.719603) (xy 108.659603 34.538821)
 				(xy 108.659606 34.538817) (xy 108.65961 34.538813) (xy 108.815261 34.335965) (xy 108.943104 34.114535)
 				(xy 109.04095 33.878313) (xy 109.107126 33.63134) (xy 109.1405 33.377843) (xy 109.1405 33.122157)
-				(xy 109.107126 32.86866) (xy 109.04095 32.621687) (xy 108.943104 32.385465) (xy 108.815261 32.164035)
-				(xy 108.65961 31.961187) (xy 108.659609 31.961186) (xy 108.659606 31.961182) (xy 108.478817 31.780393)
-				(xy 108.275961 31.624736) (xy 108.168473 31.562678) (xy 108.054535 31.496896) (xy 107.818313 31.39905)
-				(xy 107.57134 31.332874) (xy 107.571339 31.332873) (xy 107.571336 31.332873) (xy 107.513124 31.325209)
-				(xy 107.430092 31.2944) (xy 107.368651 31.230616) (xy 107.340969 31.14649) (xy 107.35253 31.058684)
-				(xy 107.401043 30.98459) (xy 107.4769 30.938883) (xy 107.538742 30.928912) (xy 110.117076 30.924312)
+				(xy 109.107126 32.86866) (xy 109.04095 32.621687) (xy 108.943104 32.385465) (xy 108.821453 32.174759)
+				(xy 108.815263 32.164038) (xy 108.812112 32.159932) (xy 108.65961 31.961187) (xy 108.659609 31.961186)
+				(xy 108.659606 31.961182) (xy 108.478817 31.780393) (xy 108.275961 31.624736) (xy 108.086787 31.515517)
+				(xy 108.054535 31.496896) (xy 107.818313 31.39905) (xy 107.57134 31.332874) (xy 107.571337 31.332873)
+				(xy 107.571335 31.332873) (xy 107.513122 31.325209) (xy 107.43009 31.294401) (xy 107.368648 31.230617)
+				(xy 107.340966 31.146491) (xy 107.352526 31.058685) (xy 107.401039 30.984591) (xy 107.476896 30.938883)
+				(xy 107.538739 30.928912) (xy 110.117076 30.924312)
 			)
 		)
 		(filled_polygon
@@ -45689,32 +46014,26 @@
 				(xy 108.054535 36.496896) (xy 107.818313 36.39905) (xy 107.57134 36.332874) (xy 107.571337 36.332873)
 				(xy 107.571335 36.332873) (xy 107.31785 36.2995) (xy 107.317843 36.2995) (xy 107.062157 36.2995)
 				(xy 107.062149 36.2995) (xy 106.903167 36.320431) (xy 106.81499 36.312163) (xy 106.739134 36.266455)
-				(xy 106.736478 36.263848) (xy 101.75133 31.2787) (xy 101.704211 31.203712) (xy 101.694295 31.115705)
-				(xy 101.723546 31.032112) (xy 101.78617 30.969488) (xy 101.869763 30.940237) (xy 101.891674 30.938986)
-				(xy 106.830959 30.930175) (xy 106.917333 30.949727) (xy 106.986673 31.004822) (xy 107.025241 31.084546)
-				(xy 107.025399 31.173109) (xy 106.987116 31.252971) (xy 106.917973 31.308312) (xy 106.857288 31.326471)
-				(xy 106.808661 31.332873) (xy 106.56169 31.399049) (xy 106.561684 31.399051) (xy 106.325469 31.496894)
-				(xy 106.325467 31.496895) (xy 106.104038 31.624736) (xy 105.901182 31.780393) (xy 105.901179 31.780397)
-				(xy 105.720397 31.961179) (xy 105.720393 31.961182) (xy 105.564736 32.164038) (xy 105.514039 32.251849)
-				(xy 105.438146 32.383301) (xy 105.436895 32.385467) (xy 105.436894 32.385469) (xy 105.339051 32.621684)
-				(xy 105.339049 32.62169) (xy 105.326522 32.668441) (xy 105.275505 32.858843) (xy 105.272873 32.868664)
-				(xy 105.2395 33.122149) (xy 105.2395 33.37785) (xy 105.269918 33.608887) (xy 105.272874 33.63134)
-				(xy 105.33905 33.878313) (xy 105.436896 34.114535) (xy 105.502678 34.228473) (xy 105.564736 34.335961)
-				(xy 105.720393 34.538817) (xy 105.901182 34.719606) (xy 105.901186 34.719609) (xy 105.901187 34.71961)
-				(xy 106.087063 34.862238) (xy 106.104038 34.875263) (xy 106.145742 34.89934) (xy 106.325465 35.003104)
-				(xy 106.561687 35.10095) (xy 106.80866 35.167126) (xy 107.038876 35.197435) (xy 107.062149 35.200499)
-				(xy 107.062155 35.2005) (xy 107.062157 35.2005) (xy 107.317845 35.2005) (xy 107.317848 35.200499)
-				(xy 107.57134 35.167126) (xy 107.818313 35.10095) (xy 108.054535 35.003104) (xy 108.275965 34.875261)
-				(xy 108.478813 34.71961) (xy 108.478817 34.719606) (xy 108.478821 34.719603) (xy 108.659603 34.538821)
-				(xy 108.659606 34.538817) (xy 108.65961 34.538813) (xy 108.815261 34.335965) (xy 108.943104 34.114535)
-				(xy 109.04095 33.878313) (xy 109.107126 33.63134) (xy 109.1405 33.377843) (xy 109.1405 33.122157)
-				(xy 109.139421 33.113965) (xy 109.129917 33.041773) (xy 109.107126 32.86866) (xy 109.04095 32.621687)
-				(xy 108.943104 32.385465) (xy 108.815261 32.164035) (xy 108.65961 31.961187) (xy 108.659609 31.961186)
-				(xy 108.659606 31.961182) (xy 108.478817 31.780393) (xy 108.275961 31.624736) (xy 108.168473 31.562678)
-				(xy 108.054535 31.496896) (xy 107.818313 31.39905) (xy 107.57134 31.332874) (xy 107.571339 31.332873)
-				(xy 107.571336 31.332873) (xy 107.513123 31.325209) (xy 107.430091 31.2944) (xy 107.36865 31.230616)
-				(xy 107.340968 31.14649) (xy 107.352528 31.058685) (xy 107.401041 30.98459) (xy 107.476898 30.938883)
-				(xy 107.538741 30.928912) (xy 110.117076 30.924312)
+				(xy 106.736478 36.263848) (xy 104.494834 34.022204) (xy 104.447715 33.947216) (xy 104.437799 33.859209)
+				(xy 104.46705 33.775616) (xy 104.529674 33.712992) (xy 104.584039 33.689272) (xy 104.629824 33.677005)
+				(xy 104.835769 33.5917) (xy 104.980517 33.508128) (xy 105.065145 33.482024) (xy 105.15272 33.495223)
+				(xy 105.225894 33.545112) (xy 105.270177 33.621809) (xy 105.272237 33.628962) (xy 105.272873 33.631335)
+				(xy 105.272874 33.63134) (xy 105.33905 33.878313) (xy 105.436896 34.114535) (xy 105.502678 34.228473)
+				(xy 105.564736 34.335961) (xy 105.720393 34.538817) (xy 105.901182 34.719606) (xy 105.901186 34.719609)
+				(xy 105.901187 34.71961) (xy 106.087063 34.862238) (xy 106.104038 34.875263) (xy 106.145742 34.89934)
+				(xy 106.325465 35.003104) (xy 106.561687 35.10095) (xy 106.80866 35.167126) (xy 107.038876 35.197435)
+				(xy 107.062149 35.200499) (xy 107.062155 35.2005) (xy 107.062157 35.2005) (xy 107.317845 35.2005)
+				(xy 107.317848 35.200499) (xy 107.57134 35.167126) (xy 107.818313 35.10095) (xy 108.054535 35.003104)
+				(xy 108.275965 34.875261) (xy 108.478813 34.71961) (xy 108.478817 34.719606) (xy 108.478821 34.719603)
+				(xy 108.659603 34.538821) (xy 108.659606 34.538817) (xy 108.65961 34.538813) (xy 108.815261 34.335965)
+				(xy 108.943104 34.114535) (xy 109.04095 33.878313) (xy 109.107126 33.63134) (xy 109.1405 33.377843)
+				(xy 109.1405 33.122157) (xy 109.139421 33.113965) (xy 109.129917 33.041773) (xy 109.107126 32.86866)
+				(xy 109.04095 32.621687) (xy 108.943104 32.385465) (xy 108.815261 32.164035) (xy 108.65961 31.961187)
+				(xy 108.659609 31.961186) (xy 108.659606 31.961182) (xy 108.478817 31.780393) (xy 108.275961 31.624736)
+				(xy 108.166077 31.561295) (xy 108.054535 31.496896) (xy 107.818313 31.39905) (xy 107.57134 31.332874)
+				(xy 107.571337 31.332873) (xy 107.571335 31.332873) (xy 107.513122 31.325209) (xy 107.43009 31.294401)
+				(xy 107.368648 31.230617) (xy 107.340966 31.146491) (xy 107.352526 31.058685) (xy 107.401039 30.984591)
+				(xy 107.476896 30.938883) (xy 107.538739 30.928912) (xy 110.117076 30.924312)
 			)
 		)
 		(filled_polygon
