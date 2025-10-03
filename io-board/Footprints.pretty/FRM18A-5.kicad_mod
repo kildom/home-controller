@@ -174,17 +174,17 @@
 		(remove_unused_layers no)
 		(uuid "0d0109d9-d68f-4059-a325-0fe13d90216d")
 	)
-	(pad "A1" thru_hole circle
+	(pad "A1" thru_hole oval
 		(at 0 0)
-		(size 2.1 2.1)
+		(size 2 2.1)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(uuid "cdc5e88f-8523-4a3c-81f1-75c69ed0619c")
 	)
-	(pad "A2" thru_hole circle
+	(pad "A2" thru_hole oval
 		(at -2.54 0)
-		(size 2.1 2.1)
+		(size 2 2.1)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
