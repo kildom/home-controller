@@ -5,148 +5,6 @@
 	(uuid "2ceb8463-397d-4e00-8abd-bcfaea8a1068")
 	(paper "A4")
 	(lib_symbols
-		(symbol "Connector_Generic:Conn_01x02"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_01x02"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_1x??_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Conn_01x02_1_1"
-				(rectangle
-					(start -1.27 1.27)
-					(end 1.27 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -1.27 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -943,32 +801,10 @@
 		(uuid "892f7575-1a03-49e5-a319-f41661a8be2b")
 	)
 	(junction
-		(at 161.29 86.36)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ae832fb2-73af-4f82-b61e-c6e437fce075")
-	)
-	(junction
 		(at 115.57 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b4da55ec-11a0-41f0-8c2d-5df4515223af")
-	)
-	(junction
-		(at 163.83 81.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f88103ea-81ae-4437-a752-d4f369266bdd")
-	)
-	(wire
-		(pts
-			(xy 163.83 81.28) (xy 167.64 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "07faadc0-f787-4aea-bda1-6feb56f2e673")
 	)
 	(wire
 		(pts
@@ -979,26 +815,6 @@
 			(type default)
 		)
 		(uuid "22a7cea3-6b23-4551-81ff-d6b5a9929871")
-	)
-	(wire
-		(pts
-			(xy 163.83 74.93) (xy 163.83 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3624278b-bd2d-4198-9f4a-1264b8bbf041")
-	)
-	(wire
-		(pts
-			(xy 163.83 64.77) (xy 163.83 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "47cf73fb-581f-42aa-818a-d3f91452aa15")
 	)
 	(wire
 		(pts
@@ -1122,7 +938,7 @@
 	)
 	(wire
 		(pts
-			(xy 153.67 81.28) (xy 163.83 81.28)
+			(xy 153.67 81.28) (xy 167.64 81.28)
 		)
 		(stroke
 			(width 0)
@@ -1159,16 +975,6 @@
 			(type default)
 		)
 		(uuid "e7549237-c32d-4c8c-9c42-ee297d0742d5")
-	)
-	(wire
-		(pts
-			(xy 161.29 64.77) (xy 161.29 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e98cdd0c-4e62-4885-bdef-32ca292f1aa3")
 	)
 	(wire
 		(pts
@@ -1393,154 +1199,6 @@
 				)
 				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200/ba6ec0ae-e633-46e9-8aba-cd28ca1e155b"
 					(reference "U1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
-		(at 161.29 59.69 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "58c51172-3b14-4494-a297-06c2c6689ce6")
-		(property "Reference" "J2"
-			(at 166.37 58.4199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "Conn_01x02"
-			(at 166.37 60.9599 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 161.29 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 161.29 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 161.29 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "a673abf6-4e4d-49b5-bfa8-2915021ac213")
-		)
-		(pin "1"
-			(uuid "f912a3b3-8884-4810-9863-ca959c71c29f")
-		)
-		(instances
-			(project "comm-board"
-				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200/4013aa74-44c7-4b6b-836c-e9604ca6521c"
-					(reference "J3")
-					(unit 1)
-				)
-				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200/ba6ec0ae-e633-46e9-8aba-cd28ca1e155b"
-					(reference "J2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 163.83 71.12 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "609cb8a1-4afc-4e2d-972a-227bdb462c37")
-		(property "Reference" "R1"
-			(at 166.37 69.8499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "120"
-			(at 166.37 72.3899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 162.052 71.12 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 163.83 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 163.83 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "4b3479bb-7477-4e2d-98ad-43f427aafdef")
-		)
-		(pin "1"
-			(uuid "00ba6343-cec8-4996-be13-165a48de34f6")
-		)
-		(instances
-			(project "comm-board"
-				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200/4013aa74-44c7-4b6b-836c-e9604ca6521c"
-					(reference "R10")
-					(unit 1)
-				)
-				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200/ba6ec0ae-e633-46e9-8aba-cd28ca1e155b"
-					(reference "R1")
 					(unit 1)
 				)
 			)

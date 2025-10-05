@@ -3240,6 +3240,12 @@
 		(uuid "50f403ca-b041-4455-bcaa-093c6dc8ca1a")
 	)
 	(junction
+		(at 248.92 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "531a8990-f8d2-45a0-80f5-71ed0c19841a")
+	)
+	(junction
 		(at 111.76 156.21)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3354,6 +3360,12 @@
 		(uuid "bb770167-7e80-4e8c-aa49-bb8e45c1379f")
 	)
 	(junction
+		(at 248.92 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c6d3ac01-5d81-4b07-9000-4103a4af5cd7")
+	)
+	(junction
 		(at 87.63 71.12)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3386,6 +3398,16 @@
 			(type default)
 		)
 		(uuid "002cd3d9-3da0-4b4b-bbd7-33ee8fa03dcc")
+	)
+	(wire
+		(pts
+			(xy 248.92 143.51) (xy 267.97 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01dd7f6b-bf48-41a0-9d39-b2363d541fc4")
 	)
 	(wire
 		(pts
@@ -3456,6 +3478,16 @@
 			(type default)
 		)
 		(uuid "13a1e28e-70f9-4b07-8708-e5f50a6cdc78")
+	)
+	(wire
+		(pts
+			(xy 267.97 133.35) (xy 267.97 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1457a82e-24b1-49a8-bdfe-605215f970f6")
 	)
 	(wire
 		(pts
@@ -3576,6 +3608,16 @@
 			(type default)
 		)
 		(uuid "3ba7252d-6564-4847-a530-aee85bed552c")
+	)
+	(wire
+		(pts
+			(xy 254 133.35) (xy 248.92 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "405c1cbb-6415-4dea-84b8-30361ee171f9")
 	)
 	(wire
 		(pts
@@ -3809,7 +3851,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 142.24) (xy 267.97 142.24)
+			(xy 245.11 146.05) (xy 267.97 146.05)
 		)
 		(stroke
 			(width 0)
@@ -3859,6 +3901,16 @@
 	)
 	(wire
 		(pts
+			(xy 261.62 151.13) (xy 267.97 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b57476d-08a4-441c-9b04-32d634124840")
+	)
+	(wire
+		(pts
 			(xy 128.27 135.89) (xy 140.97 135.89)
 		)
 		(stroke
@@ -3889,6 +3941,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 151.13) (xy 248.92 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "91d46920-e3e2-4a93-a7f5-8394d123945e")
+	)
+	(wire
+		(pts
 			(xy 80.01 63.5) (xy 87.63 63.5)
 		)
 		(stroke
@@ -3909,6 +3971,16 @@
 	)
 	(wire
 		(pts
+			(xy 267.97 151.13) (xy 267.97 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "95f82559-0616-4b37-bcff-b03dbde5fcc0")
+	)
+	(wire
+		(pts
 			(xy 186.69 34.29) (xy 199.39 34.29)
 		)
 		(stroke
@@ -3919,7 +3991,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 134.62) (xy 267.97 134.62)
+			(xy 245.11 138.43) (xy 267.97 138.43)
 		)
 		(stroke
 			(width 0)
@@ -3949,7 +4021,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 139.7) (xy 267.97 139.7)
+			(xy 245.11 143.51) (xy 248.92 143.51)
 		)
 		(stroke
 			(width 0)
@@ -3969,6 +4041,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 133.35) (xy 248.92 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acb48b47-d6bb-4076-b8d6-e9c5f5b0beea")
+	)
+	(wire
+		(pts
 			(xy 163.83 139.7) (xy 172.72 139.7)
 		)
 		(stroke
@@ -3976,6 +4058,16 @@
 			(type default)
 		)
 		(uuid "b632e8df-bd1d-4d0b-a32e-c445275768a4")
+	)
+	(wire
+		(pts
+			(xy 248.92 140.97) (xy 267.97 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7e78bb0-566f-4b91-91ae-869ca378f96a")
 	)
 	(wire
 		(pts
@@ -4029,7 +4121,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 137.16) (xy 267.97 137.16)
+			(xy 245.11 140.97) (xy 248.92 140.97)
 		)
 		(stroke
 			(width 0)
@@ -4159,6 +4251,16 @@
 	)
 	(wire
 		(pts
+			(xy 254 151.13) (xy 248.92 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed5d27cf-f8ce-4428-af8d-c5e3542509d0")
+	)
+	(wire
+		(pts
 			(xy 237.49 34.29) (xy 255.27 34.29)
 		)
 		(stroke
@@ -4176,6 +4278,16 @@
 			(type default)
 		)
 		(uuid "f1089696-cc0e-4caf-8a95-78421eee2c8e")
+	)
+	(wire
+		(pts
+			(xy 261.62 133.35) (xy 267.97 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f2e9bbc2-7c73-4362-87e6-29766a9e6b24")
 	)
 	(wire
 		(pts
@@ -4328,7 +4440,7 @@
 		(uuid "3c1695e0-e459-4537-bb2d-d7c43e60829b")
 	)
 	(label "RS-485-A1"
-		(at 251.46 139.7 0)
+		(at 251.46 138.43 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4358,7 +4470,7 @@
 		(uuid "4512f366-698c-4000-a1df-feae2701a3c4")
 	)
 	(label "RS-485-B2"
-		(at 251.46 137.16 0)
+		(at 251.46 146.05 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4418,7 +4530,7 @@
 		(uuid "6220b0e5-c395-440a-aa7e-ed9de1516f1d")
 	)
 	(label "RS-485-B1"
-		(at 251.46 142.24 0)
+		(at 251.46 140.97 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4518,7 +4630,7 @@
 		(uuid "d57aa9e7-d9c9-4fb5-ad04-45822e39c363")
 	)
 	(label "RS-485-A2"
-		(at 251.46 134.62 0)
+		(at 251.46 143.51 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5640,6 +5752,140 @@
 			(project ""
 				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200"
 					(reference "J9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 257.81 151.13 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3c6257f2-4c2b-4c84-986f-93f345bbef6f")
+		(property "Reference" "R15"
+			(at 256.032 148.336 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "120"
+			(at 262.128 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 257.81 152.908 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 257.81 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 257.81 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c018b0fb-545b-47c5-a25f-14e6bfe0299e")
+		)
+		(pin "1"
+			(uuid "43f12a59-a861-45f5-927a-5095a60beca0")
+		)
+		(instances
+			(project "comm-board"
+				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200"
+					(reference "R15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 257.81 133.35 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3e99c18a-69f8-492f-98a4-ea52a4d86446")
+		(property "Reference" "R14"
+			(at 256.032 130.556 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "120"
+			(at 262.128 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 257.81 135.128 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 257.81 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 257.81 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6f598f55-5480-47df-9fd3-5198d4fb4b00")
+		)
+		(pin "1"
+			(uuid "81f0d67b-4992-4a6f-a8bf-cb925a797fb0")
+		)
+		(instances
+			(project "comm-board"
+				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200"
+					(reference "R14")
 					(unit 1)
 				)
 			)
@@ -8076,6 +8322,87 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector_Generic:Conn_01x06")
+		(at 273.05 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b74015b2-8f09-412b-ac4e-f5a5a2883952")
+		(property "Reference" "J7"
+			(at 271.78 133.096 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Communication"
+			(at 275.59 149.86 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "_Footprints:PTSA-0.5-6-2.5-Z"
+			(at 273.05 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 273.05 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 273.05 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "7b46bc5f-2510-431a-b06a-97c07bb9799b")
+		)
+		(pin "2"
+			(uuid "812a8871-97c8-4e0f-8c62-13510c68ecb8")
+		)
+		(pin "4"
+			(uuid "0b1b1f14-80e7-4722-8460-1b5372311e35")
+		)
+		(pin "1"
+			(uuid "370100d3-a4fb-4080-9059-c71cead5e617")
+		)
+		(pin "3"
+			(uuid "bb5319ba-1412-4ef0-b1a4-533a737e7df0")
+		)
+		(pin "6"
+			(uuid "6752620c-6c2e-4678-a82f-75220bb06362")
+		)
+		(instances
+			(project "comm-board"
+				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200"
+					(reference "J7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 185.42 96.52 0)
 		(unit 1)
@@ -8411,80 +8738,6 @@
 			(project "comm-board"
 				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200"
 					(reference "C7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x04")
-		(at 273.05 139.7 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e987721d-81ab-4b23-ab9b-42b8de003908")
-		(property "Reference" "J7"
-			(at 272.796 131.318 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Communication"
-			(at 275.844 138.176 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "_Footprints:PTSA-0.5-4-2.5-Z"
-			(at 273.05 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 273.05 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 273.05 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "eaa540d3-b8ee-46ac-ba1a-99afe7272c54")
-		)
-		(pin "4"
-			(uuid "ab7f2d76-7a70-4b68-a047-0e4e231e59bb")
-		)
-		(pin "2"
-			(uuid "587921d5-69c0-45d1-8044-b6268e7000f7")
-		)
-		(pin "1"
-			(uuid "5e2bfa42-fc1f-4700-86d0-3b520111880f")
-		)
-		(instances
-			(project "comm-board"
-				(path "/1eb66430-9d80-40b3-8abc-b6efed81f200"
-					(reference "J7")
 					(unit 1)
 				)
 			)
