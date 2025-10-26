@@ -117,7 +117,7 @@
 		(uuid "001b9919-bec9-4535-a72f-fdfdcfa1406a")
 		(at 104.452607 99.209367)
 		(property "Reference" "H6"
-			(at -1 -1.5 0)
+			(at -2.200157 1.229627 0)
 			(unlocked yes)
 			(layer "F.SilkS")
 			(uuid "2a4db988-55aa-454f-9166-d7797b7ae62d")
@@ -226,7 +226,7 @@
 		(descr "8-lead though-hole mounted DIP package, row spacing 7.62mm (300 mils), LongPads")
 		(tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil LongPads")
 		(property "Reference" "U4"
-			(at 3.81 -2.33 0)
+			(at 1.23412 -2.05748 0)
 			(layer "F.SilkS")
 			(uuid "50975b6c-d931-413a-bfe9-f04c5b50a18b")
 			(effects
@@ -516,7 +516,7 @@
 		(uuid "03b600e9-3f3c-466d-bf7c-537f3b117208")
 		(at 108.709249 74.01458)
 		(property "Reference" "H5"
-			(at -1 -1.5 0)
+			(at -1.876084 -1.746833 0)
 			(unlocked yes)
 			(layer "F.SilkS")
 			(uuid "3020fc3f-b8fc-4ff2-ba67-6a86bcaa111e")
@@ -625,7 +625,7 @@
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "J1"
-			(at 0 -2.38 90)
+			(at -0.004843 -2.475408 0)
 			(layer "F.SilkS")
 			(uuid "a25b3e80-6f5b-408a-bd06-aca5db99778f")
 			(effects
@@ -889,7 +889,7 @@
 		(descr "8-lead though-hole mounted DIP package, row spacing 7.62mm (300 mils), LongPads")
 		(tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil LongPads")
 		(property "Reference" "U1"
-			(at 3.81 -2.33 0)
+			(at -0.075673 9.440395 0)
 			(layer "F.SilkS")
 			(uuid "8c951f93-4ba5-4bb2-8eb7-93b7e7db7ff7")
 			(effects
@@ -1183,7 +1183,7 @@
 		(property "Reference" "U2"
 			(at 2.54 -4.1 0)
 			(layer "F.SilkS")
-			(uuid "43c43d27-e106-4274-b292-be20aa2276bb")
+			(uuid "b9ad09a4-843e-49e5-8da5-c406bec562e8")
 			(effects
 				(font
 					(size 1 1)
@@ -1194,7 +1194,7 @@
 		(property "Value" "LF33_TO220"
 			(at 2.54 2.2 0)
 			(layer "F.Fab")
-			(uuid "7607adc4-58a7-409e-8df0-82ec19bbffca")
+			(uuid "380dedb9-9898-414a-b3d1-8c9378ae9895")
 			(effects
 				(font
 					(size 1 1)
@@ -1206,7 +1206,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d482261b-3ee6-4b5d-9410-696838ef7091")
+			(uuid "c5fca484-309c-470a-8d80-0ce569842f36")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1218,7 +1218,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b49159be-8752-4075-8d92-b641fa34399a")
+			(uuid "e82a0985-253d-476c-8f65-dfcd09e9f35f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1417,7 +1417,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R14"
-			(at 3.81 -2.37 0)
+			(at 6.919891 -2.121942 0)
 			(layer "F.SilkS")
 			(uuid "e056f9fb-025e-4aa6-afe3-b8064f9576c6")
 			(effects
@@ -1620,7 +1620,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R12"
-			(at 3.81 -2.37 90)
+			(at 3.691229 -2.956393 0)
 			(layer "F.SilkS")
 			(uuid "07bb81a3-3587-40f2-9e49-ede26f213190")
 			(effects
@@ -1823,7 +1823,7 @@
 		(descr "Through hole straight pin header, 1x05, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x05 2.54mm single row")
 		(property "Reference" "J8"
-			(at 0 -2.38 0)
+			(at 1.879236 -0.514004 0)
 			(layer "F.SilkS")
 			(uuid "e7f399c0-b000-4b6c-8332-dbb686f09a1e")
 			(effects
@@ -2109,7 +2109,7 @@
 		(descr "C, Disc series, Radial, pin pitch=2.50mm, diameter*width=3.0*1.6mm^2, Capacitor, http://www.vishay.com/docs/45233/krseries.pdf")
 		(tags "C Disc series Radial pin pitch 2.50mm diameter 3.0mm width 1.6mm Capacitor")
 		(property "Reference" "C6"
-			(at 1.25 -2.05 0)
+			(at 1.25 2.074983 0)
 			(layer "F.SilkS")
 			(uuid "f330e718-58ff-485f-94fa-9d7e7d060395")
 			(effects
@@ -2252,7 +2252,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "D2"
-			(at 1.851965 -9.643997 0)
+			(at -1.458458 1.683997 0)
 			(layer "F.SilkS")
 			(uuid "f01267ee-ae6b-486d-a75c-a23f826ee386")
 			(effects
@@ -2483,7 +2483,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "D8"
-			(at 3.81 -2.37 0)
+			(at 0.613918 -2.034579 0)
 			(layer "F.SilkS")
 			(uuid "96633cc6-4d2e-436b-afdd-947a11f77000")
 			(effects
@@ -2714,7 +2714,7 @@
 		(descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x02 2.54mm single row")
 		(property "Reference" "J9"
-			(at 0 -2.38 0)
+			(at 0 -2.167668 0)
 			(layer "F.SilkS")
 			(uuid "f2a07020-a305-4d7a-a68c-b6bf9b338155")
 			(effects
@@ -2967,7 +2967,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R13"
-			(at 3.81 -2.37 90)
+			(at -2.183601 0.303262 0)
 			(layer "F.SilkS")
 			(uuid "30b71520-3158-4f4e-bf6c-96fd171e7186")
 			(effects
@@ -3170,7 +3170,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R7"
-			(at 3.81 -2.37 0)
+			(at -1.984499 -0.586722 0)
 			(layer "F.SilkS")
 			(uuid "be11d8ac-37a1-4e28-a62a-3828d952e11a")
 			(effects
@@ -3373,7 +3373,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R11"
-			(at 3.81 -2.37 90)
+			(at 9.636374 -0.851935 0)
 			(layer "F.SilkS")
 			(uuid "7c0a9bd6-c84b-44fc-870e-2f27d8f2768d")
 			(effects
@@ -3576,7 +3576,7 @@
 		(descr "C, Disc series, Radial, pin pitch=2.50mm, diameter*width=3.0*1.6mm^2, Capacitor, http://www.vishay.com/docs/45233/krseries.pdf")
 		(tags "C Disc series Radial pin pitch 2.50mm diameter 3.0mm width 1.6mm Capacitor")
 		(property "Reference" "C7"
-			(at 1.25 -2.05 0)
+			(at 1.239494 -2.045267 0)
 			(layer "F.SilkS")
 			(uuid "c3c46868-c260-4921-89db-a9fe5c917613")
 			(effects
@@ -3719,7 +3719,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "D7"
-			(at 3.81 -2.37 90)
+			(at 3.81 2.20585 90)
 			(layer "F.SilkS")
 			(uuid "c53c5667-8155-4815-b2ab-25d328d5ff32")
 			(effects
@@ -3948,7 +3948,7 @@
 		(uuid "76c1060f-2aa6-41ca-ba45-af508b6c51ad")
 		(at 176.629045 99.390412)
 		(property "Reference" "H7"
-			(at -1 -1.5 0)
+			(at 0.081905 -2.363961 0)
 			(unlocked yes)
 			(layer "F.SilkS")
 			(uuid "5f3d95dd-334b-4e7b-baed-97835e4cc4cb")
@@ -4200,7 +4200,7 @@
 		(descr "C, Disc series, Radial, pin pitch=2.50mm, diameter*width=3.0*1.6mm^2, Capacitor, http://www.vishay.com/docs/45233/krseries.pdf")
 		(tags "C Disc series Radial pin pitch 2.50mm diameter 3.0mm width 1.6mm Capacitor")
 		(property "Reference" "C5"
-			(at 1.25 -2.05 0)
+			(at 4.853337 0 0)
 			(layer "F.SilkS")
 			(uuid "38f75c42-4e45-4229-94a5-f0feda560fdb")
 			(effects
@@ -4343,7 +4343,7 @@
 		(descr "C, Disc series, Radial, pin pitch=2.50mm, diameter*width=3.0*1.6mm^2, Capacitor, http://www.vishay.com/docs/45233/krseries.pdf")
 		(tags "C Disc series Radial pin pitch 2.50mm diameter 3.0mm width 1.6mm Capacitor")
 		(property "Reference" "C9"
-			(at 1.25 -2.05 0)
+			(at -2.078343 -1.279641 0)
 			(layer "F.SilkS")
 			(uuid "ffcf9ccb-2843-48ea-a992-ea9c970e6291")
 			(effects
@@ -4486,7 +4486,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "D4"
-			(at 3.81 -2.37 90)
+			(at 2.915703 2.374779 0)
 			(layer "F.SilkS")
 			(uuid "6a660dc2-8eaf-49ff-9a46-158315e0f093")
 			(effects
@@ -5249,7 +5249,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R2"
-			(at 3.81 -2.37 0)
+			(at 3.896068 -2.100495 0)
 			(layer "F.SilkS")
 			(uuid "9ef09489-e7f1-4236-a910-23326c4a86be")
 			(effects
@@ -5452,7 +5452,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R3"
-			(at 3.81 -2.37 0)
+			(at 8.23073 1.725352 0)
 			(layer "F.SilkS")
 			(uuid "06d1df7d-4fa6-4750-a25a-718bf8a0845b")
 			(effects
@@ -5655,7 +5655,7 @@
 		(descr "TSSOP, 20 Pin (JEDEC MO-153 Var AC https://www.jedec.org/document_search?search_api_views_fulltext=MO-153), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "TSSOP SO")
 		(property "Reference" "U3"
-			(at 0 -4.2 0)
+			(at 0 4.352825 0)
 			(layer "F.SilkS")
 			(uuid "92b87c68-32ad-4d33-8325-d686cb3e0fae")
 			(effects
@@ -6100,9 +6100,9 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R9"
-			(at 3.81 -2.37 90)
+			(at 3.81 2.236703 90)
 			(layer "F.SilkS")
-			(uuid "7d2a3815-16cb-4ff2-95c3-4a47e8cc070a")
+			(uuid "4dcf9819-6436-4b8c-8ef5-3b4a291994fe")
 			(effects
 				(font
 					(size 1 1)
@@ -6113,7 +6113,7 @@
 		(property "Value" "120"
 			(at 3.81 2.37 90)
 			(layer "F.Fab")
-			(uuid "fb9ebffb-95d3-4b30-ba65-ef627c17dbe4")
+			(uuid "3d5e5eb0-8aa8-49b9-91d4-1495169c7ff2")
 			(effects
 				(font
 					(size 1 1)
@@ -6125,7 +6125,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5b925e71-8581-44e0-81ba-985cd022ea79")
+			(uuid "e5c286f4-44e2-4601-b030-10eb90f7b5c6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6137,7 +6137,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "925b1a7c-7476-4763-b82a-1fc5584ee900")
+			(uuid "50e17afd-9bf9-4751-b1b8-c26cd9e45fc2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6303,7 +6303,7 @@
 		(descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x02 2.54mm single row")
 		(property "Reference" "J5"
-			(at 0 -2.38 90)
+			(at 2.111493 3.670047 180)
 			(layer "F.SilkS")
 			(uuid "1fa3cfee-7245-4614-8249-d88f377f9634")
 			(effects
@@ -6555,9 +6555,9 @@
 		(at 140.442011 89.01371 180)
 		(descr "HC-18/U, Crystal, http://5hertz.com/pdfs/04404_D.pdf")
 		(property "Reference" "Y1"
-			(at 2.45 -3.52 0)
+			(at 8.127897 2.204429 0)
 			(layer "F.SilkS")
-			(uuid "c94062fa-ee05-4986-b57e-23cda30e433f")
+			(uuid "14069fbe-9fa2-4136-b4f0-c8a7e341edd9")
 			(effects
 				(font
 					(size 1 1)
@@ -6568,7 +6568,7 @@
 		(property "Value" "Crystal"
 			(at 2.45 3.52 0)
 			(layer "F.Fab")
-			(uuid "a2cc8bc9-160f-4d8d-80a7-32789e6e6a5b")
+			(uuid "1517455f-7964-49f4-86e0-d08f65d84db0")
 			(effects
 				(font
 					(size 1 1)
@@ -6580,7 +6580,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0fd14531-cea8-4952-8f2e-f94ebcb3278f")
+			(uuid "20f08ba6-07b3-4af0-b75b-01a3ed339758")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6592,7 +6592,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9f173254-8953-4205-ad72-fc33d10df36c")
+			(uuid "b9fa19ab-43dd-47df-8977-3dc1520d810f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6784,7 +6784,7 @@
 		(descr "CP, Radial series, Radial, pin pitch=2.50mm, diameter=6.3mm, height=7mm, Electrolytic Capacitor")
 		(tags "CP Radial series Radial pin pitch 2.50mm diameter 6.3mm height 7mm Electrolytic Capacitor")
 		(property "Reference" "C3"
-			(at 1.25 -4.4 0)
+			(at -1.667097 3.030092 0)
 			(layer "F.SilkS")
 			(uuid "2c4f9ebb-5ecb-464a-8663-a0bfdcb4cce3")
 			(effects
@@ -8299,7 +8299,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R15"
-			(at 3.81 -2.37 0)
+			(at 4.517156 2.275591 0)
 			(layer "F.SilkS")
 			(uuid "3992a4b8-7f3a-4650-b135-1d3e418a98be")
 			(effects
@@ -8777,7 +8777,7 @@
 		(descr "C, Disc series, Radial, pin pitch=2.50mm, diameter*width=3.0*1.6mm^2, Capacitor, http://www.vishay.com/docs/45233/krseries.pdf")
 		(tags "C Disc series Radial pin pitch 2.50mm diameter 3.0mm width 1.6mm Capacitor")
 		(property "Reference" "C2"
-			(at 1.25 -2.05 90)
+			(at -1.923254 0 180)
 			(layer "F.SilkS")
 			(uuid "2a97edc4-2586-48e1-bb19-631b1d3e2dc0")
 			(effects
@@ -8920,7 +8920,7 @@
 		(descr "CP, Radial series, Radial, pin pitch=2.50mm, diameter=6.3mm, height=7mm, Electrolytic Capacitor")
 		(tags "CP Radial series Radial pin pitch 2.50mm diameter 6.3mm height 7mm Electrolytic Capacitor")
 		(property "Reference" "C4"
-			(at 1.25 -4.4 90)
+			(at -0.51598 4.203049 0)
 			(layer "F.SilkS")
 			(uuid "1ad85404-6475-4bff-af3e-53ceca574255")
 			(effects
@@ -10433,10 +10433,10 @@
 		(uuid "eaeae3a5-703c-4a98-b919-a87d9888470c")
 		(at 176.660514 92.5 90)
 		(property "Reference" "J6"
-			(at 0.280133 -32.308082 90)
+			(at 14.822631 2.244661 0)
 			(unlocked yes)
 			(layer "F.SilkS")
-			(uuid "eff044b0-b7b0-42ed-b3ea-bea2681e3c6d")
+			(uuid "9dff3fd7-39c1-4826-96bc-f1335b315db5")
 			(effects
 				(font
 					(size 1 1)
@@ -10449,7 +10449,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "52f07dc3-dbdd-4c16-bd9f-3b4ae70e3eca")
+			(uuid "3b1ff492-1e0b-4e79-9200-c188e36a625a")
 			(effects
 				(font
 					(size 1 1)
@@ -10462,7 +10462,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "864e381a-af81-4780-809b-b1a67955190a")
+			(uuid "435953ab-2eb2-4278-aadb-b4db0fda89c9")
 			(effects
 				(font
 					(size 1 1)
@@ -10475,7 +10475,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "84c08796-f1e7-400a-b01d-ec3e0f16c44a")
+			(uuid "87bcb354-9e7d-4671-b1ef-9880be8f834d")
 			(effects
 				(font
 					(size 1 1)
@@ -10993,7 +10993,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "D3"
-			(at 3.81 -2.37 90)
+			(at 0.88837 -2.499468 0)
 			(layer "F.SilkS")
 			(uuid "18d0ed9e-e34b-4ab5-af1a-bdea21698d68")
 			(effects
@@ -11198,7 +11198,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R8"
-			(at 3.81 -2.37 0)
+			(at 9.280852 -1.267897 0)
 			(layer "F.SilkS")
 			(uuid "f001ff6f-0f0e-4ade-9fef-d9608830fdf0")
 			(effects
