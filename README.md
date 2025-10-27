@@ -65,6 +65,21 @@
     ```
   * Przesyłamy pakiet
   * Przechodzi do trybu UART, TxEnable=0
+  * Praktyczne podejście na STM32:
+    * (RS-485)
+    * Ustaw TIMER na one-pulse mode
+    * DataOut = 0, wyłącz przerwania, sprawdza input, TxEn = 1, włącz TIMER, włącz przerwania
+    * Timer po czasie 1 Tbit ustawia DataOut = 1, po 1.25 Tbit w przerwaniu ustawia TxEn = 0 i przełącza wejście na nadsłuchiwanie IRQ
+    * Timer po czasie 10 + rand w przerwaniu ponawia próbę
+    * LUB, jeżeli już nie ma więcej prób, timer po czasie 10 w przerwaniu rozpoczyna transmisję
+    * (1-wire UART)
+    * Idle: Tx=Hi-Z
+    * Ustaw TIMER na one-pulse mode
+    * wyłącz przerwania, sprawdza input, Tx=0, włącz TIMER, włącz przerwania
+    * Timer po czasie 1 Tbit ustawia Tx=1, po 1.1 Tbit w przerwaniu ustawia Tx=Hi-Z i przełącza wejście na nadsłuchiwanie IRQ
+    * Timer po czasie 10 + rand w przerwaniu ponawia próbę
+    * LUB, jeżeli już nie ma więcej prób, timer po czasie 10 w przerwaniu rozpoczyna transmisję
+    * 
 * Format pakietu:
   ```
   |  1  |  1  |   len    |     4     |  1  |  1   |      ESC = 0xAA
