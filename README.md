@@ -39,6 +39,54 @@
 |                        |      |              |             | MAX       | 12           | 24          | 31     |
 |                        |      |              |             | Pozostało | 0            | 0           | 0      |
 
+# Protokół niskopoziomowy
+
+* Wszystkie urządzenia są równorzędne
+* Urządzenie domyśnie jest w stanie nadsłuchiwania UART
+* Łącze uznane jest za dostępne, jeżeli ostatni pakiet się zakończył lub nic nie jest transmitowane przed odpowiedni czas (w przypadku, gdy nie jest znany ostani pakiet)
+* Jeżeli urządzenie chce nadawać, czeka losowy czas (rozkład zależny od długości kolejki i czasu oczekiwania pierwszego pakietu w kolejce)
+  * Przechodzi to trybu GPIO
+  * Ustawia DataOutput=0
+  * Sprawdza ostani raz, czy nikt inny nie zaczął nadawania (stan niski)
+  * Ustawia TxEnable=1
+  * Czeka 1 Tbit
+  * Ustawia DataOutput=1
+  * Czeka ~0.25 Tbit
+  * Ustawia TxEnable=0
+  * Czeka 8.75 Tbit
+  * Czeka losowy czas 0..10Tbit (włączając czasy ułamkowe)
+  * Powtarza jeszcze 2 razy
+  * Jeżeli w tym czasie wykryto, że ktoś inny chce nadawać zaprzestajemy nadawania, przechodzimy do trybu UART i czekamy określony czas zanim znowu uznamy łącze za dostępne.
+  * Przechodzi do trybu UART, TxEnable=1
+  * ```
+      <-- 10 --><- 0..10 -><-- 10 --><- 0..10 -><-- 10 -->
+    -- ---------........... ---------........... ---------DDDDDDDDDDD
+      -                    -                    -         DDDDDDDDDDD
+    ```
+  * Przesyłamy pakiet
+  * Przechodzi do trybu UART, TxEnable=0
+* Format pakietu:
+  ```
+  |  1  |  1  |   len    |     4     |  1  |  1   |      ESC = 0xAA
+  | ESC | XOR | DATA^XOR | CRC32^XOR | ESC | STOP |      STOP = 0xFF
+  |   BEGIN   |       CONTENT        |    END     |      len = 0..249
+  ```
+  Sposób wyznaczania `XOR`:
+  * Zrób mapę występowania symboli w `DATA` i `CRC32`
+  * Jeżeli `0xAA` nie występuje, `XOR` = 0
+  * Zaznacz w mapie `0x00` i `0x55`.
+  * Wybierz niewystępujący symbol `x` (przez to, że len <= 249, taki symbol zawsze istnieje).
+  * Wyznacz `XOR = x ^ 0xAA`
+* Jeżeli pakiet przestał płynąć przez określony czas, następuje reset stanu.
+* Jeżeli wystąpił ponownie BEGIN, rozpocznij nowy pakiet ignorując poprzedni
+* Jeżeli wystąpił STOP, zakończ pakiet i uznaj łącze za dostępne.
+* Ogólny overhead:
+  * 5 bajtów na żądanie łącza
+  * 4 bajty na BEGIN, END
+  * 4 bajty na CRC32
+  * 7 bajtów na odstęp między pakietami
+  * 20 RAZEM bajtów / pakiet
+
 # Inne
 
 * Obudowa: [Kradex ZD1004J](https://botland.com.pl/obudowy/24954-obudowa-modulowa-kradex-zd1004j-abs-v0-na-szyne-din-652x898x716mm-jasnoszara-5905275033614.html)
