@@ -44,7 +44,7 @@
 * Wszystkie urządzenia są równorzędne
 * Urządzenie domyśnie jest w stanie nadsłuchiwania UART
 * Łącze uznane jest za dostępne, jeżeli ostatni pakiet się zakończył lub nic nie jest transmitowane przed odpowiedni czas (w przypadku, gdy nie jest znany ostani pakiet)
-* Jeżeli urządzenie chce nadawać, czeka losowy czas (rozkład zależny od długości kolejki i czasu oczekiwania pierwszego pakietu w kolejce)
+* Jeżeli urządzenie chce nadawać, czeka losowy czas (rozkład zależny od długości kolejki, czasu oczekiwania pierwszego pakietu w kolejce i najwyższego priorytetu pakietów z kolejki)
   * Przechodzi to trybu GPIO
   * Ustawia DataOutput=0
   * Sprawdza ostani raz, czy nikt inny nie zaczął nadawania (stan niski)
