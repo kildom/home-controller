@@ -102,6 +102,23 @@
   * 7 bajtów na odstęp między pakietami
   * 20 RAZEM bajtów / pakiet
 
+# Protokół na wyższym poziomie
+
+* Adres jest 12 bitowy
+* Adresy i routowanie jest ustalane statycznie (np. przez interface www)
+* Każde urządzenie posiada unikatowy ID, który zaczyna się od bajtu producenta i unikalnego ID nadanego przez producenta chipa
+* Każde urządzenie zapamiętuje swój adres i string z jego nazwą (UTF-8)
+* Nowe urządzenia mają adres 0 i są specyjalnie traktowane (może być kilka z takim adresem)
+* Topologia sieci rozpoznawana jest przez wysłanie specyjanego pakietu brodcast DISCOVERY
+  * Można wysłać kilka takich pakietów, żeby mieć pewność, że nie został zgubiony (albo jakaś odpowiedź na niego)
+  * W odpowiedzi każde urządzenie odsyła swój adres, ID
+  * Zapytanie o nazwę urządzenia odbywa się przez pakiet bezpośredni, żeby nie opciąrzać odpowiedzi DISCOVERY
+  * Jeżeli taka odpowiedź przechodzi przez GW, to on dodaje swój adres
+  * Urządzenia z adresem 0 też odsyłają taką odpowiedź
+  * Na bazie topologi sieci można zmieniać adresy, nazwy i prefixy routowania dla GW
+  * Urządzenia z adresem 0 są konfigurowane przez wysłanie pakietu brodcast zawierającego ID urządzenia (zamiast adresu)
+* GW routuje pakiety na bazie prefixu, można zdefiniować, że dany prefix (lub kilka) jest po określonej stronie GW i wtedy GW nie rozsyła dalej pakietów jeżeli nie potrzeba
+
 # Inne
 
 * Obudowa: [Kradex ZD1004J](https://botland.com.pl/obudowy/24954-obudowa-modulowa-kradex-zd1004j-abs-v0-na-szyne-din-652x898x716mm-jasnoszara-5905275033614.html)
