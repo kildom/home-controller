@@ -80,8 +80,8 @@
   * 1 - urządzenie jest dostępne na porcie 1
   * 2 - urządzenie jest dostępne na porcie 2
   * Może to być zapisane na 2 bitach, więc mapa = 256 * 2 bity = 64 bajty.
-  * Lub kompresując do 51 bajtów, gdzie jeden bajt opisuje 5 adresów używając 
-    mod/div przez 3. Trzeba poniąć też adres 0x00.
+  * Lub kompresując do 51 bajtów, gdzie jeden bajt opisuje 5 adresów używając
+    mod/div przez 3. Trzeba pominąć też adres 0x00.
 * Każdy pakiet zaczyna się od adresu źródłowego i jednego lub więcej adresów docelowych.
 * Jeżeli router otrzyma pakiet, to uzupełnia swoją mapę na podstawie adresu źródłowego.
 * Jeżeli adres docelowy nie jest znany, pakiet zostanie rozesłany na wszystkie porty oprócz tego, z którego przyszedł.
