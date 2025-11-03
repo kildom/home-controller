@@ -1,0 +1,91 @@
+<html>
+
+
+<body>
+
+    <script>
+        class Line {
+            constructor() {
+                this.first = false;
+                this.diff = 0;
+                this.x = Math.random() * 1000;
+                this.element = document.createElement("div");
+                this.element.innerHTML = "|";
+                this.element.style.position = "absolute";
+                this.element.style.left = this.x + "px";
+                this.element.style.top = "0px";
+                document.body.appendChild(this.element);
+            }
+            update(gui) {
+                this.x += 1;
+                if (gui) this.element.style.left = this.x + "px";
+                if (this.x > 1000 + this.diff) {
+                    if (this.lastTrigger !== undefined) {
+                        this.after = this.x - this.lastTrigger;
+                    }
+                    this.x = 0;
+                    this.first = true;
+                    for (let line of lines) {
+                        if (line != this) {
+                            line.trigger();
+                        }
+                    }
+                }
+            }
+            trigger() {
+                this.lastTrigger = this.x;
+                if (this.first && this.after !== undefined) {
+                    this.before = this.x;
+                    //this.element.innerHTML = `|<br>${this.before}<br>${this.after}`;
+                    //this.diff = Math.max(-20, Math.min(20, Math.round((this.before - this.after) / 20)));
+                    //let min = Math.min(Math.abs(this.before), Math.abs(this.after));
+                    this.diff = -(-this.before + this.after) / 4;
+                    //this.diff = Math.max(0, this.diff);
+                    //console.log(this.diff);
+                }
+                this.first = false;
+            }
+        }
+
+        let lines = [];
+
+        setTimeout(() => {
+            for (let i = 0; i < 100; i++) {
+                let line = new Line();
+                lines.push(line);
+            }
+        }, 300);
+
+        let line = new Line();
+        line.x = 1000;
+        line.update(true);
+        line.element.style.color = "red";
+
+        setInterval(() => {
+            for (let line of lines) {
+                line.update(up);
+            }
+            if (!up) {
+                for (let i = 0; i < 100; i++) {
+                    for (let line of lines) {
+                        line.update(up);
+                    }
+                }
+            }
+        }, 1000 / 100);
+
+        let up = true;
+
+        document.body.onmousedown = () => {
+            up = false;
+        };
+        document.body.onmouseup = () => {
+            up = true;
+        };
+
+    </script>
+
+</body>
+
+
+</html>
