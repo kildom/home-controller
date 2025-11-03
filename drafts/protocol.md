@@ -146,8 +146,8 @@
     | Type = 2   | address | ID len |   ID   |
 
   SET_ADDRESS_RESPONSE (unicast to SRC):
-    |    1     |   1    | ID len |
-    | Type = 3 | ID len |   ID   |
+    |    1     |    1    |   1    | ID len |
+    | Type = 3 | address | ID len |   ID   |
   ```
 
 # <s>OLD STUFF</s>
