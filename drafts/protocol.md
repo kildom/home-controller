@@ -62,7 +62,7 @@
   * Zaznacz w mapie `0x00` i `0x55`.
   * Wybierz niewystępujący symbol `x` (przez to, że len <= 249, taki symbol zawsze istnieje).
   * Wyznacz `MASK = x ^ 0xAA`
-* Jeżeli wystąpił ponownie BEGIN, rozpocznij nowy pakiet ignorując poprzedni
+* Jeżeli wystąpił ponownie BEGIN, zakończ aktualny pakiet i rozpocznij nowy pakiet
 * Jeżeli wystąpił STOP, zakończ pakiet i uznaj łącze za dostępne.
 * Wszystkie bajty poza pakietem są ignorowane.
 * Jeżeli urządzenie ma kilka pakietów do wysłania i łącznie nie przekraczają danego
