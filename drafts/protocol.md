@@ -150,6 +150,19 @@
     | Type = 3 | address | ID len |   ID   |
   ```
 
+* SET_NAME: Zmiana nazwy urządzenia:
+  * Użytkownik wysyła pakiet SET_NAME (unicast) z nową nazwą.
+  * Odpowiada, że się udało, jeżeli nie odpowie, to trzeba spróbować ponownie.
+  ```
+  SET_NAME (unicast):
+    |     1      |      1    | name len |
+    | Type = 4   |  name len |   NAME   |
+
+  SET_NAME_RESPONSE (unicast to SRC):
+    |    1     |      1    | name len |
+    | Type = 5 |  name len |   NAME   |
+  ```
+
 # <s>OLD STUFF</s>
 
 ### 3. Network Layer
