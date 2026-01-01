@@ -1096,13 +1096,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 113.792 95.758 90)
+		(property "Value" "2.2K"
+			(at 115.824 100.584 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -1169,7 +1168,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "Vishay MCL4448-TR"
 			(at 156.21 90.1699 90)
 			(effects
 				(font
@@ -1263,7 +1262,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "NPN"
+		(property "Value" "NPN BC847C-AQ"
 			(at 132.08 99.0599 0)
 			(effects
 				(font
@@ -1366,7 +1365,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "Vishay MCL4448-TR"
 			(at 156.21 97.7899 90)
 			(effects
 				(font

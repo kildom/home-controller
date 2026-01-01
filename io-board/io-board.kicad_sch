@@ -6262,7 +6262,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "0270cd26-285e-4bd5-8c38-1b7a95422107")
 		(property "Reference" "C16"
 			(at 148.59 154.9399 0)
@@ -6273,14 +6272,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
-			(at 148.59 156.2099 0)
+		(property "Value" "10uF"
+			(at 148.59 157.988 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
@@ -6333,7 +6331,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "107317d3-9824-413e-8fa9-dbb1444ef645")
 		(property "Reference" "C15"
 			(at 176.53 154.9399 0)
@@ -6344,14 +6341,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
-			(at 176.53 156.2099 0)
+		(property "Value" "220pF"
+			(at 176.784 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
@@ -7125,13 +7121,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 38.862 75.438 90)
+		(property "Value" "220"
+			(at 40.64 80.01 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -7384,7 +7379,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "8a626bb7-0e7a-4063-b686-d566e30fc331")
 		(property "Reference" "C18"
 			(at 204.47 154.9399 0)
@@ -7395,14 +7389,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
-			(at 204.47 156.2099 0)
+		(property "Value" "220pF"
+			(at 204.47 157.734 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
@@ -7522,7 +7515,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "8d7430a3-52c5-4dcf-94ba-33a78277cfdd")
 		(property "Reference" "C17"
 			(at 187.96 154.9399 0)
@@ -7533,14 +7525,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
-			(at 187.96 156.2099 0)
+		(property "Value" "10uF"
+			(at 188.214 157.988 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
@@ -7602,7 +7593,7 @@
 				)
 			)
 		)
-		(property "Value" "50K"
+		(property "Value" "47K"
 			(at 48.006 66.04 90)
 			(effects
 				(font
@@ -7858,7 +7849,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "a462d92a-5bb9-485e-89a0-31d95c0e70ff")
 		(property "Reference" "C14"
 			(at 160.02 154.9399 0)
@@ -7869,14 +7859,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
-			(at 160.02 156.2099 0)
+		(property "Value" "220pF"
+			(at 160.02 157.734 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
@@ -8773,7 +8762,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "dbdd2ae5-b078-470b-815f-f6fa60f78f7b")
 		(property "Reference" "C19"
 			(at 215.9 154.9399 0)
@@ -8784,14 +8772,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
-			(at 215.9 156.2099 0)
+		(property "Value" "10uF"
+			(at 215.646 157.988 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"

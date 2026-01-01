@@ -1131,6 +1131,36 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "WARNING!!!\nConnected to GND"
+		(exclude_from_sim no)
+		(at 156.972 72.898 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ff383218-bb8b-4740-b2f2-dab3e27cc3de")
+	)
+	(text_box "TODO:\n* PIN ADC jest 5V tolerant, jeżeli nie, to zmiejszyć mapięcie na drabince rezystorów\n* Rezystor rozładowujący powinien być podłączony do masy.\n  Wtedy jest łatwa detekcja rozłączenia LED - jest ~0V na ADC.\n  Jeżeli tak jest, to PWM się wyłącza. TODO: algorytm ponownego włączenia.\n  \n\nhttps ://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3EDMAOATNA7ANlQVjWACyICcJkWhIuG11k1ApgLRhgBQA5tSatWH1y9qqZFCjsAxjz7FBw3AJBUY8SCRXjI7AE4hEiLMsSy4xvg1Tx2ABxDIzhQmIcNFfRFokA3fYf4e-nLigvDg0LjhkQyqiFx+Ru4J1FgxEgAuyo4mypTm4hBpYGYAJowAZgCGAK4ANunxhHlOYk1UhCRGMbq57WBGbfq4FiBWcD2DiMO9o8hiltYASjOirXl4XeKEDEppMLjsmbhOQ-Ie0wysXsUMZVV1DctCgYnCG17b4CMxET0Y0y0QP9BLsQFhkOx+nw2JAqKhUFQYVRELDRiA7jV6sxaowSuAvKoOFDwMVkaikfpkHD0RVMelsbj8XtYBw9M98uzDPMwRDuMCAkDpsNudo9BhUSgqPzViExuwAO72RzOQWyFXaRX8pKuAUamT5LAYWQ5PWG418M2UlQKsFGq22vgy012mXSuYSTXTSX2PLevWdSzuinw62K5C+qkk1GDUWq5Qq-l+8DjT2O906p2QnBR5GRimDPgYh4MvGFLQs9jbTzhqjCnNgz4MFEAfUozcgzYEohI7dgCF78DAzdYzdQzZbcUVwYRXzMJm6U9J9oEc-BEgAzrOm2uV02rAUQFVauvGDbJkKTlMLJXIJ4wMIBK1+rNuYRm2+O9sSMhm7gB7eBD-EcxzfOJNzmQMxADF8vCPE8b08DpElSBsGEoIpWw-d91B-KxezHYDO3HeJxVzKVo2fBclUg+wHBg7QAHt8TLR9bygPtIEKDiy2hfR2CYsBqwKeESC4wd2PEiBoU8OIgA"
+		(exclude_from_sim no)
+		(at 220.98 134.62 0)
+		(size 62.23 29.21)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left top)
+		)
+		(uuid "191e6571-1933-427b-94ed-8695fb4e4500")
+	)
 	(junction
 		(at 152.4 111.76)
 		(diameter 0)
@@ -1301,6 +1331,16 @@
 		)
 		(uuid "3e5ea3c6-496f-4729-a9d7-45b94cd8bb09")
 	)
+	(polyline
+		(pts
+			(xy 167.64 88.9) (xy 170.18 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f54f61c-57ec-43a4-9f7c-660041872f8d")
+	)
 	(wire
 		(pts
 			(xy 124.46 80.01) (xy 134.62 80.01)
@@ -1350,6 +1390,16 @@
 			(type default)
 		)
 		(uuid "78d425ea-2b90-4594-8a40-baef08615dcd")
+	)
+	(polyline
+		(pts
+			(xy 167.64 74.93) (xy 167.64 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e1306fd-0245-46c7-be21-c61073f0ed07")
 	)
 	(wire
 		(pts
@@ -1490,6 +1540,16 @@
 			(type default)
 		)
 		(uuid "d775de79-f68d-4c20-b3c5-d2c214ec9cd5")
+	)
+	(polyline
+		(pts
+			(xy 148.59 74.93) (xy 167.64 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dce8800d-65b3-4a23-8a5b-b9542979b259")
 	)
 	(wire
 		(pts
@@ -1643,7 +1703,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "2e2b034a-d41b-4a12-b829-3900e3e4d9bf")
 		(property "Reference" "Q12"
 			(at 127 106.6799 0)
@@ -1654,8 +1713,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "NPN"
-			(at 127 109.2199 0)
+		(property "Value" "NPN BC847C-AQ"
+			(at 117.602 113.538 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1827,13 +1886,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 169.418 112.268 90)
+		(property "Value" "68"
+			(at 173.99 109.728 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -1970,13 +2028,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 122.428 98.298 90)
+		(property "Value" "2.2K"
+			(at 127.254 96.52 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -2043,7 +2100,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "Vishay MCL4448-TR"
 			(at 186.69 86.3599 90)
 			(effects
 				(font
@@ -2134,13 +2191,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 108.712 105.918 90)
+		(property "Value" "2.2K"
+			(at 110.236 110.49 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -2207,7 +2263,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "Vishay MCL4448-TR"
 			(at 186.69 99.0599 90)
 			(effects
 				(font
@@ -2299,14 +2355,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
-			(at 156.21 109.2199 0)
+		(property "Value" "47uF"
+			(at 153.67 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
@@ -2372,13 +2427,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 169.418 99.568 90)
+		(property "Value" "100"
+			(at 173.99 97.282 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -2585,14 +2639,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
-			(at 148.59 109.2199 0)
+		(property "Value" "47uF"
+			(at 139.192 110.998 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
@@ -2729,13 +2782,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 142.748 102.108 90)
+		(property "Value" "68"
+			(at 147.066 98.552 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -2801,13 +2853,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 122.428 88.138 90)
+		(property "Value" "2.2K"
+			(at 127 86.106 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -2873,13 +2924,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 169.418 86.868 90)
+		(property "Value" "2.2K"
+			(at 174.498 85.344 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -2946,7 +2996,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "Vishay MCL4448-TR"
 			(at 186.69 77.4699 90)
 			(effects
 				(font
@@ -3029,7 +3079,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "e8c190ab-4b57-46c6-bc39-71545a3c1d37")
 		(property "Reference" "Q13"
 			(at 147.32 92.7101 0)
@@ -3040,8 +3089,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "PNP"
-			(at 147.32 90.1701 0)
+		(property "Value" "PNP BC857C-AQ"
+			(at 138.176 85.344 0)
 			(effects
 				(font
 					(size 1.27 1.27)

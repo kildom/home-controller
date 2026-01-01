@@ -370,11 +370,51 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "0 for UART (R16)"
+		(exclude_from_sim no)
+		(at 122.936 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "8cc8d9d8-2ef9-4a49-935f-5616d41e1009")
+	)
+	(text "470 for UART (R17)"
+		(exclude_from_sim no)
+		(at 167.132 106.934 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d5d07376-99c9-4cf5-b578-052ae6554bb3")
+	)
 	(junction
 		(at 140.97 92.71)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "140daf9e-2623-46e8-b8b4-e6487d753a0f")
+	)
+	(polyline
+		(pts
+			(xy 154.94 96.52) (xy 154.94 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b2bbdb6-1da4-4ec8-9f6c-161027467fdc")
+	)
+	(polyline
+		(pts
+			(xy 144.78 96.52) (xy 154.94 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c3096df-0c9d-4746-aeed-1d54ded9a7a0")
 	)
 	(wire
 		(pts
@@ -416,6 +456,16 @@
 		)
 		(uuid "94143856-e82f-401c-b6ea-2db12719c392")
 	)
+	(polyline
+		(pts
+			(xy 154.94 107.95) (xy 177.8 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a58b3ceb-b752-47c7-bf3c-bd449c7e8463")
+	)
 	(wire
 		(pts
 			(xy 140.97 92.71) (xy 143.51 92.71)
@@ -446,6 +496,26 @@
 		)
 		(uuid "c7cd4489-b62a-4341-9231-3b626de5e545")
 	)
+	(polyline
+		(pts
+			(xy 132.08 106.68) (xy 132.08 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf661f99-4cf9-41b8-8886-4e68547d1828")
+	)
+	(polyline
+		(pts
+			(xy 132.08 96.52) (xy 137.16 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cfac9d9b-f640-4357-8c26-2f9f55d74c91")
+	)
 	(wire
 		(pts
 			(xy 138.43 92.71) (xy 140.97 92.71)
@@ -455,6 +525,16 @@
 			(type default)
 		)
 		(uuid "ec07119e-eb60-485e-b9c4-09e4715d725a")
+	)
+	(polyline
+		(pts
+			(xy 114.3 106.68) (xy 132.08 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbd59e23-93a3-495c-b7dd-0db5334d2f25")
 	)
 	(hierarchical_label "ESD"
 		(shape passive)
@@ -621,13 +701,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 145.542 90.678 90)
+		(property "Value" "150"
+			(at 147.32 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -737,13 +816,12 @@
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 132.842 90.678 90)
+		(property "Value" "150"
+			(at 134.62 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -844,7 +922,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "a8670928-e5df-47c3-8353-dfaf441800ae")
 		(property "Reference" "C3"
 			(at 144.78 99.0599 0)
@@ -855,14 +932,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
-			(at 144.78 100.3299 0)
+		(property "Value" "220pF"
+			(at 143.51 101.854 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
