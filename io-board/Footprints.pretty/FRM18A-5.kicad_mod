@@ -191,4 +191,15 @@
 		(uuid "1b470f45-27ee-47c1-b548-46187d6e2ac5")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/3d-models/Relay.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 0.395 0.395 0.395)
+		)
+		(rotate
+			(xyz -0 -0 90)
+		)
+	)
 )
