@@ -102,10 +102,10 @@
   FLAGS:
      |   7  |  6 5 4   |  3 2 1 0  |
      | zero | PROTOCOL | DST_COUNT |
-  0 - discovery protocol
+  0 - Network Management Protocol
   ```
 
-### Discovery Protocol
+### Network Management Protocol
 
 * DISCOVERY: Sprawdzenie obecności urządzeń:
   * Użytkownik wysyła pakiet DISCOVERY (broadcast).
@@ -161,6 +161,14 @@
   SET_NAME_RESPONSE (unicast to SRC):
     |    1     |      1    | name len |
     | Type = 5 |  name len |   NAME   |
+  ```
+
+* PACKET_LOST: Notyfikacja o utracie pakietu:
+  * Router wysyła pakiet PACKET_LOST (unicast) do źródła pakietu, który nie mógł być dostarczony, np. przepełniona kolejka.
+  ```
+  PACKET_LOST (unicast to SRC):
+    |     1      |
+    | Type = 6   |
   ```
 
 # <s>OLD STUFF</s>

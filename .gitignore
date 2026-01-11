@@ -1,3 +1,5 @@
 /*-board/*-board-backups
 /*-board/fp-info-cache
 /*-board/Production
+/test/build/
+/test/*.gcov

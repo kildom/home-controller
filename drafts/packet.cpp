@@ -110,3 +110,74 @@ void Packet::postprocess()
         }
     }
 }
+
+
+
+template<typename T>
+class BitAllocator
+{
+private:
+    T mask;
+
+public:
+    BitAllocator()
+    {
+        mask = ~(T)0;
+    }
+
+    BitAllocator(size_t count)
+    {
+        if (8 * sizeof(T) == count) {
+            mask = ~(T)0;
+        } else {
+            mask = ((T)1 << count) - 1;
+        }
+    }
+
+    int alloc(size_t count)
+    {
+        static constexpr size_t bits = sizeof(T) * 8;
+        if (count >= bits) {
+            if (count > bits) {
+                return -2;
+            }
+            if (mask == ~(T)0) {
+                mask = 0;
+                return 0;
+            } else {
+                return -1;
+            }
+        }
+        T adjusted = mask;
+        size_t shifted = 1;
+        while (2 * shifted <= count) {
+            adjusted = (adjusted >> shifted) & adjusted;
+            shifted *= 2;
+        }
+        adjusted = (adjusted >> (count - shifted)) & adjusted;
+        printf("adjusted 0x%08X\n", adjusted);
+        if (adjusted == 0) {
+            return -1;
+        }
+        int result;
+        static_assert(sizeof(T) <= sizeof(unsigned int) || sizeof(T) == sizeof(unsigned long) || sizeof(T) == sizeof(unsigned long long));
+        if (sizeof(T) <= sizeof(unsigned int)) {
+            result = __builtin_ctz((unsigned int)adjusted);
+        } else if (sizeof(T) == sizeof(unsigned long)) {
+            result = __builtin_ctzl((unsigned long)adjusted);
+        } else if (sizeof(T) == sizeof(unsigned long long)) {
+            result = __builtin_ctzll((unsigned long long)adjusted);
+        }
+        mask &= ~((((T)1 << count) - (T)1) << result);
+        return result;
+    }
+
+
+    void free(int index, size_t count)
+    {
+        if (index < 0) {
+            return;
+        }
+        mask |= (((T)1 << count) - (T)1) << index;
+    }
+};
