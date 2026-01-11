@@ -29,7 +29,9 @@ test: all
 
 cov: test
 	gcov -o build test_PacketInQueue.cc.o
-	$(LCOV) --capture --directory . --output-file build/cov.info
+	$(LCOV) --capture --directory . --output-file build/cov-all.info
+	$(LCOV) --extract build/cov-all.info '*/src/*' --output-file build/cov-src.info
+	$(LCOV) --remove build/cov-src.info '*google*' --output-file build/cov.info
 	rm *.gcov
 	$(LCOV_GENHTML) build/cov.info --output-directory build/cov-report
 	echo The report is in build/cov-report/index.html

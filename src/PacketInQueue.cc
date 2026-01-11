@@ -109,7 +109,7 @@ int PacketInQueue::peekInner(uint8_t* &data)
     if (dataBegin > crcPos && crcPos != 0) {
         {
             IRQ::Guard guard;
-            auto freeSpace = dataBegin - writePos;
+            auto freeSpace = dataBegin - writePos - 1;
             if (freeSpace <= crcPos) {
                 this->readPos = dataEnd;
                 overrunBytes = (overrunBytes + size + 2) | 0x80000000;

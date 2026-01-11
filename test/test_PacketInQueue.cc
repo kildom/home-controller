@@ -72,17 +72,143 @@ TEST(PacketInQueue, emptyRead) {
 }
 
 const uint8_t samplePacket[] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x0F, 0x00, 0x00, 0x00 };
-const uint8_t escByte[] = { ESC };
-const uint8_t endByte[] = { END };
+const uint8_t maskedPacket[] = { 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x3F, 0x30, 0x30, 0x30 };
+uint8_t tempPacket[sizeof(samplePacket)];
 uint8_t* dataPtr;
+const uint8_t* byte(uint8_t v) { tempPacket[0] = v; return tempPacket; }
+#define BYTE(v) byte(v), 1
 
 TEST(PacketInQueue, simpleRead) {
     PacketInQueue queue;
-    queue.write(escByte, sizeof(escByte));
     queue.write(samplePacket, sizeof(samplePacket));
-    queue.write(escByte, sizeof(escByte));
+    queue.write(BYTE(ESC));
+    queue.write(BYTE(ESC));
+    queue.write(BYTE(ESC));
+    queue.write(samplePacket, sizeof(samplePacket));
+    queue.write(BYTE(ESC));
+    queue.write(maskedPacket, sizeof(maskedPacket));
+    queue.write(BYTE(ESC));
+    queue.write(BYTE(END));
+    queue.write(BYTE(ESC));
+    queue.write(samplePacket, sizeof(samplePacket));
     int size = queue.peek(dataPtr);
     EXPECT_EQ(size, sizeof(samplePacket) - 1 - 4);
+    EXPECT_EQ(*dataPtr, 0x01);
+    queue.drop(dataPtr, size);
+    size = queue.peek(dataPtr);
+    EXPECT_EQ(size, sizeof(samplePacket) - 1 - 4);
+    EXPECT_EQ(*dataPtr, 0x01);
+    queue.drop(dataPtr, size);
+    size = queue.peek(dataPtr);
+    EXPECT_EQ(size, PacketInQueue::END_MARKER);
+    size = queue.peek(dataPtr);
+    EXPECT_EQ(size, PacketInQueue::NO_PACKET);
+    queue.write(BYTE(ESC));
+    size = queue.peek(dataPtr);
+    EXPECT_EQ(size, sizeof(samplePacket) - 1 - 4);
+    EXPECT_EQ(*dataPtr, 0x01);
+    queue.drop(dataPtr, size);
+    size = queue.peek(dataPtr);
+    EXPECT_EQ(size, PacketInQueue::NO_PACKET);
+    queue.drop(dataPtr, size);
+    EXPECT_EQ(queue.invalidPackets, 0);
+    EXPECT_EQ(queue.overrunBytes, 0);
+}
+
+TEST(PacketInQueue, invalidCRCRead) {
+    PacketInQueue queue;
+    queue.write(BYTE(ESC));
+    queue.write(BYTE(0x00));
+    queue.write(BYTE(0x01));
+    queue.write(BYTE(0x00));
+    queue.write(BYTE(0x00));
+    queue.write(BYTE(0x00));
+    queue.write(BYTE(0x00));
+    queue.write(BYTE(ESC));
+    EXPECT_EQ(queue.peek(dataPtr), PacketInQueue::NO_PACKET);
+    EXPECT_EQ(queue.invalidPackets, 1 | 0x80000000);
+    EXPECT_EQ(queue.overrunBytes, 0);
+}
+
+TEST(PacketInQueue, invalidSizeRead) {
+    PacketInQueue queue;
+
+    queue.write(BYTE(ESC));
+    for (int i = 0; i < 256; i++) {
+        queue.write(BYTE(0x00));
+    }
+    EXPECT_EQ(queue.peek(dataPtr), PacketInQueue::NO_PACKET);
+    EXPECT_EQ(queue.invalidPackets, 1 | 0x80000000);
+    EXPECT_EQ(queue.overrunBytes, 0);
+
+    queue.write(BYTE(ESC));
+    for (int i = 0; i < 256; i++) {
+        queue.write(BYTE(0x00));
+    }
+    queue.write(BYTE(ESC));
+    EXPECT_EQ(queue.peek(dataPtr), PacketInQueue::NO_PACKET);
+    EXPECT_EQ(queue.invalidPackets, 2 | 0x80000000);
+    EXPECT_EQ(queue.overrunBytes, 0);
+
+    queue.write(BYTE(ESC));
+    for (int i = 0; i < 4; i++) {
+        queue.write(BYTE(0x00));
+    }
+    queue.write(BYTE(ESC));
+    EXPECT_EQ(queue.peek(dataPtr), PacketInQueue::NO_PACKET);
+    EXPECT_EQ(queue.invalidPackets, 3 | 0x80000000);
+    EXPECT_EQ(queue.overrunBytes, 0);
+
+    queue.write(BYTE(ESC));
+    for (int i = 0; i < 5; i++) {
+        queue.write(BYTE(0x00));
+    }
+    queue.write(BYTE(ESC));
+    int size = queue.peek(dataPtr);
+    EXPECT_EQ(size, 0);
+    EXPECT_EQ(queue.invalidPackets, 3 | 0x80000000);
+    EXPECT_EQ(queue.overrunBytes, 0);
+    queue.drop(dataPtr, size);
+
+    EXPECT_EQ(queue.peek(dataPtr), PacketInQueue::NO_PACKET);
+}
+
+TEST(PacketInQueue, wrappedRead) {
+    PacketInQueue queue;
+    queue.writePos = PacketInQueue::SIZE - 3;
+    queue.readPos = PacketInQueue::SIZE - 3;
+    queue.write(BYTE(ESC));
+    queue.write(maskedPacket, sizeof(maskedPacket));
+    queue.write(BYTE(ESC));
+    int size = queue.peek(dataPtr);
+    EXPECT_EQ(size, sizeof(maskedPacket) - 1 - 4);
+    EXPECT_EQ(queue.invalidPackets, 0);
+    EXPECT_EQ(memcmp(dataPtr, &samplePacket[1], sizeof(samplePacket) - 1 - 4), 0);
+    EXPECT_EQ(
+        memcmp(&queue.buffer[PacketInQueue::SIZE - (sizeof(samplePacket) - 1 - 4)],
+               &samplePacket[1],
+               sizeof(samplePacket) - 1 - 4),
+        0);
+    EXPECT_EQ(queue.buffer[0], 0);
+    queue.drop(dataPtr, size);
+    EXPECT_EQ(queue.peek(dataPtr), PacketInQueue::NO_PACKET);
+}
+
+TEST(PacketInQueue, wrappedOverrunRead) {
+    PacketInQueue queue;
+    queue.writePos = PacketInQueue::SIZE - 4;
+    queue.readPos = queue.writePos;
+    queue.write(BYTE(ESC));
+    queue.write(maskedPacket, sizeof(maskedPacket));
+    queue.write(BYTE(ESC));
+    queue.write(maskedPacket, sizeof(maskedPacket));
+    queue.write(BYTE(ESC));
+    queue.writePos = queue.readPos - 1;
+    int size = queue.peek(dataPtr);
+    EXPECT_EQ(size, sizeof(samplePacket) - 1 - 4);
+    EXPECT_EQ(*dataPtr, 0x01);
+    EXPECT_EQ(queue.overrunBytes, 11 | 0x80000000);
+    queue.drop(dataPtr, size);
 }
 
 END_ISOLATED_NAMESPACE
