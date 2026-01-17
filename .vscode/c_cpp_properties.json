@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/src/common",
+                "${workspaceFolder}/src/comm-board/Drivers/CMSIS/Device/ST/STM32C0xx/Include",
+                "${workspaceFolder}/src/comm-board/Drivers/STM32C0xx_HAL_Driver/Inc",
+                "${workspaceFolder}/src/comm-board/Drivers/CMSIS/Include",
+                "${workspaceFolder}/src/comm-board/Core/Inc"
+            ],
+            "defines": [
+                "STM32C011xx"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

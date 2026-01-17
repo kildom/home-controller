@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-class CRC {
+class CRC32 {
 public:
     static uint32_t calculate(const void* data, size_t size);
 };

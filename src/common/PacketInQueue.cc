@@ -1,6 +1,6 @@
 
 #include "PacketInQueue.hh"
-#include "CRC.hh"
+#include "CRC32.hh"
 #include "IRQ.hh"
 #include <cstring>
 
@@ -139,7 +139,7 @@ int PacketInQueue::peekInner(uint8_t* &data)
         crc ^= mask;
     }
     // Calculate and verify CRC-32
-    auto computedCrc = CRC::calculate(data, contentSize);
+    auto computedCrc = CRC32::calculate(data, contentSize);
     if (computedCrc != crc) {
         this->readPos = dataEnd;
         invalidPackets = (invalidPackets + 1) | 0x80000000;
