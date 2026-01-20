@@ -5,48 +5,17 @@
 ## 1. Physical Layer
 
 * Medium:
-  * Half duplex RS-485
-  * Half duplex 1-wire UART
+  * CAN (tylko części elektryczna - sam driver MCP2562)
+  * UART (open collector on TX + pull-up on RX)
 * Wszystkie urządzenia są równorzędne
-* Urządzenie domyśnie jest w stanie nadsłuchiwania UART
 * Łącze uznane jest za dostępne, jeżeli ostatni pakiet się zakończył lub nic nie jest transmitowane przed odpowiedni czas (w przypadku, gdy nie jest znany ostani pakiet)
 * Jeżeli urządzenie chce nadawać, czeka losowy czas (rozkład zależny od długości kolejki, czasu oczekiwania pierwszego pakietu w kolejce i najwyższego priorytetu pakietów z kolejki)
-  * Przechodzi to trybu GPIO
-  * Ustawia DataOutput=0
-  * Sprawdza ostani raz, czy nikt inny nie zaczął nadawania (stan niski)
-  * Ustawia TxEnable=1
-  * Czeka 1 Tbit
-  * Ustawia DataOutput=1
-  * Czeka ~0.25 Tbit
-  * Ustawia TxEnable=0
-  * Czeka 8.75 Tbit
-  * Czeka losowy czas 0..10Tbit (włączając czasy ułamkowe)
-  * Powtarza jeszcze 2 razy
-  * Jeżeli w tym czasie wykryto, że ktoś inny chce nadawać zaprzestajemy nadawania, przechodzimy do trybu UART i czekamy określony czas zanim znowu uznamy łącze za dostępne.
-  * Przechodzi do trybu UART, TxEnable=1
-  * ```
-      <-- 10 --><- 0..10 -><-- 10 --><- 0..10 -><-- 10 -->
-    -- ---------........... ---------........... ---------DDDDDDDDDDD
-      -                    -                    -         DDDDDDDDDDD
-    ```
-  * Przesyłamy pakiet
-  * Przechodzi do trybu UART, TxEnable=0
-  * Praktyczne podejście na STM32:
-    * (RS-485)
-    * Ustaw TIMER na one-pulse mode
-    * DataOut = 0, wyłącz przerwania, sprawdza input, TxEn = 1, włącz TIMER, włącz przerwania
-    * Timer po czasie 1 Tbit ustawia DataOut = 1, po 1.25 Tbit w przerwaniu ustawia TxEn = 0 i przełącza wejście na nadsłuchiwanie IRQ
-    * Timer po czasie 10 + rand w przerwaniu ponawia próbę
-    * LUB, jeżeli już nie ma więcej prób, timer po czasie 10 w przerwaniu rozpoczyna transmisję
-    * (1-wire UART)
-    * Idle: Tx=Hi-Z
-    * Ustaw TIMER na one-pulse mode
-    * wyłącz przerwania, sprawdza input, Tx=0, włącz TIMER, włącz przerwania
-    * Timer po czasie 1 Tbit ustawia Tx=1, po 1.1 Tbit w przerwaniu ustawia Tx=Hi-Z i przełącza wejście na nadsłuchiwanie IRQ
-    * Timer po czasie 10 + rand w przerwaniu ponawia próbę
-    * LUB, jeżeli już nie ma więcej prób, timer po czasie 10 w przerwaniu rozpoczyna transmisję
+  * Wysyła bajty: ESC, 2 losowe bajty, adres urządzenia, ESC
+    * Po każdym wysłanym bajcie czeka chwilę, żeby odebrać i potwierdzić, że prawidłowo wysłał i nie nastąpiła kolizja
+    * Jeżeli nastąpiła kolizja, wraca do oczekiwania na dostępną linię. Dla kolizji poza ESC i END, czas oczekiwania jest proporcjonalny do `bajt spodziewany XOR nadany`.
+    * Między znakami ESC jest 3 bajty, więc nie zostanie to zinterpretowane jako pakiet danych.
+  * Wysyła ciąg dalszy pakietu
 * Jeżeli pakiet przestał płynąć przez określony czas, następuje reset stanu.
-
 
 ## 2. Data Link Layer
 
@@ -172,6 +141,52 @@
   ```
 
 # <s>OLD STUFF</s>
+
+## 1. Physical Layer (OLD)
+
+* Medium:
+  * Half duplex RS-485
+  * Half duplex 1-wire UART
+* Wszystkie urządzenia są równorzędne
+* Urządzenie domyśnie jest w stanie nadsłuchiwania UART
+* Łącze uznane jest za dostępne, jeżeli ostatni pakiet się zakończył lub nic nie jest transmitowane przed odpowiedni czas (w przypadku, gdy nie jest znany ostani pakiet)
+* Jeżeli urządzenie chce nadawać, czeka losowy czas (rozkład zależny od długości kolejki, czasu oczekiwania pierwszego pakietu w kolejce i najwyższego priorytetu pakietów z kolejki)
+  * Przechodzi to trybu GPIO
+  * Ustawia DataOutput=0
+  * Sprawdza ostani raz, czy nikt inny nie zaczął nadawania (stan niski)
+  * Ustawia TxEnable=1
+  * Czeka 1 Tbit
+  * Ustawia DataOutput=1
+  * Czeka ~0.25 Tbit
+  * Ustawia TxEnable=0
+  * Czeka 8.75 Tbit
+  * Czeka losowy czas 0..10Tbit (włączając czasy ułamkowe)
+  * Powtarza jeszcze 2 razy
+  * Jeżeli w tym czasie wykryto, że ktoś inny chce nadawać zaprzestajemy nadawania, przechodzimy do trybu UART i czekamy określony czas zanim znowu uznamy łącze za dostępne.
+  * Przechodzi do trybu UART, TxEnable=1
+  * ```
+      <-- 10 --><- 0..10 -><-- 10 --><- 0..10 -><-- 10 -->
+    -- ---------........... ---------........... ---------DDDDDDDDDDD
+      -                    -                    -         DDDDDDDDDDD
+    ```
+  * Przesyłamy pakiet
+  * Przechodzi do trybu UART, TxEnable=0
+  * Praktyczne podejście na STM32:
+    * (RS-485)
+    * Ustaw TIMER na one-pulse mode
+    * DataOut = 0, wyłącz przerwania, sprawdza input, TxEn = 1, włącz TIMER, włącz przerwania
+    * Timer po czasie 1 Tbit ustawia DataOut = 1, po 1.25 Tbit w przerwaniu ustawia TxEn = 0 i przełącza wejście na nadsłuchiwanie IRQ
+    * Timer po czasie 10 + rand w przerwaniu ponawia próbę
+    * LUB, jeżeli już nie ma więcej prób, timer po czasie 10 w przerwaniu rozpoczyna transmisję
+    * (1-wire UART)
+    * Idle: Tx=Hi-Z
+    * Ustaw TIMER na one-pulse mode
+    * wyłącz przerwania, sprawdza input, Tx=0, włącz TIMER, włącz przerwania
+    * Timer po czasie 1 Tbit ustawia Tx=1, po 1.1 Tbit w przerwaniu ustawia Tx=Hi-Z i przełącza wejście na nadsłuchiwanie IRQ
+    * Timer po czasie 10 + rand w przerwaniu ponawia próbę
+    * LUB, jeżeli już nie ma więcej prób, timer po czasie 10 w przerwaniu rozpoczyna transmisję
+* Jeżeli pakiet przestał płynąć przez określony czas, następuje reset stanu.
+
 
 ### 3. Network Layer
 
