@@ -12,11 +12,10 @@ class Work : protected ListItem
 {
 public:
     enum Priority: int8_t {
-        LOW = -1,
-        NORMAL = 0,
-        HIGH = 1,
-        // If preemption is needed, add IRQ priority that will run inside SVC_Handler (or TIM14_IRQHandler
-        // for delayed work).
+        LOW = 0,
+        NORMAL = 1,
+        HIGH = 2,
+        DELAYED_IRQ = 3, // Disabled in IRQ handler, but can be enabled if needed
     };
 
 protected:
@@ -62,6 +61,8 @@ public:
     void runAbs(uint32_t absoluteTime, bool reschedule = true);
     void cancel();
 
+    static void processIRQ();
+
     friend void Work::mainLoop();
 };
 
@@ -82,5 +83,6 @@ public:
 
     friend void Work::mainLoop();
 };
+
 
 #endif // WORKQUEUE_HH

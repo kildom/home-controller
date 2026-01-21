@@ -3513,6 +3513,16 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "Not needed if Pull-up in MCU"
+		(exclude_from_sim no)
+		(at 77.724 67.31 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "38b23b7e-3ced-4296-9ad0-e3490206aa5a")
+	)
 	(junction
 		(at 45.72 77.47)
 		(diameter 0)
@@ -3995,6 +4005,16 @@
 		)
 		(uuid "6a252c57-ff56-442d-b5fd-291231ae560f")
 	)
+	(polyline
+		(pts
+			(xy 62.23 68.58) (xy 85.09 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b131a74-df0e-4980-bbf1-ac317e6dd042")
+	)
 	(wire
 		(pts
 			(xy 256.54 64.77) (xy 273.05 64.77)
@@ -4014,6 +4034,16 @@
 			(type default)
 		)
 		(uuid "706c96c9-364c-4ea6-a32f-c8a9d26daf85")
+	)
+	(polyline
+		(pts
+			(xy 49.53 66.04) (xy 62.23 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "731a53fa-e643-4a63-9b31-77682913479d")
 	)
 	(wire
 		(pts
@@ -4504,6 +4534,16 @@
 			(type default)
 		)
 		(uuid "c7628db0-4e15-4348-b3cd-25f521ab8860")
+	)
+	(polyline
+		(pts
+			(xy 62.23 66.04) (xy 62.23 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8656544-7783-47e2-930a-66e44561a419")
 	)
 	(wire
 		(pts
@@ -7121,7 +7161,7 @@
 				)
 			)
 		)
-		(property "Value" "220"
+		(property "Value" "150"
 			(at 40.64 80.01 90)
 			(effects
 				(font

@@ -93,6 +93,12 @@ void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
 }
 #endif
 
+static inline void uartGPIOMode(GPIO_TypeDef* gpio, uint32_t pin, int gpioMode)
+{
+  uint32_t mask = 3 << (2 * pin);
+  uint32_t mode = (gpioMode ? 1 : 2) << (2 * pin);
+  gpio->MODER = (gpio->MODER & ~mask) | mode;
+}
 
 /* USER CODE END 0 */
 
@@ -139,11 +145,16 @@ int main(void)
 
   HAL_TIM_Base_Start(&htim14);
 
-  //lastR = HAL_UART_Transmit_DMA(&huart2, buf, sizeof(buf) - 1);
+  lastR = HAL_UART_Transmit_DMA(&huart2, buf, sizeof(buf) - 1);
   //lastR = HAL_UART_Receive_DMA(&huart2, rxBuffer, sizeof(rxBuffer));
 
   __HAL_TIM_SET_COMPARE(&htim14, TIM_CHANNEL_1, 30000);
   __HAL_TIM_ENABLE_IT(&htim14, TIM_IT_CC1);
+
+  uint32_t mask = 3 << (2 * 2);
+  uint32_t mode = 1 << (2 * 2); // output
+  GPIOA->BSRR = 1 << 2;
+  GPIOA->MODER = (GPIOA->MODER & ~mask) | mode;
 
   extern void commonMain();
   commonMain();

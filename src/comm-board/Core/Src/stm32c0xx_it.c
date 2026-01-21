@@ -59,7 +59,6 @@ extern TIM_HandleTypeDef htim14;
 extern DMA_HandleTypeDef hdma_usart2_rx;
 extern DMA_HandleTypeDef hdma_usart2_tx;
 extern UART_HandleTypeDef huart2;
-int uartIRQCalled;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -197,6 +196,9 @@ void TIM14_IRQHandler(void)
   /* USER CODE BEGIN TIM14_IRQn 1 */
   #endif
 
+  // TODO: Uncomment if low precision delayed work in IRQ is needed (DELAYED_IRQ priority)
+  //DelayedWork_processIRQ();
+
   __SEV();
 
   /* USER CODE END TIM14_IRQn 1 */
@@ -211,7 +213,7 @@ void USART2_IRQHandler(void)
 
   void MyRXCallback(UART_HandleTypeDef *huart);
 
-  uartIRQCalled++;
+  //uartIRQCalled++;
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */

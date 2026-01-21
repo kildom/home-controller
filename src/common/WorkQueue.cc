@@ -9,8 +9,8 @@
 #include "WorkQueue.hh"
 
 
-static List queues[3];
-static List delayed;
+static List queues[4];
+static List delayed[2];
 static List idleWork;
 
 extern DelayedWork flushWork;
@@ -23,7 +23,7 @@ Work::Work(Callback callback, Priority priority)
 
 void Work::run()
 {
-    List& list = queues[priority - LOW];
+    List& list = queues[priority];
 
     __SEV();
 
@@ -56,8 +56,10 @@ void DelayedWork::runAbsNoIRQ(uint32_t absoluteTime, bool reschedule)
         }
     }
 
-    auto item = delayed.first();
-    auto end = delayed.listEnd();
+    List &list = delayed[priority == DELAYED_IRQ ? 1 : 0];
+
+    auto item = list.first();
+    auto end = list.listEnd();
     while (item != end && (int32_t)(((DelayedWork*)item)->timestamp - absoluteTime) < 0) {
         item = item->next;
     }
@@ -113,12 +115,11 @@ void DelayedWork::process()
 {
     uint32_t now = Time::getPrecise32();
     uint32_t timestamp = now + 16384;
-    auto end = (DelayedWork*)delayed.listEnd();
+    auto end = (DelayedWork*)delayed[0].listEnd();
 
     while (true) {
         IRQ::Guard guard;
-
-        auto work = (DelayedWork*)delayed.first();
+        auto work = (DelayedWork*)delayed[0].first();
         if (work == end) {
             break;
         }
@@ -129,9 +130,61 @@ void DelayedWork::process()
         }
         // if (work != &flushWork) myprintf("Delayed work ready %d, now %d\n", work->timestamp, now);
         work->remove();
-        List& list = queues[work->priority - Work::LOW];
+        List& list = queues[work->priority];
         list.addLast(work);
         work->state = QUEUED;
+    }
+
+    {
+        IRQ::Guard guard;
+        auto work = (DelayedWork*)delayed[1].first();
+        if (work != delayed[1].listEnd() && (int32_t)(work->timestamp - timestamp) < 0) {
+            timestamp = work->timestamp;
+        }
+    }
+
+    Time::scheduleWakeUp(timestamp);
+}
+
+void DelayedWork::processIRQ()
+{
+    uint32_t now = Time::getPrecise32();
+    uint32_t timestamp = now + 16384;
+    auto end = (DelayedWork*)delayed[1].listEnd();
+
+    while (true) {
+        DelayedWork* work;
+
+        {
+            IRQ::Guard guard;
+            work = (DelayedWork*)delayed[1].first();
+            if (work == end) {
+                break;
+            }
+            if ((int32_t)(work->timestamp - now) > 0) {
+                timestamp = work->timestamp;
+                break;
+            }
+            work->remove();
+            work->state = RUNNING;
+        }
+
+        work->callback(work);
+
+        {
+            IRQ::Guard guard;
+            if (work->state == RUNNING) {
+                work->state = IDLE;
+            }
+        }
+    }
+
+    {
+        IRQ::Guard guard;
+        auto work = (DelayedWork*)delayed[0].first();
+        if (work != delayed[0].listEnd() && (int32_t)(work->timestamp - timestamp) < 0) {
+            timestamp = work->timestamp;
+        }
     }
 
     Time::scheduleWakeUp(timestamp);

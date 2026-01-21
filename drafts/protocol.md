@@ -72,6 +72,7 @@
      |   7  |  6 5 4   |  3 2 1 0  |
      | zero | PROTOCOL | DST_COUNT |
   0 - Network Management Protocol
+  1 - Application Layer Protocol
   ```
 
 ### Network Management Protocol
@@ -139,6 +140,73 @@
     |     1      |
     | Type = 6   |
   ```
+
+## 4. Application Layer
+
+* Typy współdzielonych objektów:
+  * Dane (exportowany stan urządzenia)
+    * bool, int, e.t.c.
+    * Urządzenie posiada tablicę pól stanu.
+    * Każde pole ma pozycję (offset w bitach), liczbę bitów, typ.
+    * Jeżeli stan pola się zmieni, to urządzenie wysyła broadcast z aktualnym stanem całego urządzenia.
+      * Jeżeli to są dane, które nie muszą być często aktualizowane, to można wysłać po pewnym czasie lub przy okazji
+        następnego broadcastu periodycznego.
+    * Stan całego urządzenia jest wysyłany periodycznie co określony czas.
+    * Urządzenie nadsłuchuje pakiety periodyczne innych urządzeń, analizuje czas pakietów zaraz przez i zaraz po,
+      w celu przesunięcia nieznacznie swojego okresu, żeby odsunąć się jak najdalej od sąsiadów.
+  * Sygnały
+    * Urządzenie posiada tablicę sygnałów.
+    * Inne urządzenie może wysłać pakiet unicast do tego urządzenia z sygnałem do wywołania.
+    * Urządzenie potwierdza odbiór sygnału pakietem ACK do nadawcy.
+    * Jeżeli nadawca nie otrzyma ACK w określonym czasie, to ponawia wysłanie sygnału.
+    * Sygnał musi mieć licznik, żeby ignorować retansmisje.
+    * Sygnał może mieć parametry
+  * Event
+    * Urządzenie może nadać broadcast z eventem.
+    * W rzeczywistości jest to licznik w tablicy stanu, który przy zmianie jest rozpoznawany jako event.
+    * Event może mieć parametry (też w tablicy stanu).
+    * Odebrany pierwszy update stanu nie generuje eventu.
+* Name resolution:
+  * Dane i sygnały są rozpoznawane przez nazwę (unikalną dla cełej sieci), może zawierać kropki do grupowania.
+  * Każde urządzenie posiada tablicę eksportowanych nazw z:
+    * rodzajem (dane/sygnał),
+    * pozycją,
+    * typem i liczbą bitów (dla danych)
+    * Tablica się nie zmienia nawet po restarcie urządzenia, ale może przy updacie aplikacji.
+  * Oprócz tablicy, urządzenie posiada unikalny identyfikator tablicy inkrementowany przy każdym updacie aplikacji.
+    * Identyfikator jest wysyłany przy każdym pakiecie z danymi lub sygnałem w celu weryfikacji zgodności.
+    * Jeżeli urządzenie otrzyma pakiet stanu z innym identyfikatorem, to resetuje swoją dane importowanie i 
+      rozpoczyna ponowne rozpoznawanie nazw dla tego urządzenia.
+    * Jeżeli urządzenie otrzyma pakiet sygnału z innym identyfikatorem, to wsyła ACK z odpowiednim błędem do nadawcy
+      i go ignoruje. Nadawca wtedy wie, że musi ponownie rozpoznać nazwy dla tego urządzenia.
+  * Każdy importowany obiekt musi najpierw przejść procedurę rozpoznawania nazw:
+    * Urządzenie wysyła pakiet broadcast, z nazwą obiektu do rozpoznania.
+    * Urządzenie posiadające taki obiekt odpowiada pakietem unicast z rodzajem, pozycją, typem, liczbą bitów, i.t.p.
+      Również wysyła swój identyfikator tablicy eksportu.
+  * Dane importowane mogą być przechowywane w pamięci nieulotnej, żeby przyspieszyć start.
+
+```
+IMPORT (broadcast):
+  |     1      |      1    | name len |
+  | Type = 1   |  name len |   NAME   |
+
+EXPORT (unicast to SRC):
+  |    1     |      1    | name len |    1    |  1   |       ...
+  | Type = 2 |  name len |   NAME   | tableId | kind | object details ...
+
+SATATE (broadcast):
+  |    1     |   1     |      N     |
+  | Type = 3 | tableId | state data |
+
+SIGNAL (unicast):
+  |    1     |   1     | 1  |    1     | ...
+  | Type = 4 | tableId | id | counter  | signal params ...
+
+SIGNAL_ACK (unicast to SRC):
+  |    1     | 1  |    1     |    1   |
+  | Type = 5 | id | counter  | status |
+                               ^- 0 - OK, 1 - tableId mismatch
+```
 
 # <s>OLD STUFF</s>
 

@@ -37,15 +37,25 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
+/* C++ Exports */
+
+// DelayedWork::processIRQ()
+#define DelayedWork_processIRQ _ZN11DelayedWork10processIRQEv
+extern void _ZN11DelayedWork10processIRQEv();
+
+extern void commonMain();
+
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 
 extern TIM_HandleTypeDef htim14;
+extern TIM_HandleTypeDef htim16;
 extern UART_HandleTypeDef huart2;
 
 #define MAIN_TIMER (&htim14)
+#define HI_RES_TIMER (&htim16)
 
 /* USER CODE END EC */
 

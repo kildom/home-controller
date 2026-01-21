@@ -380,15 +380,55 @@
 		)
 		(uuid "8cc8d9d8-2ef9-4a49-935f-5616d41e1009")
 	)
-	(text "470 for UART (R17)"
+	(text "20p for UART (C1)"
 		(exclude_from_sim no)
-		(at 167.132 106.934 0)
+		(at 165.862 113.284 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 		)
 		(uuid "d5d07376-99c9-4cf5-b578-052ae6554bb3")
+	)
+	(text_box "https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjOCmC0AcIFYB0BOAzAFgEwoQBjQDYB2NFLPeBKxPRGMMAKACcQMxCQsM6NY6WYlhB9ieCUwBK7Tt16yuYcqNUK0SNKrp4kCJgGN2A7sMUg0eDO24MIuifaSPRSZmwyFrXiwhE+6MHxpEGh+cCx4MPgsHlURBGJCCXA9VIRtPSYAc3NLaw4uNCJtJgB3dh8fBGSQAPK6uKq4oRE8BsIWs06C+tzC9hQuAb94HUNjPh8BjCGbLDtXFwc8J2YZGbQRAbRYax12Og0tA919DzkMLcnK-fZxSQuuHpvCGrUH9o25F5Gk7UOFk0ALOE34dDewx+sHg1gW0EYS1WSLWOXMhBh5mEpw6cU83ia73aTxAsEuJj2Y3uEi+5jJUK4SSpfCOwNOWSM4NJ4QGML4tgRTmWzmRumY-TkfPMKDAbVEuO87xelPlJLAElhJnVCjENJCA3VlGltQO6jZmX0nK1Vj4cnVZjhixWQtFblYN21ELintUQXaEqUeAddu1pQqyvCLx97SMaD8dWscZEYAwBQFiOdKPluST4FTvmTKnGvC0xD2pMCsCaRqOAH0MLW8LXZQgMAhGyLVh2aWBawja1ha2ghw1WtyYmZo6OzCqx5D5RU5+8x-j5QBlcC1MfXMeBEAAMwAhgAbADOkHiaJ3mOuxS44xkO-e1zA-1NrJOFqYp9M2x8Y93VQjzPSBv03QQzAAsw92A88mH3UJ8lCCgokYERoBQiw2iQT4aTwvChSwNEU2sEi8zhGsF3I8BZWo+o2FzI54wCalJEfeMmPQ8J3yBT8dCyAAHEBSC4OA6BE4wLABQ18I6TExOEkoFP9RThngCS0LDRpvAJaxlLkqITBefSZBqOhoGqWpoDmHjjhBLI2DM0JLPMuRAjwhonIRLgnPqAAXCsIngMjZSpexfRSAATSAjwAV2PPz3S1SJQnCUL4goBplHQzDdj02J9k82pmh01Vf3AG0PUqwJgjYMcVS5FUauJG4VQjMLavK+cuXnZr3R6pVCXvcBOpXaYTFXPqPAmkrbl9TqyJ8XMWL9fqTDnLo5VWurIIddboJG9oAHtuE3KTeBQGgHAyOgMkTU7BHOm6mCAA"
+		(exclude_from_sim no)
+		(at 12.7 193.04 0)
+		(size 147.32 3.81)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "09d826ac-14d2-4b1c-8aa4-14e3deec85db")
+	)
+	(text_box "For UART:"
+		(exclude_from_sim no)
+		(at 12.7 186.69 0)
+		(size 85.09 5.08)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "c577172e-89f7-40df-8771-a85f5738a437")
 	)
 	(junction
 		(at 140.97 92.71)
@@ -398,7 +438,7 @@
 	)
 	(polyline
 		(pts
-			(xy 154.94 96.52) (xy 154.94 107.95)
+			(xy 153.67 102.87) (xy 153.67 114.3)
 		)
 		(stroke
 			(width 0)
@@ -408,7 +448,7 @@
 	)
 	(polyline
 		(pts
-			(xy 144.78 96.52) (xy 154.94 96.52)
+			(xy 143.51 102.87) (xy 153.67 102.87)
 		)
 		(stroke
 			(width 0)
@@ -458,7 +498,7 @@
 	)
 	(polyline
 		(pts
-			(xy 154.94 107.95) (xy 177.8 107.95)
+			(xy 153.67 114.3) (xy 176.53 114.3)
 		)
 		(stroke
 			(width 0)
