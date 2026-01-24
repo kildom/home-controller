@@ -1,5 +1,9 @@
+.venv/
+__pycache__/
+node_modules/
 /*-board/*-board-backups
 /*-board/fp-info-cache
 /*-board/Production
 /test/build/
 /test/*.gcov
+._*

@@ -184,27 +184,36 @@
     * Urządzenie posiadające taki obiekt odpowiada pakietem unicast z rodzajem, pozycją, typem, liczbą bitów, i.t.p.
       Również wysyła swój identyfikator tablicy eksportu.
   * Dane importowane mogą być przechowywane w pamięci nieulotnej, żeby przyspieszyć start.
+  * Importowanie przy pomocy indeksu objektu przydaje się, żeby odczytać wszystkie exporty z danego urządzenia.
 
 ```
 IMPORT (broadcast):
-  |     1      |      1    | name len |
+  |     1      |    1      | name len |
   | Type = 1   |  name len |   NAME   |
 
+IMPORT_BY_INDEX (unicast):
+  |     1      |    1    |
+  | Type = 2   |  index  |
+
 EXPORT (unicast to SRC):
-  |    1     |      1    | name len |    1    |  1   |       ...
-  | Type = 2 |  name len |   NAME   | tableId | kind | object details ...
+  |    1     |    1    |     1    | name len |    1    |  1   |       ...
+  | Type = 3 |  index  | name len |   NAME   | tableId | kind | object details ...
+
+EXPORT (wrong index, unicast to SRC):
+  |    1     |    1    |       1        |
+  | Type = 3 |  index  | name len = 255 |
 
 SATATE (broadcast):
   |    1     |   1     |      N     |
-  | Type = 3 | tableId | state data |
+  | Type = 4 | tableId | state data |
 
 SIGNAL (unicast):
   |    1     |   1     | 1  |    1     | ...
-  | Type = 4 | tableId | id | counter  | signal params ...
+  | Type = 5 | tableId | id | counter  | signal params ...
 
 SIGNAL_ACK (unicast to SRC):
   |    1     | 1  |    1     |    1   |
-  | Type = 5 | id | counter  | status |
+  | Type = 6 | id | counter  | status |
                                ^- 0 - OK, 1 - tableId mismatch
 ```
 
