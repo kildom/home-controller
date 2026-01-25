@@ -8,3 +8,4 @@ node_modules/
 /test/build/
 /test/*.gcov
 ._*
+/tmp/

@@ -1,0 +1,18 @@
+#
+# First install OS dependencies - maybe nod needed:
+#   sudo apt install libffi-dev
+#
+# Then install Python dependencies:
+#   pip install -r requirements.txt
+#
+
+# Removed:
+# cryptography~=46.0.3 - builds too long
+# pydantic~=2.12.5 - builds too long
+
+# Optional:
+# brotli~=1.2.0 - builds long but maybe acceptable
+
+# Required:
+voluptuous~=0.16.0
+websockets~=16.0

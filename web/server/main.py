@@ -1,29 +1,22 @@
 #!/usr/bin/env python
 
-import email
 import os
 import re
 import http
 import json
-import time
 from pathlib import Path
 import signal
 import asyncio
-import mimetypes
 
-from cryptography.hazmat.primitives.asymmetric import ec
-from cryptography.hazmat.primitives.asymmetric import utils
-from cryptography.hazmat.primitives import hashes
-from cryptography import exceptions
 from websockets.exceptions import ConnectionClosed
 from websockets.datastructures import Headers
 from websockets.asyncio.server import serve, ServerConnection, Request, Response
 from urllib.parse import urlparse
 
 from serve_file import serve_file
-import hashlib
 
 from commands import execute_command
+from ecdsa import ecdsa_verify
 
 
 async def handler(websocket: ServerConnection):
@@ -41,9 +34,9 @@ async def handler(websocket: ServerConnection):
         y = int(authData['y'], 16)
         r = int(sig2[:64], 16)
         s = int(sig2[64:], 16)
-        sig2_enc = utils.encode_dss_signature(r, s)
-        pub = ec.EllipticCurvePublicNumbers(x, y, ec.SECP256R1()).public_key()
-        pub.verify(sig2_enc, ch2, ec.ECDSA(hashes.SHA256()))
+        ok = ecdsa_verify(x, y, r, s, ch2)
+        if not ok:
+            raise Exception("Invalid signature")
         await websocket.send(json.dumps({"type": "challenge_accepted"}))
         while True:
             message = await websocket.recv()
@@ -84,12 +77,9 @@ def process_request(connection: ServerConnection, request: Request):
         # Verify signature sig1 with public key (x, y) on message ch1
         r = int(sig1[:64], 16)
         s = int(sig1[64:], 16)
-        sig1_enc = utils.encode_dss_signature(r, s)
-        pub = ec.EllipticCurvePublicNumbers(x, y, ec.SECP256R1()).public_key()
-        try:
-            pub.verify(sig1_enc, ch1, ec.ECDSA(hashes.SHA256()))
-        except exceptions.InvalidSignature as ex:
-            print("Invalid signature:", ex)
+        ok = ecdsa_verify(x, y, r, s, ch1)
+        if not ok:
+            print("Invalid signature")
             return connection.respond(http.HTTPStatus.FORBIDDEN, 'Forbidden')
         return None
     else:
