@@ -49,7 +49,7 @@ def set_auth_result(success: bool):
 # ---------- Command Handlers ----------
 
 async def set_auth(websocket, message: SimpleNamespace):
-    with open(Path(__file__).parent.parent / "client/static/auth.json", 'w') as f:
+    with open(Path(__file__).parent.parent / "auth.json", 'w') as f:
         json.dump(namespace_to_dict(message.auth), f, indent=4)
 
     return set_auth_result(True)

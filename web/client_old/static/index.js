@@ -65,7 +65,7 @@ async function deriveKeyPBKDF2(password, salt, iterations) {
 })
 //();   
 
-const AUTH_DATA_URL = '/static/auth.json';
+const AUTH_DATA_URL = '/auth.json';
 const WEB_SOCKET_URL = '/connect';
 
 

@@ -41,6 +41,13 @@ function bigIntToHex(num, length) {
  */
 async function deriveKeys(passwordStr, saltHex, xHex, yHex) {
 
+    // TODO: Put AES-encrypted private key into auth.json
+    // This will avoid EC math implementation here and uses crypto.subtle for everything
+    // For faster password checking, the encrypted private key will also contains a hash of itself
+
+    // The pure-JS ECC implementation may stay for environments where WebCrypto is not available,
+    // e.g. local network without HTTPS.
+
     const P = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffffn;
     const A = 0xffffffff00000001000000000000000000000000fffffffffffffffffffffffcn;
     const B = 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604bn;

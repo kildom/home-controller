@@ -28,7 +28,7 @@ async def handler(websocket: ServerConnection):
             raise Exception("Invalid response")
         sig2 = str(response.get("signature"))
         # Verify signature sig2 with public key (x, y) on message ch2
-        with open(Path(__file__).parent.parent / "client" / "static" / "auth.json", 'r') as f:
+        with open(Path(__file__).parent.parent / "auth.json", 'r') as f:
             authData = json.load(f)
         x = int(authData['x'], 16)
         y = int(authData['y'], 16)
@@ -69,7 +69,7 @@ def process_request(connection: ServerConnection, request: Request):
         if match is None:
             return connection.respond(http.HTTPStatus.FORBIDDEN, 'Forbidden')
         sig1 = match.group(1).lower()
-        with open(Path(__file__).parent.parent / "client" / "static" / "auth.json", 'r') as f:
+        with open(Path(__file__).parent.parent / "auth.json", 'r') as f:
             authData = json.load(f)
         ch1 = bytes.fromhex(authData['ch1'])
         x = int(authData['x'], 16)

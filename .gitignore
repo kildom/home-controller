@@ -9,3 +9,4 @@ node_modules/
 /test/*.gcov
 ._*
 /tmp/
+/web/auth.json

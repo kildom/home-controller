@@ -8,7 +8,7 @@ import gzip
 from websockets.datastructures import Headers
 from websockets.asyncio.server import ServerConnection, Request, Response
 
-NO_CACHE_PATTERN = r'.*/auth.json'
+NO_CACHE_PATTERN = r'auth\.json'
 CACHE_TIME_SEC = 300
 
 def get_brotli():
@@ -36,13 +36,12 @@ def compress_gzip(input_path: Path, output_path: Path):
             fout.write(chunk)
 
     
-root = Path(__file__).parent.parent / "client"
+root = Path(__file__).parent.parent / "client/dist"
 cmp_root = root / "._compressed_cache"
 
 
-def get_compressed_file(filename: str) -> Path | None:
+def get_compressed_file(path: Path, filename: str) -> Path | None:
     method = "br" if brotli else "gzip"
-    path = root / filename
     time = round(path.stat().st_mtime)
     cmp_path = cmp_root / f'{filename}.cmp.{time}.{method}'
     old_path = cmp_root / f'{filename}.cmp.*.*'
@@ -77,7 +76,10 @@ def serve_file(filename: str, connection: ServerConnection, request: Request) ->
         parts = filename.split('/')
         parts = map(lambda x: re.sub(r'[^a-z0-9._-]', '', x, flags=re.IGNORECASE), parts)
         parts = filter(lambda x: x != '' and not x.startswith('.'), parts)
-        path = root / '/'.join(parts)
+        filename_validated = '/'.join(parts)
+        path = root / filename_validated
+        if filename_validated == 'auth.json':
+            path = Path(__file__).parent.parent / "auth.json"
         if not path.exists():
             return connection.respond(http.HTTPStatus.NOT_FOUND, 'Not Found')
         elif not path.is_file():
@@ -89,7 +91,7 @@ def serve_file(filename: str, connection: ServerConnection, request: Request) ->
             ("Connection", "close"),
         ]
 
-        if not re.match(NO_CACHE_PATTERN, filename):
+        if not re.match(NO_CACHE_PATTERN, filename_validated):
             # Handle caching with ETag
             headers.append(("Cache-Control", f"public, max-age={CACHE_TIME_SEC}"))
             stat = path.stat()
@@ -106,7 +108,7 @@ def serve_file(filename: str, connection: ServerConnection, request: Request) ->
             headers.append(("Expires", "0"))
 
         # Determine MIME type
-        mime_type, _ = mimetypes.guess_type(path.name)
+        mime_type, _ = mimetypes.guess_type(filename_validated)
         if mime_type is None:
             mime_type = "application/octet-stream"
         if mime_type.startswith("text/"):
@@ -116,14 +118,14 @@ def serve_file(filename: str, connection: ServerConnection, request: Request) ->
         # Check if compression is supported and serve compressed file if possible
         accept_encoding = request.headers.get("Accept-Encoding", "")
         known_encodings_count = len(set(filter(lambda x: x == 'br' or x == 'gzip', map(lambda x: x.strip().lower(), accept_encoding.split(',')))))
-        send_path, method = (path, None)
+        method = None
         if known_encodings_count == 2:
-            send_path, method = get_compressed_file(filename)
+            path, method = get_compressed_file(path, filename_validated)
         if method:
             headers.append(("Content-Encoding", method))
 
         # Read and send file content
-        body = send_path.read_bytes()
+        body = path.read_bytes()
         headers.append(("Content-Length", str(len(body))))
         status = http.HTTPStatus(http.HTTPStatus.OK)
         return Response(status.value, status.phrase, Headers(headers), body)
