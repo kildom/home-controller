@@ -21,6 +21,7 @@
       ------ 0 01010101 11 0 AARRRRR1 11 0 AARRRRR1 11 0 AARRRRR1 11 0 AARRRRR1 11 0 01010101 11 ------  | A - address bit, R - random bit
       ```
     * Taka konstrukcja ramki sprawia, że jeżeli nawet nadajniki będą przesunięte o 1 bit, to transmisja nadal będzie prawidłowa.
+    * Jeżeli więcej niż jeden, to pojawią się będy transmisji, więc trzeba być przygotowanym na nie.
     * Po wysłaniu sprawdza, czy ramka jest taka jak powinna być, jeżeli nie, to czeka czas proporcjonalny do `{pierwszy zmieniony bajt poza ESC} XOR {spodziewany}`
   * Wysyła ciąg dalszy pakietu
 * Jeżeli pakiet przestał płynąć przez określony czas, następuje reset stanu.
