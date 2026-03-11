@@ -10,10 +10,11 @@
 * Wszystkie urządzenia są równorzędne
 * Łącze uznane jest za dostępne, jeżeli ostatni pakiet się zakończył lub nic nie jest transmitowane przed odpowiedni czas (w przypadku, gdy nie jest znany ostani pakiet)
 * Jeżeli urządzenie chce nadawać, czeka losowy czas (rozkład zależny od długości kolejki, czasu oczekiwania pierwszego pakietu w kolejce i najwyższego priorytetu pakietów z kolejki)
-  * Wysyła bajty: ESC, 2 losowe bajty, adres urządzenia, ESC
+  * OPCJA 1 (chyba lepsza) - Wysyła bajty: ESC, 2-3 losowe bajty, adres urządzenia, ESC (albo bajty jak w opcji 2)
     * Po każdym wysłanym bajcie czeka chwilę, żeby odebrać i potwierdzić, że prawidłowo wysłał i nie nastąpiła kolizja
-    * Jeżeli nastąpiła kolizja, wraca do oczekiwania na dostępną linię. Dla kolizji poza ESC i END, czas oczekiwania jest proporcjonalny do `bajt spodziewany XOR nadany`.
-    * Między znakami ESC jest 3 bajty, więc nie zostanie to zinterpretowane jako pakiet danych.
+    * Jeżeli nastąpiła kolizja, wraca do oczekiwania na dostępną linię. Dla kolizji poza ESC, czas oczekiwania jest proporcjonalny do `clz(bajt spodziewany XOR nadany)`.
+      Dla ESC jest to losowy czas.
+    * Między znakami ESC jest 3-4 bajty, więc nie zostanie to zinterpretowane jako pakiet danych.
   * OPCJA 2 - przyspieszenie i uproszczenie, ale zwiększone prawdopodobieństwo na więcej niż jedna kolizja z rzędu
     * Wysyła ramkę (z 2 bitami stopu): ESC, 4 bajty (gdzie niższe 2 bity to adres, 5 bitów losowych, najstarszy bit 1), ESC (UART jest LSB first)
       ```
