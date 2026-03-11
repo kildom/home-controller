@@ -22,7 +22,15 @@
       ```
     * Taka konstrukcja ramki sprawia, że jeżeli nawet nadajniki będą przesunięte o 1 bit, to transmisja nadal będzie prawidłowa.
     * Jeżeli więcej niż jeden, to pojawią się będy transmisji, więc trzeba być przygotowanym na nie.
-    * Po wysłaniu sprawdza, czy ramka jest taka jak powinna być, jeżeli nie, to czeka czas proporcjonalny do `{pierwszy zmieniony bajt poza ESC} XOR {spodziewany}`
+    * Po wysłaniu sprawdza, czy ramka jest taka jak powinna być, jeżeli tak, to przejmuje kontrolę nad linią, jeżeli nie, to czeka wyliczony czas.
+    * Wyliczanie czasu:
+      * Do wyliczania pomijamy bajty `ESC`.
+      * `x = bajt wysłany XOR bajt odebrany` jest równe kolizji na spodziewanym stanie wysokim.
+      * Jeżeli bity się nie za bardzo rozjechały, to
+        każdy z nadajników będzie miał bity 1 tego wyrażenia na innych miejscach.
+      * Jeżeli bity się rozjechały, to jeden z nadajników będzie miał bity 1 w miejscach, gdzie wysyłał 0, `d = 0 lub 1` w zależności, czy taka stuacja wystąpiła.
+      * Czas oczekiwania będzie proporcjonalny do: `T + clz(x) + 32 * d`
+      * Jeżeli tylko bajty `ESC` zostały zmodyfikowane, to czekaj `T + rand(0, 63)`
   * Wysyła ciąg dalszy pakietu
 * Jeżeli pakiet przestał płynąć przez określony czas, następuje reset stanu.
 
