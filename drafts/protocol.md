@@ -14,6 +14,14 @@
     * Po każdym wysłanym bajcie czeka chwilę, żeby odebrać i potwierdzić, że prawidłowo wysłał i nie nastąpiła kolizja
     * Jeżeli nastąpiła kolizja, wraca do oczekiwania na dostępną linię. Dla kolizji poza ESC i END, czas oczekiwania jest proporcjonalny do `bajt spodziewany XOR nadany`.
     * Między znakami ESC jest 3 bajty, więc nie zostanie to zinterpretowane jako pakiet danych.
+  * OPCJA 2 - przyspieszenie i uproszczenie, ale zwiększone prawdopodobieństwo na więcej niż jedna kolizja z rzędu
+    * Wysyła ramkę (z 2 bitami stopu): ESC, 4 bajty (gdzie niższe 2 bity to adres, 5 bitów losowych, najstarszy bit 1), ESC (UART jest LSB first)
+      ```
+        IDLE S DDDDDDDD ss S DDDDDDDD ss S DDDDDDDD ss S DDDDDDDD ss S DDDDDDDD ss S DDDDDDDD ss IDLE    | S - start bit, s - stop bit, D - data bit
+      ------ 0 01010101 11 0 AARRRRR1 11 0 AARRRRR1 11 0 AARRRRR1 11 0 AARRRRR1 11 0 01010101 11 ------  | A - address bit, R - random bit
+      ```
+    * Taka konstrukcja ramki sprawia, że jeżeli nawet nadajniki będą przesunięte o 1 bit, to transmisja nadal będzie prawidłowa.
+    * Po wysłaniu sprawdza, czy ramka jest taka jak powinna być, jeżeli nie, to czeka czas proporcjonalny do `{pierwszy zmieniony bajt poza ESC} XOR {spodziewany}`
   * Wysyła ciąg dalszy pakietu
 * Jeżeli pakiet przestał płynąć przez określony czas, następuje reset stanu.
 
