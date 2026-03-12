@@ -91,6 +91,7 @@
      | zero | PROTOCOL | DST_COUNT |
   0 - Network Management Protocol
   1 - Application Layer Protocol
+  2 - Bootloader Protocol
   ```
 
 ### Network Management Protocol
@@ -233,6 +234,64 @@ SIGNAL_ACK (unicast to SRC):
   |    1     | 1  |    1     |    1   |
   | Type = 6 | id | counter  | status |
                                ^- 0 - OK, 1 - tableId mismatch
+```
+
+## Bootloader Protocol
+
+* Używany przez bootloader, który jest mocno ograniczony, np. nie ma DMA, IRQ - wszystko przez polling w pętli.
+* Bootloader implementuje tylko `1. Physical Layer` (może być uproszczony), `2. Data Link Layer` i częściowo `3. Network Layer`.
+* Nie ma `Network Management Protocol` a co za tym idzie, nie ma przypisanego adresu i nazwy.
+* Adres jest zawsze 0, a identyfikuje się przez HW ID.
+* Wszystkie pakiety do bootloadera są brodcast.
+* Bootloader może przestać odbierać pakiety kiedy jest zajęty flashowaniem, więc sender musi na to uważać.
+* Bootloader sprawdza poprawność aplikacji przy pomocy pierwszych 4 bajtów (ma to być wyrównany SP w pamięci RAM),
+  więc programator powinien zacząć od erasu pierwszej strony, a zakończyć na piewszych 4 bajtach.
+* Bootloader może być tylko startowany z aplikacji, więc aplikacja musi nadsłuchiwać tylko pakietu BOOT.
+* Update bootloadera odbywa się przez wysłanie aplikacji, która nadpisze bootloader, a następnie oznaczy samą siebie
+  jako niedokończona (erase pierwszej strony), żeby bootloader mógł wystartować.
+* Podobny protokół może być używany do przesyłania wysokopoziomowej aplikacji. Wtedy ID nie jest potrzebny
+  i wszystkie pakiety są unicast.
+
+```
+QUERY (broadcast):
+  |    1     |
+  | Type = 1 |
+
+RESPONSE (unicast):
+  |    1     |   1    | ID len | ...
+  | Type = 2 | ID len |   ID   | device info: page size, flash size, HW model
+
+ERASE (broadcast):
+  |    1     |   1    | ID len |    4    |
+  | Type = 3 | ID len |   ID   | address |
+
+ERASE_DONE (unicast):
+  |    1     |   1    | ID len |    4    |
+  | Type = 4 | ID len |   ID   | address |
+
+WRITE (broadcast):
+  |    1     |   1    | ID len |    4    | ...  |
+  | Type = 5 | ID len |   ID   | address | data |
+
+WRITE_DONE (unicast):
+  |    1     |   1    | ID len |    4    |  1  |
+  | Type = 6 | ID len |   ID   | address | len |
+
+READ (broadcast):
+  |    1     |   1    | ID len |    4    |  1  |
+  | Type = 7 | ID len |   ID   | address | len |
+
+READ_DONE (unicast):
+  |    1     |   1    | ID len |    4    | ...  |
+  | Type = 8 | ID len |   ID   | address | data |
+
+RESET (broadcast):
+  |    1     |   1    | ID len |
+  | Type = 9 | ID len |   ID   |
+
+BOOT (unicast): tylko ten pakiet jest obsługiwany przez aplikację
+  |    1      |
+  | Type = 10 |
 ```
 
 # <s>OLD STUFF</s>
