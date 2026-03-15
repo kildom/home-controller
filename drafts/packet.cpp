@@ -101,6 +101,7 @@ void Packet::postprocess()
             bitIndex++;
         }
         mask = (uint8_t)(wordIndex + bitIndex);
+        mask ^= ESC;
         // Apply mask
         ptr = data;
         end = ptr + dataSize + CRC_SIZE;
