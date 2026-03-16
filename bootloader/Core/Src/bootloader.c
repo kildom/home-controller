@@ -248,6 +248,11 @@ static void receiveHeader(PortState *port)
     {
         switchToHeader(port);
     }
+    else if (byte == ESC)
+    {
+    	port->rxBuffer[1] = 0x00;
+    	port->rxIndex = 1;
+    }
     else if ((byte ^ port->rxBuffer[1]) == header[port->rxIndex] || port->rxIndex == 1 || port->rxIndex == 3)
     {
         port->rxBuffer[port->rxIndex] = byte;
@@ -296,7 +301,7 @@ static void receiveContent(PortState *port)
         txSendBuffer(port->uart, txBuffer, txSize);
         if (validatePacket(port->rxBuffer, port->rxIndex))
         {
-            packetReceived(port, port->rxBuffer, port->rxIndex);
+            packetReceived(port, port->rxBuffer + sizeof(header), port->rxIndex - sizeof(header));
         }
         switchToHeader(port);
     }
@@ -573,9 +578,13 @@ void bootSelect()
     extern uint8_t _sdata;
     extern uint8_t _edata;
     extern uint64_t _estack;
+    uint64_t magicValue = _estack;
+
+    // Make sure the bootloader does not start on the next reset.
+    _estack = 0;
 
     // Verify that the application forced bootloader mode by writing the specific value to end of SRAM
-    if (_estack == 0x6015A81F165BBB3EuLL) {
+    if (magicValue == 0x6015A81F165BBB3EuLL) {
         return;
     }
 

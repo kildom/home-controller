@@ -1,0 +1,21 @@
+{
+  "name": "test-app",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc index.ts"
+  },
+  "dependencies": {
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/w3c-web-serial": "^1.0.8",
+    "tsx": "^4.21.0",
+    "vite": "^8.0.0"
+  }
+}
