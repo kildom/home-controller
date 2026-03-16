@@ -39,16 +39,16 @@
 
 * Format pakietu:
   ```
-  |  1  |  1   |   len     |     4      |  1  |  1   |      ESC = 0xAA
-  | ESC | MASK | DATA^MASK | CRC32^MASK | ESC | STOP |      STOP = 0xFF
+  |  1  |  1   |   len     |     4      |  1  |  1   |      ESC = 0xFF
+  | ESC | MASK | DATA^MASK | CRC32^MASK | ESC | STOP |      STOP = 0xFE
   |   BEGIN    |        CONTENT         |    END     |      len = 0..249
   ```
 * Sposób wyznaczania `MASK`:
   * Zrób mapę występowania symboli w `DATA` i `CRC32`
-  * Jeżeli `0xAA` nie występuje, `MASK` = 0
-  * Zaznacz w mapie `0x00` i `0x55`.
+  * Jeżeli `0xFF` nie występuje, `MASK` = 0
+  * Zaznacz w mapie `0x00` i `0x01`.
   * Wybierz niewystępujący symbol `x` (przez to, że len <= 249, taki symbol zawsze istnieje).
-  * Wyznacz `MASK = x ^ 0xAA`
+  * Wyznacz `MASK = x ^ 0xFF`
 * Jeżeli wystąpił ponownie BEGIN, zakończ aktualny pakiet i rozpocznij nowy pakiet
 * Jeżeli wystąpił STOP, zakończ pakiet i uznaj łącze za dostępne.
 * Wszystkie bajty poza pakietem są ignorowane.
@@ -75,8 +75,8 @@
 * Mapa może zostać zapisana do nieulotnej pamięci, jeżeli została zmieniona.
 * Adres docelowy `0x00` to nowe urządzenie bez nadanego adresu.
 * Router zawsze traktuje adres `0x00` jako nieznany (robi broadcast).
-* Adres `0xAA` powinien być unikany, żeby zmniejszyć prawdopodobieństwo
-  konieczności kodowania paketu w niższej warstwie. Jednak nie jest zabroniony.
+* Adres `0xFF` powinien być unikany, żeby zmniejszyć prawdopodobieństwo
+  konieczności kodowania pakietu w niższej warstwie. Jednak nie jest zabroniony.
 * Pusta lista adresów docelowych oznacza pakiet broadcast.
 * Urządzenie po starcie wysyła pusty pakiet broadcast, żeby zarejestrować się w 
   sieci. Może to być kilka pakietów w losowych odstępach czasu. Jeżeli urządzenie
