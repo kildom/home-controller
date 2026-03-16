@@ -1,0 +1,6 @@
+{
+    "C_Cpp.default.defines": [
+        "STM32C011xx",
+        "USE_FULL_LL_DRIVER"
+    ]
+}
