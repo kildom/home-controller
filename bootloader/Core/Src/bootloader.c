@@ -51,8 +51,8 @@ enum {
 #define NETWORK_HEADER_SIZE 7
 #define ERROR_DATA -2
 #define NO_DATA -1
-#define ESC 0xAA
-#define END 0xFF
+#define ESC 0xFF
+#define END 0xFE
 
 typedef struct PortState
 {
@@ -120,10 +120,11 @@ static uint32_t calcCrc(const void *data, size_t length)
 
     while (ptr < end)
     {
-        LL_CRC_FeedData8(CRC, *ptr++);
+        LL_CRC_FeedData8(CRC, *ptr);
+    	ptr++;
     }
 
-    return LL_CRC_ReadData32(CRC);
+    return ~LL_CRC_ReadData32(CRC);
 }
 
 
@@ -255,7 +256,7 @@ static void receiveHeader(PortState *port)
     }
     else if ((byte ^ port->rxBuffer[1]) == header[port->rxIndex] || port->rxIndex == 1 || port->rxIndex == 3)
     {
-        port->rxBuffer[port->rxIndex] = byte;
+        port->rxBuffer[port->rxIndex] = byte ^ port->rxBuffer[1];
         port->rxIndex++;
         if (port->rxIndex == sizeof(header))
         {
@@ -301,7 +302,7 @@ static void receiveContent(PortState *port)
         txSendBuffer(port->uart, txBuffer, txSize);
         if (validatePacket(port->rxBuffer, port->rxIndex))
         {
-            packetReceived(port, port->rxBuffer + sizeof(header), port->rxIndex - sizeof(header));
+            packetReceived(port, port->rxBuffer + sizeof(header), port->rxIndex - sizeof(header) - 4);
         }
         switchToHeader(port);
     }
@@ -410,6 +411,7 @@ static uint8_t applyMask(uint8_t *data, size_t length)
             bitIndex++;
         }
         mask = (uint8_t)(wordIndex + bitIndex);
+        mask ^= ESC;
         // Apply mask
         ptr = data;
         end = ptr + length;
@@ -426,7 +428,7 @@ static uint8_t applyMask(uint8_t *data, size_t length)
 static void txFinalize()
 {
     uint32_t crc = calcCrc(&txBuffer[2], txSize - 2);
-    copyBytes(&txBuffer[txSize], &crc, sizeof(crc));
+    setUint32(&txBuffer[txSize], crc);
     txSize += sizeof(crc);
     txBuffer[1] = applyMask(&txBuffer[2], txSize - 2);
     txBuffer[txSize++] = ESC;
@@ -532,6 +534,8 @@ static void executeCommand(struct PortState *port, uint8_t cmd, const uint8_t *d
             NVIC_SystemReset();
             return;
         case CMD_PING:
+            txAppend(port, data, length);
+            return;
         default:
             return;
     }
