@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "uart.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -104,7 +104,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   __disable_irq();
-  uartInit();
 
   /* USER CODE END 2 */
 
@@ -112,7 +111,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    uartPoll();
+    void uartPoll(USART_TypeDef *uart0, USART_TypeDef *uart1, USART_TypeDef *uart2, USART_TypeDef *uart3);
+    uartPoll(USART1, USART2, NULL, NULL);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

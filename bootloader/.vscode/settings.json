@@ -1,6 +1,7 @@
 {
     "C_Cpp.default.defines": [
         "STM32C011xx",
-        "USE_FULL_LL_DRIVER"
+        "USE_FULL_LL_DRIVER",
+        "NUM_PORTS=2"
     ]
 }
