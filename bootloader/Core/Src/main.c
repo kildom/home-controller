@@ -165,6 +165,7 @@ void SystemClock_Config(void)
   */
 static void MX_CRC_Init(void)
 {
+
   /* USER CODE BEGIN CRC_Init 0 */
 #if 0
   /* USER CODE END CRC_Init 0 */

@@ -574,6 +574,7 @@ void bootSelect()
     extern uint8_t _edata;
     extern uint64_t _estack;
 
+    // Verify that the application forced bootloader mode by writing the specific value to end of SRAM
     if (_estack == 0x6015A81F165BBB3EuLL) {
         return;
     }
@@ -582,14 +583,17 @@ void bootSelect()
     uint32_t bootloaderEnd = (programCodeEnd + FLASH_PAGE_SIZE - 1) & ~(FLASH_PAGE_SIZE - 1);
     uint32_t* vectorTable = (uint32_t *)bootloaderEnd;
 
+    // Verify that initial stack pointer points to SRAM
     if (vectorTable[0] <= SRAM_BASE || vectorTable[0] > (uint32_t)&_estack + sizeof(_estack)) {
         return;
     }
 
+    // Verify that reset handler points to valid address in flash after bootloader
     if (vectorTable[1] <= bootloaderEnd || vectorTable[1] > FLASH_BASE + FLASH_SIZE) {
         return;
     }
 
+    // Switch to application vector table and jump to application reset handler
     SCB->VTOR = bootloaderEnd;
     startApplication(vectorTable[0], vectorTable[1]);
 }
@@ -641,5 +645,4 @@ void bootSelect()
  *      CRC32
  *      ESC
  *      END
- * 
  */
