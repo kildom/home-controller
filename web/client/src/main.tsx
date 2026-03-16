@@ -6,8 +6,6 @@ import { getState } from './state';
 import { deriveKeys } from './crypto.ts';
 import { Connection } from './connection.ts';
 
-const WEBSOCKET_URL = 'http://localhost:8001/connect';
-
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <App />
@@ -53,7 +51,7 @@ async function loginProcess() {
         let newPassword = '';
         // TODO: Check local storage for saved password and show login prompt only if not found or invalid
         try {
-            newPassword = '123';
+            newPassword = '1234';
             authKeys = await deriveKeys(newPassword, authFile!.salt, authFile!.x, authFile!.y);
             getState().authState.setPasswordValid(true);
         } catch (e) {

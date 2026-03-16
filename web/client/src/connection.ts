@@ -1,7 +1,7 @@
 import { deriveKeys, sign } from "./crypto";
 
 const AUTH_DATA_URL = '/auth.json';
-const WEB_SOCKET_URL = 'http://localhost:8001/connect';
+const WEB_SOCKET_URL = '/connect';
 
 
 const STATE_DISCONNECTED = 0;
@@ -177,8 +177,8 @@ export class Connection {
         document.cookie = `connectKey=${sig1}; path=/;`;
 
         let httpURL = new URL(WEB_SOCKET_URL, window.location.href);
-        //let wsURL = httpURL.toString().replace("https", "wss").replace("http", "ws");
-        let wsURL = WEB_SOCKET_URL;
+        let wsURL = httpURL.toString().replace("https", "wss").replace("http", "ws");
+        //let wsURL = 'http://localhost:8001/connect';
         if (this.connectLoopState === STATE_DISCONNECTING) {
             return new Event('disconnect');
         }

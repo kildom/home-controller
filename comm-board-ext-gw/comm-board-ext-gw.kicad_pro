@@ -38,8 +38,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.8,
-          "height": 1.27,
-          "width": 2.54
+          "height": 1.6,
+          "width": 2.4
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -66,9 +66,9 @@
         "annular_width": "error",
         "clearance": "error",
         "connection_width": "warning",
-        "copper_edge_clearance": "error",
+        "copper_edge_clearance": "ignore",
         "copper_sliver": "warning",
-        "courtyards_overlap": "error",
+        "courtyards_overlap": "ignore",
         "creepage": "error",
         "diff_pair_gap_out_of_range": "error",
         "diff_pair_uncoupled_length_too_long": "error",
@@ -79,7 +79,7 @@
         "footprint_filters_mismatch": "ignore",
         "footprint_symbol_mismatch": "warning",
         "footprint_type_mismatch": "ignore",
-        "hole_clearance": "error",
+        "hole_clearance": "ignore",
         "hole_to_hole": "warning",
         "holes_co_located": "warning",
         "invalid_outline": "error",
@@ -125,7 +125,7 @@
         "max_error": 0.005,
         "min_clearance": 0.0,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.5,
+        "min_copper_edge_clearance": 0.05,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
@@ -188,8 +188,14 @@
       ],
       "track_widths": [
         0.0,
-        0.54,
-        1.0
+        1.0,
+        1.3,
+        1.5,
+        1.74,
+        2.0,
+        2.3,
+        2.5,
+        3.0
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -466,56 +472,28 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "io-board.kicad_pro",
+    "filename": "comm-board-ext-gw.kicad_pro",
     "version": 3
   },
   "net_settings": {
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.7,
-        "diff_pair_gap": 0.5,
+        "clearance": 0.8,
+        "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
-        "diff_pair_width": 0.4,
+        "diff_pair_width": 0.2,
         "line_style": 0,
-        "microvia_diameter": 0.9,
-        "microvia_drill": 0.5,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.54,
-        "via_diameter": 1.2,
-        "via_drill": 0.6,
+        "track_width": 1.0,
+        "via_diameter": 1.7,
+        "via_drill": 0.8,
         "wire_width": 6
-      },
-      {
-        "clearance": 0.7,
-        "diff_pair_gap": 0.5,
-        "diff_pair_width": 0.4,
-        "microvia_diameter": 0.9,
-        "microvia_drill": 0.5,
-        "name": "ESD",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.54,
-        "via_diameter": 1.2,
-        "via_drill": 0.6
-      },
-      {
-        "clearance": 1.2,
-        "diff_pair_gap": 1.5,
-        "diff_pair_width": 1.0,
-        "microvia_diameter": 3.0,
-        "microvia_drill": 1.0,
-        "name": "HighPower",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 2.0,
-        "via_diameter": 3.0,
-        "via_drill": 1.0
       }
     ],
     "meta": {
@@ -523,36 +501,7 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": [
-      {
-        "netclass": "HighPower",
-        "pattern": "/Relays/REL.*-(COM|OUT.*)"
-      },
-      {
-        "netclass": "ESD",
-        "pattern": "/ESD.*"
-      },
-      {
-        "netclass": "ESD",
-        "pattern": "___/IO-IN.+"
-      },
-      {
-        "netclass": "ESD",
-        "pattern": "x.*"
-      },
-      {
-        "netclass": "ESD",
-        "pattern": "/LED.-PWM"
-      },
-      {
-        "netclass": "ESD",
-        "pattern": "Net-(Q12-B)"
-      },
-      {
-        "netclass": "ESD",
-        "pattern": "Net-(D1-A)"
-      }
-    ]
+    "netclass_patterns": []
   },
   "pcbnew": {
     "last_paths": {
@@ -683,80 +632,8 @@
   },
   "sheets": [
     [
-      "5a6848ff-426f-432e-bc4d-b6eef5e4348a",
+      "a8db9945-a638-45ee-8cb4-13deaf42d478",
       "Root"
-    ],
-    [
-      "6d448004-438c-45a8-8ad9-7793f700aba9",
-      "Relays"
-    ],
-    [
-      "f56b04d9-9538-4698-b629-6e8d5cf416b0",
-      "IO3"
-    ],
-    [
-      "22ee202b-fd85-4951-a08e-ad31a328852d",
-      "IO2"
-    ],
-    [
-      "85dae1fb-2ae5-4818-a3de-3f6de1f334a6",
-      "IO1"
-    ],
-    [
-      "e1542026-4c37-4378-84e5-429896c8a957",
-      "IO4"
-    ],
-    [
-      "e8344a09-988a-4764-aec0-77d83b82efa0",
-      "IO5"
-    ],
-    [
-      "1272f569-a0a5-44c5-a80e-9e76d4b32715",
-      "IO6"
-    ],
-    [
-      "1d9a633e-17cb-470d-a6ff-83a88c5c2868",
-      "IO7"
-    ],
-    [
-      "8bd3b39e-a889-4c36-b4fc-a66092e1b111",
-      "IO8"
-    ],
-    [
-      "b659d338-200f-4c62-aa3a-607371426b36",
-      "IO9"
-    ],
-    [
-      "54948edd-14bf-42b5-91b1-ff857e052f21",
-      "IO10"
-    ],
-    [
-      "cab0c593-2b0b-484f-afa5-e7586929b90b",
-      "IO11"
-    ],
-    [
-      "333f4fb9-2ea8-49d4-b7cc-d04719025af8",
-      "IO12"
-    ],
-    [
-      "61973274-9cce-47d2-8e49-717ae3820e73",
-      "IO13"
-    ],
-    [
-      "5680163a-59ef-49fe-bd7d-0718bd629dd1",
-      "LED_Driver1"
-    ],
-    [
-      "e46419f4-efe2-457e-998d-7494f8c6e183",
-      "LED_Driver2"
-    ],
-    [
-      "42236bee-c8bf-4e47-ac8c-436153478c99",
-      "OC1"
-    ],
-    [
-      "578b8280-25c4-4457-bfea-b89e16c26652",
-      "OC2"
     ]
   ],
   "text_variables": {}
