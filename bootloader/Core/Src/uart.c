@@ -1,35 +1,13 @@
 #include "main.h"
 #include "uart.h"
 #include "prog.h"
+#include "cfg.h"
 
-#define PORT0_BAUDRATE 115200
-#define PORT1_BAUDRATE 115200
 
-#define BUFFER_SIZE 256 // TODO: May be smaller
+#pragma region Utility functions
 
-static const int ERROR_DATA = -2;
-static const int NO_DATA = -1;
-static const uint8_t NETWORK_ESC = 0xAA;
-static const uint8_t NETWORK_END = 0xFF;
-static const uint8_t BOOT_ESC = 0xA5;
-static const int BOOT_END = 0x100;
 
-typedef struct PortState
-{
-    USART_TypeDef *uart;
-    uint32_t rxIndex;
-    bool headerReceived;
-    int rxValueOffset;
-    uint8_t rxBuffer[BUFFER_SIZE];
-} PortState;
-
-static PortState portStates[2];
-static uint8_t header[6 + 1 + 1 + 2 * 12];
-static int headerLength;
-static uint8_t txBuffer[BUFFER_SIZE];
-static int txIndex = 0;
-
-void copyBytes(void *dest, const void *src, size_t n)
+static void copyBytes(void *dest, const void *src, size_t n)
 {
     uint8_t *d = (uint8_t *)dest;
     const uint8_t *s = (const uint8_t *)src;
@@ -40,93 +18,29 @@ void copyBytes(void *dest, const void *src, size_t n)
     }
 }
 
-uint32_t encodeBytes(void *dest, const void *src, size_t n)
+
+static uint32_t getUint32(const void *data)
 {
-    uint8_t *d = (uint8_t *)dest;
-    const uint8_t *s = (const uint8_t *)src;
-    const uint8_t *end = (const uint8_t *)src + n;
-    while (s < end)
-    {
-        uint8_t byte = *s++;
-        if (byte == BOOT_ESC || byte == NETWORK_ESC)
-        {
-            *d++ = BOOT_ESC;
-            byte -= BOOT_ESC;
-        }
-        *d++ = byte;
-    }
-    return d - (uint8_t *)dest;
+    uint32_t value;
+    copyBytes(&value, data, sizeof(value));
+    return value;
 }
 
-/*
- * Programmer -> Proxy and Proxy -> destination port (since they are almost the same):
- *      ESC
- *      mask
- *      flags = 0x21 (bootloader protocol, one destination node)
- *      src   = programmer address
- *      dst   = proxy address
- *      boot  = type: pass, port: N
- *      UID length
- *      UID
- *      cmd
- *      cmd counter
- *      cmd arguments...
- *      CRC32
- *      ESC
- *      END (not when Proxy -> destination port)
- * 
- * Proxy -> destination port
- *      ESC
- *      mask
- *      flags = 0x21 (bootloader protocol, one destination node)
- *      src   = programmer address
- *      dst   = 0 (unknown device)
- *      boot  = 0
- *      data...
- *      CRC32
- *      ESC
- *      (no END)
- * 
- */
 
-void uartInit()
-{
-    static const uint8_t constHeaderBytes[6] = {
-        0xAA, // 0 ESC      - start of packet
-        0x00, // 1 mask     - boot packet will never contain 0xAA
-        0x21, // 2 flags    - bootloader protocol, one destination node
-        0x00, // 3 src      - address of proxy node, it will be ignored
-        0x00, // 4 dst      - address of programmer node, it will be ignored
-        0xB1, // 5 type     - bootloader packet type
-              // 6 UID length
-              // 7 UID model
-              // 8... UID content
-    };
+#pragma endregion
 
-    uint32_t wUID[3] = {
-        HAL_GetUIDw0(),
-        HAL_GetUIDw1(),
-        HAL_GetUIDw2(),
-    };
 
-    portStates[0].uart = USART1;
-    portStates[1].uart = USART2;
-    copyBytes(header, constHeaderBytes, 6);
-    header[6] = encodeBytes(&header[8], wUID, sizeof(wUID)) + 1;
-    header[7] = ModelSTM32C011xx;
-    headerLength = 6 + header[6];
-}
+#pragma region USART input output
 
-void txSend(USART_TypeDef *uart, uint8_t byte)
+
+static void txSend(USART_TypeDef *uart, uint8_t byte)
 {
     // Wait until Tx FIFO is not full using TXE flag in USART_ISR register
-    while (!LL_USART_IsActiveFlag_TXE(uart))
-    {
-    }
+    while (!LL_USART_IsActiveFlag_TXE(uart));
     LL_USART_TransmitData8(uart, byte);
 }
 
-int rxReceive(USART_TypeDef *uart)
+static int rxReceive(USART_TypeDef *uart)
 {
     // Use RXNE flag in USART_ISR register to check if data is received and can be read from RDR register
     if (LL_USART_IsActiveFlag_RXNE(uart))
@@ -147,11 +61,139 @@ int rxReceive(USART_TypeDef *uart)
     }
 }
 
-static void switchHandler(PortState *port, bool headerReceived)
+
+#pragma endregion
+
+#define BUFFER_SIZE 256 // TODO: May be smaller
+
+#define UUID_SIZE 13
+
+static const int ERROR_DATA = -2;
+static const int NO_DATA = -1;
+static const uint8_t NETWORK_ESC = 0xAA;
+static const uint8_t NETWORK_END = 0xFF;
+
+typedef struct PortState
 {
-    port->headerReceived = headerReceived;
+    USART_TypeDef *uart;
+    uint32_t rxIndex;
+    bool headerReceived;
+    uint8_t rxBuffer[BUFFER_SIZE];
+} PortState;
+
+static const int NUM_PORTS = 0
+#if defined(PORT0_USART)
+    + 1
+#endif
+#if defined(PORT1_USART)
+    + 1
+#endif
+#if defined(PORT2_USART)
+    + 1
+#endif
+#if defined(PORT3_USART)
+    + 1
+#endif
+;
+
+static PortState portStates[NUM_PORTS];
+__attribute__((aligned(4)))
+static uint8_t header[7 + UUID_SIZE];
+static uint8_t txBuffer[BUFFER_SIZE];
+static int txSize = 0;
+
+/*
+ * Programmer -> Proxy
+ *      ESC
+ *      mask
+ *      flags = 0x21 (bootloader protocol, one destination node)
+ *      src   = programmer address
+ *      dst   = proxy address
+ *      boot  = type: pass, port: N
+ *      data...
+ *      CRC32
+ *      ESC
+ *      END
+ * 
+ * Proxy -> destination port
+ *      ESC
+ *      mask
+ *      flags = 0x21 (bootloader protocol, one destination node)
+ *      src   = programmer address
+ *      dst   = 0 (unknown device)
+ *      boot  = type: passed
+ *      UID length
+ *      UID
+ *      cmd
+ *      cmd counter
+ *      cmd arguments...
+ *      CRC32
+ *      ESC
+ *
+ *      (missing END)
+ *
+ *      ESC               # Start of bootload transmission
+ *      mask
+ *      flags = 0x21 (bootloader protocol, one destination node)
+ *      src   = 0 (proxy address)
+ *      dst   = programmer address
+ *      boot  = response
+ *      UID length
+ *      UID
+ *      last valid cmd counter
+ *      last valid cmd result ...
+ *      CRC32
+ *      ESC
+ *      END
+ * 
+ */
+
+enum {
+    BOOT_TYPE_PASS = 0,
+    BOOT_TYPE_PASSED = 1,
+    BOOT_TYPE_RESPONSE = 2,
+};
+
+
+
+void uartInit()
+{
+#if defined(PORT0_USART)
+    portStates[0].uart = PORT0_USART;
+#endif
+#if defined(PORT1_USART)
+    portStates[1].uart = PORT1_USART;
+#endif
+#if defined(PORT2_USART)
+    portStates[2].uart = PORT2_USART;
+#endif
+#if defined(PORT3_USART)
+    portStates[3].uart = PORT3_USART;
+#endif
+
+    header[0] = NETWORK_ESC;
+    // header[1] = mask
+    header[2] = 0x21; // flags: bootloader protocol, one destination node
+    // header[3] = src
+    header[4] = 0x00; // dst is always 0
+    header[5] = BOOT_TYPE_PASSED;
+    header[6] = UUID_SIZE;
+    header[7] = ModelSTM32C011xx;
+    *(uint32_t*)&header[8] = HAL_GetUIDw0();
+    *(uint32_t*)&header[12] = HAL_GetUIDw1();
+    *(uint32_t*)&header[16] = HAL_GetUIDw2();
+}
+
+static void switchToHeader(PortState *port)
+{
+    port->headerReceived = false;
     port->rxIndex = 0;
-    port->rxValueOffset = 0;
+    port->rxBuffer[1] = 0; // Reset mask
+}
+
+static void switchToContent(PortState *port)
+{
+    port->headerReceived = true;
 }
 
 static void receiveHeader(PortState *port)
@@ -166,31 +208,27 @@ static void receiveHeader(PortState *port)
     }
     else if (byte == ERROR_DATA)
     {
-        switchHandler(port, false);
+        switchToHeader(port);
     }
-    else if (byte == header[port->rxIndex] || port->rxIndex == 3) // Allow any byte at dst position
+    else if ((byte ^ port->rxBuffer[1]) == header[port->rxIndex] || port->rxIndex == 1 || port->rxIndex == 3)
     {
+        port->rxBuffer[port->rxIndex] = byte;
         port->rxIndex++;
-        if (port->rxIndex == headerLength)
+        if (port->rxIndex == sizeof(header))
         {
-            switchHandler(port, true);
+            switchToContent(port);
         }
     }
     else
     {
-        switchHandler(port, false);
+        switchToHeader(port);
     }
 }
 
-static bool validatePacket(const uint8_t *data, size_t length)
+static uint32_t calcCrc(const void *data, size_t length)
 {
-    if (length < 4)
-    {
-        return false;
-    }
-
     const uint8_t *ptr = data;
-    const uint8_t *end = ptr + length - 4;
+    const uint8_t *end = data + length;
 
     LL_CRC_ResetCRCCalculationUnit(CRC);
 
@@ -199,29 +237,98 @@ static bool validatePacket(const uint8_t *data, size_t length)
         LL_CRC_FeedData8(CRC, *ptr++);
     }
 
-    uint32_t calculatedCrc = LL_CRC_ReadData32(CRC);
-    uint32_t receivedCrc;
-    copyBytes(&receivedCrc, end, sizeof(receivedCrc));
+    return LL_CRC_ReadData32(CRC);
+}
+
+static bool validatePacket(const uint8_t *data, size_t length)
+{
+    if (length < 4) {
+        return false;
+    }
+
+    uint32_t calculatedCrc = calcCrc(&data[2], length - 2 - 4);
+    uint32_t receivedCrc = getUint32(data + length - 4);
 
     return calculatedCrc == receivedCrc;
 }
 
-static uint32_t sendBytes(USART_TypeDef *uart, const uint8_t *data, size_t length)
+static void sendBytes(USART_TypeDef *uart, const uint8_t *data, size_t length)
 {
-    LL_CRC_ResetCRCCalculationUnit(CRC);
     for (size_t i = 0; i < length; i++)
     {
-        uint8_t byte = data[i];
-        LL_CRC_FeedData8(CRC, byte);
-        if (byte == BOOT_ESC || byte == NETWORK_ESC)
-        {
-            txSend(uart, BOOT_ESC);
-            byte -= BOOT_ESC;
-        }
-        txSend(uart, byte);
+        txSend(uart, data[i]);
     }
-    return LL_CRC_ReadData32(CRC);
 }
+
+void uartTxPrepare(PortState *port)
+{
+    copyBytes(txBuffer, header, sizeof(header));
+    // txBuffer[0] = ESC unchanged
+    // txBuffer[1] = mask tbd
+    // txBuffer[2] = flags unchanged
+    // txBuffer[3] = src 0 (proxy address)
+    txBuffer[4] = port->rxBuffer[3]; // dst = programmer address
+    txBuffer[5] = BOOT_TYPE_RESPONSE; // boot  = response
+    // txBuffer[6] = UID length unchanged
+    // txBuffer[7...] = UID unchanged
+    txSize = sizeof(header);
+}
+
+
+
+static uint8_t applyMask(uint8_t *data, size_t length)
+{
+    uint8_t mask = 0;
+    uint32_t map[256 / 32] = {0};
+
+    uint8_t *ptr = data;
+    uint8_t *end = ptr + length;
+    while (ptr < end) {
+        uint8_t byte = *ptr;
+        map[byte / 32] |= (1 << (byte % 32));
+        ptr++;
+    }
+
+    // Do content scrambling is needed
+    if (map[NETWORK_ESC / 32] & (1 << (NETWORK_ESC % 32))) {
+        // Avoid using ESC or END as mask
+        map[(NETWORK_ESC ^ NETWORK_ESC) / 32] |= (1 << ((NETWORK_ESC ^ NETWORK_ESC) % 32));
+        map[(NETWORK_END ^ NETWORK_ESC) / 32] |= (1 << ((NETWORK_END ^ NETWORK_ESC) % 32));
+        // Find first not fully used word in map
+        uint32_t* ptrMap = map;
+        size_t wordIndex = 0;
+        while (*ptrMap == 0xFFFFFFFF) {
+            ptrMap++;
+            wordIndex += 32;
+        }
+        // Find first free bit in the word
+        size_t bitIndex = 0;
+        while ((*ptrMap & (1 << bitIndex)) != 0) {
+            bitIndex++;
+        }
+        mask = (uint8_t)(wordIndex + bitIndex);
+        // Apply mask
+        ptr = data;
+        end = ptr + length;
+        while (ptr < end) {
+            *ptr ^= mask;
+            ptr++;
+        }
+    }
+
+    return mask;
+}
+
+void uartTxFinalize(PortState *port)
+{
+    uint32_t crc = calcCrc(&txBuffer[2], txSize - 2);
+    copyBytes(&txBuffer[txSize], &crc, sizeof(crc));
+    txSize += sizeof(crc);
+    txBuffer[1] = applyMask(&txBuffer[2], txSize - 2);
+    txBuffer[txSize++] = NETWORK_ESC;
+    txBuffer[txSize++] = NETWORK_END;
+}
+
 
 static void receiveContent(PortState *port)
 {
@@ -235,37 +342,27 @@ static void receiveContent(PortState *port)
     }
     else if (byte == ERROR_DATA)
     {
-        switchHandler(port, false);
+        switchToHeader(port);
     }
-    else if (byte == BOOT_ESC)
+    else if (byte == NETWORK_ESC)
     {
-        port->rxValueOffset = byte;
+        sendBytes(port->uart, txBuffer, txSize);
+        if (validatePacket(port->rxBuffer, port->rxIndex))
+        {
+            packetReceived(port, port->rxBuffer, port->rxIndex);
+        }
+        switchToHeader(port);
     }
     else
     {
-        byte += port->rxValueOffset;
-        port->rxValueOffset = 0;
-
-        if (byte == BOOT_END)
-        {
-            uint32_t crc = sendBytes(port->uart, txBuffer, txIndex);
-            sendBytes(port->uart, (uint8_t *)&crc, sizeof(crc));
-            txSend(port->uart, NETWORK_ESC);
-            txSend(port->uart, NETWORK_END);
-            txIndex = 0;
-            if (port->rxIndex > 0 && validatePacket(port->rxBuffer, port->rxIndex))
-            {
-                packetReceived(port->rxBuffer, port->rxIndex);
-            }
-            switchHandler(port, false);
-        }
-        else if (port->rxIndex < sizeof(port->rxBuffer))
+        byte ^= port->rxBuffer[1]; // Unmask byte
+        if (port->rxIndex < sizeof(port->rxBuffer))
         {
             port->rxBuffer[port->rxIndex++] = byte;
         }
         else
         {
-            switchHandler(port, false);
+            switchToHeader(port);
         }
     }
 }
@@ -290,8 +387,8 @@ void uartPoll()
     }
 }
 
-void uartAppend(const void *data, size_t length)
+void uartTxAppend(struct PortState *port, const void *data, size_t length)
 {
-    copyBytes(&txBuffer[txIndex], data, length);
-    txIndex += length;
+    copyBytes(&txBuffer[txSize], data, length);
+    txSize += length;
 }

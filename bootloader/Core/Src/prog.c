@@ -41,14 +41,9 @@ enum {
     CMD_WRITE = 2,
     CMD_READ = 3,
     CMD_RESET = 4,
+    CMD_PING = 5,
+    CMD_LAST_ID = CMD_PING,
 };
-
-static uint32_t getUint32(const uint8_t *data)
-{
-    uint32_t value;
-    copyBytes(&value, data, sizeof(value));
-    return value;
-}
 
 static void waitFlashReady()
 {
@@ -97,57 +92,54 @@ static void writeData(uint32_t address, const uint8_t *data, size_t length)
     CLEAR_BIT(FLASH->CR, FLASH_CR_PG);
 }
 
-static void readData(uint32_t address, uint8_t length)
+static void readData(struct PortState *port, uint32_t address, uint8_t length)
 {
-    uartAppend((const void *)address, length);
+    uartTxAppend(port, (const void *)address, length);
 }
 
-static void progInit()
+static void progInit(struct PortState *port)
 {
-    uartAppend(&deviceInfo, sizeof(deviceInfo));
+    uartTxAppend(port, &deviceInfo, sizeof(deviceInfo));
     HAL_FLASH_Unlock();
 }
 
-static bool executeCommand(uint8_t cmd, const uint8_t *data, size_t length)
+static void executeCommand(struct PortState *port, uint8_t cmd, const uint8_t *data, size_t length)
 {
     switch (cmd) {
         case CMD_INIT:
-            progInit();
-            return true;
+            progInit(port);
+            return;
         case CMD_ERASE:
             pageErase(getUint32(data));
-            return true;
+            return;
         case CMD_WRITE:
             writeData(getUint32(data), data + 4, length - 4);
-            return true;
+            return;
         case CMD_READ:
-            readData(getUint32(data), data[4]);
-            return true;
+            readData(port, getUint32(data), data[4]);
+            return;
         case CMD_RESET:
             NVIC_SystemReset();
-            return true;
+            return;
+        case CMD_PING:
         default:
-            return false; // Unknown command
+            return;
     }
 }
 
-static int32_t lastValidPacketCounter = -1;
+static uint32_t lastValidPacketCounter = 0xFFFFFFFF;
 
-void packetReceived(uint8_t *data, size_t packetLength)
+
+void packetReceived(struct PortState *port, uint8_t *data, size_t length)
 {
     uint8_t cmd = data[0];
-    int32_t packetCounter;
-    copyBytes(&packetCounter, &data[1], sizeof(packetCounter));
+    uint32_t packetCounter = getUint32(&data[1]);
 
-    if (cmd == CMD_INIT) {
-        lastValidPacketCounter = -1;
+    if ((packetCounter == 0xFFFFFFFF || packetCounter == lastValidPacketCounter + 1) && cmd <= CMD_LAST_ID) {
+        lastValidPacketCounter++;
+        uartTxPrepare(port);
+        uartTxAppend(port, &lastValidPacketCounter, sizeof(lastValidPacketCounter));
+        executeCommand(port, cmd, &data[1 + sizeof(packetCounter)], length - 1 - sizeof(packetCounter));
+        uartTxFinalize(port);
     }
-
-    if (packetCounter == lastValidPacketCounter + 1) {
-        if (executeCommand(cmd, &data[1 + sizeof(packetCounter)], packetLength - 1 - sizeof(packetCounter))) {
-            lastValidPacketCounter = packetCounter;
-        }
-    }
-
-    uartAppend(&lastValidPacketCounter, sizeof(lastValidPacketCounter));
 }

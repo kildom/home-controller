@@ -1,10 +1,8 @@
 #ifndef PROG_H
 #define PROG_H
 
-enum Model {
-	ModelSTM32C011xx = 1,
-};
+#include "uart.h"
 
-void packetReceived(uint8_t *data, size_t length);
+void packetReceived(struct PortState *port, uint8_t *data, size_t length);
 
 #endif // PROG_H
