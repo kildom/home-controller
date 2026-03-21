@@ -1,14 +1,15 @@
 
 
+# If new chip is required
+
 * Create new project in STM32CubeIDE
 * Configure USARTs:
-  * 115200 baud, 8N1, no flow control
+  * 8N1, no flow control
   * Overrun: DISABLE
-  * GPIO open-drain on TX where needed
 * SYS:
   * Timebase source: None
 * Clocks:
-  * Internal shold be good enough
+  * Internal should be good enough
 * CRC:
   * Activate
 * Set heap size to 0x000
@@ -24,7 +25,7 @@
     uartPoll(USART1, USART2, NULL, NULL);
     ```
 * Linker script:
-  * Set flash size to 4K
+  * Set flash size to 8K
   * Set RAM size to actual RAM size minus 8 bytes (for the bootloader magic bytes)
 * `SystemInit()`:
   * Add `void bootSelect(); bootSelect();` at the beginning of the function
@@ -32,4 +33,10 @@
   * Add new model
   * Check if the memory sizes are correct
   * Check if flash writing is correct
+* Edit `patch.py`:
 
+
+# If the same chip but different port configuration
+
+* Create new build configurations in STM32CubeIDE
+* Edit PORTx_BAUDRATE, PORTx_OC defines in new build configurations

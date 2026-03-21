@@ -1,2 +1,4 @@
 /router/Release/
-router/Debug/
+/router/Debug/
+/router/Release_*/
+/router/Debug_*/
