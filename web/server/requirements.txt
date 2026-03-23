@@ -16,3 +16,4 @@
 # Required:
 voluptuous~=0.16.0
 websockets~=16.0
+pyserial~=3.5

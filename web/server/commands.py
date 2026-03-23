@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from types import SimpleNamespace
 from voluptuous import Schema, Required, All, Match, ALLOW_EXTRA
+from addresses import keep_alive, release_addr, KeepAliveSchema, ReleaseAddrSchema
+from serial_daemon import send as serial_send, SendSchema
 
 # ---------- Helpers ----------
 
@@ -48,7 +50,7 @@ def set_auth_result(success: bool):
 
 # ---------- Command Handlers ----------
 
-async def set_auth(websocket, message: SimpleNamespace):
+async def set_auth(session, message: SimpleNamespace):
     with open(Path(__file__).parent.parent / "auth.json", 'w') as f:
         json.dump(namespace_to_dict(message.auth), f, indent=4)
 
@@ -59,12 +61,16 @@ async def set_auth(websocket, message: SimpleNamespace):
 
 commands = {
     "set_auth": (set_auth, SetAuthSchema),
+    "keep_alive": (keep_alive, KeepAliveSchema),
+    "release_addr": (release_addr, ReleaseAddrSchema),
+    "send": (serial_send, SendSchema),
 }
 
 
 # ---------- Executor ----------
 
-async def execute_command(websocket, message_string):
+async def execute_command(session, message_string):
+    websocket = session.websocket
     try:
         message = json.loads(message_string)
         if not isinstance(message, dict):
@@ -90,7 +96,7 @@ async def execute_command(websocket, message_string):
 
     # -------- Execute Command --------
     try:
-        res = await command_func(websocket, validated_message)
+        res = await command_func(session, validated_message)
     except Exception as e:
         await websocket.send(json.dumps({"type": "error", "message": f"Error executing command {command}: {str(e)}"}))
         return

@@ -2,15 +2,84 @@ import { deriveKeys, sign } from "./crypto";
 
 const AUTH_DATA_URL = '/auth.json';
 const WEB_SOCKET_URL = '/connect';
+const ADDRESS_TOKEN_SESSION_KEY = 'home-controller.addressToken';
 
 
-const STATE_DISCONNECTED = 0;
-const STATE_CONNECTED = 1;
-const STATE_DISCONNECTING = 2;
+enum LoopState {
+    DISCONNECTED = 0,
+    CONNECTED = 1,
+    DISCONNECTING = 2,
+}
+
+type AuthData = {
+    x: string;
+    y: string;
+    salt: string;
+    ch1: string;
+};
+
+type DerivedKeys = Awaited<ReturnType<typeof deriveKeys>>;
+
+// Incoming WebSocket messages (server → client)
+interface WsChallengeMessage {
+    type: 'challenge';
+    challenge: string;
+}
+
+interface WsChallengeAcceptedMessage {
+    type: 'challenge_accepted';
+    address: number;
+    token: string;
+}
+
+interface WsErrorMessage {
+    type: 'error';
+    message: string;
+}
+
+interface WsSetAuthResultMessage {
+    type: 'set_auth_result';
+    success: boolean;
+}
+
+// Outgoing WebSocket messages (client → server)
+interface WsChallengeResponseMessage {
+    type: 'challenge_response';
+    signature: string;
+    address_token?: string;
+}
+
+interface WsSetAuthMessage {
+    type: 'set_auth';
+    auth: AuthData;
+}
+
+type IncomingMessage = WsChallengeMessage | WsChallengeAcceptedMessage | WsSetAuthResultMessage | WsErrorMessage | Record<string, unknown>;
+type OutgoingMessage = WsChallengeResponseMessage | WsSetAuthMessage | Record<string, unknown>;
+type LocalHandler = (data: IncomingMessage) => boolean;
+
+function getRandomHex(bytesLength: number): string {
+    const bytes = crypto.getRandomValues(new Uint8Array(bytesLength));
+    return Array.from(bytes).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
 
 export class Connection {
 
-    constructor() {
+    public onMessage: ((data: IncomingMessage) => void) | null;
+    public onDisconnect: ((cause: unknown) => void) | null;
+    public onReconnected: (() => void) | null;
+    public onError: ((error: unknown) => void) | null;
+    private keys: DerivedKeys | null;
+    private keysPassword: string | null;
+    private websocket: WebSocket | null;
+    private connectLoopState: LoopState;
+    private localHandlers: Record<string, LocalHandler>;
+    private messageQueue: string[];
+    public active: boolean;
+    public address: number | null;
+    private authData: AuthData | null;
+
+    public constructor() {
         this.onMessage = null;
         this.onDisconnect = null;
         this.onReconnected = null;
@@ -18,31 +87,35 @@ export class Connection {
         this.keys = null;
         this.keysPassword = null;
         this.websocket = null;
-        this.connectLoopState = STATE_DISCONNECTED;
+        this.connectLoopState = LoopState.DISCONNECTED;
         this.localHandlers = {};
         this.messageQueue = [];
         this.active = false;
+        this.address = null;
+        this.authData = null;
     }
 
-    activate() {
+    private activate(): void {
         this.active = true;
         while (this.messageQueue.length > 0) {
-            let message = this.messageQueue.shift();
-            this.send(message);
+            const message = this.messageQueue.shift();
+            if (message) {
+                this.send(message);
+            }
         }
     }
 
-    deactivate() {
+    private deactivate(): void {
         this.active = false;
     }
 
-    async getAuthData() {
+    private async getAuthData(): Promise<AuthData> {
         if (!this.authData) {
             let attempt = 5;
             while (true) {
                 try {
-                    let response = await fetch(AUTH_DATA_URL + `?t=${Date.now()}`);
-                    this.authData = await response.json();
+                    const response = await fetch(AUTH_DATA_URL + `?t=${Date.now()}`);
+                    this.authData = (await response.json()) as AuthData;
                     break;
                 } catch (e) {
                     attempt--;
@@ -56,9 +129,9 @@ export class Connection {
         return this.authData;
     }
 
-    async deriveKeys(passwordStr) {
+    private async deriveKeys(passwordStr?: string): Promise<DerivedKeys | null> {
         if (passwordStr && passwordStr !== this.keysPassword) {
-            let authData = await this.getAuthData();
+            const authData = await this.getAuthData();
             this.keysPassword = passwordStr;
             this.keys = null;
             try {
@@ -71,8 +144,8 @@ export class Connection {
         return this.keys;
     }
 
-    async createAuthData(passwordStr) {
-        let keys = await deriveKeys(passwordStr);
+    private async createAuthData(passwordStr: string): Promise<AuthData> {
+        const keys = await deriveKeys(passwordStr, '', '', '');
         return {
             x: keys.x,
             y: keys.y,
@@ -81,14 +154,17 @@ export class Connection {
         };
     }
 
-    async verifyPassword(passwordStr) {
+    public async verifyPassword(passwordStr: string): Promise<boolean> {
         return (await this.deriveKeys(passwordStr)) != null;
     }
 
-    async connectLoop(resolve, reject) {
+    private async connectLoop(
+        resolve: (() => void) | null,
+        reject: ((reason?: unknown) => void) | null,
+    ): Promise<void> {
         let attempt = 0;
-        while (this.connectLoopState === STATE_CONNECTED) {
-            let cause;
+        while (this.connectLoopState === LoopState.CONNECTED) {
+            let cause: unknown;
             try {
                 cause = await this.connectAndWait(() => {
                     attempt = 0;
@@ -114,7 +190,7 @@ export class Connection {
                 reject = null;
                 break;
             } else {
-                if (!resolve && this.connectLoopState === STATE_CONNECTED) {
+                if (!resolve && this.connectLoopState === LoopState.CONNECTED) {
                     this.onDisconnect?.(cause);
                 }
                 await new Promise((res) => setTimeout(res, 500 + attempt * 200));
@@ -122,39 +198,39 @@ export class Connection {
         }
     }
 
-    connect(passwordStr) {
+    public connect(passwordStr: string): Promise<void> {
         return new Promise(async (resolve, reject) => {
             try {
                 await this.deriveKeys(passwordStr);
-                this.messageQueue.splice();
-                while (this.connectLoopState === STATE_DISCONNECTING) {
+                this.messageQueue.splice(0);
+                while (this.connectLoopState === LoopState.DISCONNECTING) {
                     await new Promise((res) => setTimeout(res, 100));
                 }
-                if (this.connectLoopState !== STATE_DISCONNECTED) {
+                if (this.connectLoopState !== LoopState.DISCONNECTED) {
                     throw new Error("Already connected");
                 }
-                this.connectLoopState = STATE_CONNECTED;
+                this.connectLoopState = LoopState.CONNECTED;
                 await this.connectLoop(resolve, reject);
-                this.connectLoopState = STATE_DISCONNECTED;
+                this.connectLoopState = LoopState.DISCONNECTED;
             } catch (e) {
                 reject(e);
             }
         });
     }
 
-    async disconnect() {
-        if (this.connectLoopState === STATE_CONNECTED) {
-            this.connectLoopState = STATE_DISCONNECTING;
+    public async disconnect(): Promise<void> {
+        if (this.connectLoopState === LoopState.CONNECTED) {
+            this.connectLoopState = LoopState.DISCONNECTING;
             if (this.websocket) {
                 this.websocket.close();
             }
-            while (this.connectLoopState !== STATE_DISCONNECTED) {
+            while (this.connectLoopState === LoopState.DISCONNECTING) {
                 await new Promise((res) => setTimeout(res, 100));
             }
         }
     }
 
-    async connectAndWait(connectedCallback) {
+    private async connectAndWait(connectedCallback: () => void): Promise<Event> {
         if (this.websocket) {
             this.websocket.onmessage = null;
             this.websocket.onclose = null;
@@ -172,76 +248,97 @@ export class Connection {
         if (!keys) {
             throw new Error("Invalid password");
         }
-        let sig1 = await sign(authData.ch1, keys.prv);
+        const sig1 = await sign(authData.ch1, keys.prv);
         console.log("Setting connectKey cookie", sig1);
         document.cookie = `connectKey=${sig1}; path=/;`;
 
-        let httpURL = new URL(WEB_SOCKET_URL, window.location.href);
-        let wsURL = httpURL.toString().replace("https", "wss").replace("http", "ws");
-        //let wsURL = 'http://localhost:8001/connect';
-        if (this.connectLoopState === STATE_DISCONNECTING) {
+        const httpURL = new URL(WEB_SOCKET_URL, window.location.href);
+        const wsURL = httpURL.toString()
+            .replace("https", "wss")
+            .replace("http", "ws")
+            .replace("5173", "8001");
+        if (this.connectLoopState === LoopState.DISCONNECTING) {
             return new Event('disconnect');
         }
         console.log(`Connecting to ${wsURL}`);
-        this.websocket = new WebSocket(wsURL);
-        let resolveCallback;
-        let rejectCallback;
-        let openPromise = new Promise((resolve, reject) => {
+        const websocket = new WebSocket(wsURL);
+        this.websocket = websocket;
+        let resolveCallback!: (value: Event) => void;
+        let rejectCallback!: (reason?: unknown) => void;
+        const openPromise = new Promise<Event>((resolve, reject) => {
             resolveCallback = resolve;
             rejectCallback = reject;
         });
-        let timeout = null;
-        let openError = (error) => {
+        let timeout: ReturnType<typeof setTimeout> | null = null;
+        const openError = (error: unknown) => {
             this.deactivate();
             if (timeout) {
                 clearTimeout(timeout);
                 timeout = null;
             }
             console.error('WebSocket or authentication error:', error);
-            this.websocket.onmessage = null;
-            this.websocket.onclose = null;
-            this.websocket.onerror = null;
-            this.websocket.onopen = null;
+            websocket.onmessage = null;
+            websocket.onclose = null;
+            websocket.onerror = null;
+            websocket.onopen = null;
             rejectCallback(error);
             try {
-                this.websocket.close();
+                websocket.close();
             } catch (e) { }
-            this.websocket = null;
+            if (this.websocket === websocket) {
+                this.websocket = null;
+            }
         }
-        this.websocket.onerror = (event) => { openError(new Error("WebSocket error observed:", { cause: event })); };
-        this.websocket.onclose = (event) => { openError(new Error("WebSocket unexpected close observed:", { cause: event })); };
-        this.websocket.onopen = () => {
+        websocket.onerror = (event) => { openError(new Error("WebSocket error observed", { cause: event })); };
+        websocket.onclose = (event) => { openError(new Error("WebSocket unexpected close observed", { cause: event })); };
+        websocket.onopen = () => {
             console.log("WebSocket connected, waiting for auth challenge...");
-            this.websocket.onmessage = async (event) => {
+            websocket.onmessage = async (event) => {
                 try {
-                    let data = JSON.parse(event.data);
-                    if (data.type !== 'challenge' || typeof (data.challenge) !== 'string') {
+                    const raw = JSON.parse(event.data) as Record<string, unknown>;
+                    if (raw.type !== 'challenge' || typeof raw.challenge !== 'string') {
                         throw new Error("Unexpected WebSocket message before auth.");
                     }
-                    let sig2 = await sign(data.challenge, keys.prv);
+                    const data = raw as unknown as WsChallengeMessage;
+                    const sig2 = await sign(data.challenge, keys.prv);
+                    const addressToken = window.sessionStorage.getItem(ADDRESS_TOKEN_SESSION_KEY) ?? undefined;
+                    const challengeResponse: WsChallengeResponseMessage = {
+                        type: 'challenge_response',
+                        signature: sig2,
+                        address_token: addressToken,
+                    };
                     console.log("Sending challenge response, waiting for acceptance...");
-                    this.websocket.send(JSON.stringify({ type: 'challenge_response', signature: sig2 }));
-                    this.websocket.onmessage = async (event) => {
+                    websocket.send(JSON.stringify(challengeResponse));
+                    websocket.onmessage = async (event) => {
                         try {
-                            let data = JSON.parse(event.data);
-                            if (data.type !== 'challenge_accepted') {
+                            const raw = JSON.parse(event.data) as Record<string, unknown>;
+                            if (raw.type === 'error') {
+                                const message = typeof raw.message === 'string' ? raw.message : 'Authentication failed';
+                                throw new Error(message);
+                            }
+                            if (raw.type !== 'challenge_accepted' || typeof raw.address !== 'number' || typeof raw.token !== 'string') {
                                 throw new Error("Unexpected WebSocket message before auth.");
                             }
+                            const accepted = raw as unknown as WsChallengeAcceptedMessage;
+                            this.address = accepted.address;
+                            window.sessionStorage.setItem(ADDRESS_TOKEN_SESSION_KEY, accepted.token);
                             console.log("Challenge accepted.");
-                            this.websocket.onmessage = (event) => {
+                            websocket.onmessage = (event) => {
                                 this.handleMessage(event);
                             };
-                            this.websocket.onclose = (event) => {
+                            websocket.onclose = (event) => {
                                 this.deactivate();
-                                this.websocket.onmessage = null;
-                                this.websocket.onclose = null;
-                                this.websocket.onerror = null;
-                                this.websocket.onopen = null;
+                                websocket.onmessage = null;
+                                websocket.onclose = null;
+                                websocket.onerror = null;
+                                websocket.onopen = null;
                                 resolveCallback(event);
                                 try {
-                                    this.websocket.close();
+                                    websocket.close();
                                 } catch (e) { }
-                                this.websocket = null;
+                                if (this.websocket === websocket) {
+                                    this.websocket = null;
+                                }
                             };
                             if (timeout) {
                                 clearTimeout(timeout);
@@ -264,20 +361,20 @@ export class Connection {
         return await openPromise;
     }
 
-    fatalError(error) {
+    private fatalError(error: unknown): void {
         console.error("Connection fatal error:", error);
-        this.connectLoopState = STATE_DISCONNECTING;
+        this.connectLoopState = LoopState.DISCONNECTING;
         try {
-            this.websocket.close();
+            this.websocket?.close();
         } catch (e) { }
         this.deactivate();
         this.onError?.(error);
     }
 
-    handleMessage(event) {
+    private handleMessage(event: MessageEvent): void {
         try {
-            let data = JSON.parse(event.data);
-            for (let [key, handler] of Object.entries(this.localHandlers)) {
+            const data = JSON.parse(event.data) as IncomingMessage;
+            for (const handler of Object.values(this.localHandlers)) {
                 if (handler(data)) {
                     return;
                 }
@@ -292,44 +389,49 @@ export class Connection {
         }
     }
 
-    send(message) {
+    public send(message: OutgoingMessage | string): void {
+        message = (typeof message === 'string') ? message : JSON.stringify(message);
         if (!this.websocket) {
             this.messageQueue.push(message);
         } else {
-            this.websocket.send(JSON.stringify(message));
+            this.websocket.send(message);
         }
     }
 
-    setPassword(newPasswordStr) {
+    public setPassword(newPasswordStr: string): Promise<void> {
         return new Promise(async (resolve, reject) => {
-            let authData = await this.createAuthData(newPasswordStr);
+            let resolveFn: (() => void) | null = resolve;
+            let rejectFn: ((reason?: unknown) => void) | null = reject;
+            const authData = await this.createAuthData(newPasswordStr);
             console.log("Setting new password auth data:", authData);
             this.localHandlers['pwd'] = (data) => {
                 if (data.type === 'set_auth_result') {
+                    const result = data as WsSetAuthResultMessage;
                     clearTimeout(timeout);
-                    if (data.success) {
-                        resolve?.();
+                    if (result.success) {
+                        resolveFn?.();
                         try {
-                            this.websocket.close();
+                            this.websocket?.close();
                         } catch (e) { }
                         this.authData = null;
-                        this.deriveKeys(newPasswordStr);
+                        void this.deriveKeys(newPasswordStr);
                     } else {
-                        reject?.(new Error("Failed to set new password"));
+                        rejectFn?.(new Error("Failed to set new password"));
                     }
-                    resolve = null;
-                    reject = null;
+                    resolveFn = null;
+                    rejectFn = null;
                     delete this.localHandlers['pwd'];
                     return true;
                 }
                 return false;
             }
-            this.send({ type: 'set_auth', auth: authData });
-            let timeout = setTimeout(() => {
-                reject?.(new Error("Set password timeout"));
+            const setAuthMessage: WsSetAuthMessage = { type: 'set_auth', auth: authData };
+            this.send(setAuthMessage);
+            const timeout = setTimeout(() => {
+                rejectFn?.(new Error("Set password timeout"));
                 delete this.localHandlers['pwd'];
-                resolve = null;
-                reject = null;
+                resolveFn = null;
+                rejectFn = null;
             }, 5000);
         });
     }
