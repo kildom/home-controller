@@ -5,6 +5,8 @@ void* async_send_negotiator()
 {
     uint32_t t;
 
+    goto rx_active_state;
+    
 idle_state:
 
     if (!fifo.empty()) goto start_sending_state;
