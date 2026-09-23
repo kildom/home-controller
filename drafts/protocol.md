@@ -6,7 +6,8 @@
 
 * Medium:
   * CAN (tylko części elektryczna - sam driver MCP2562)
-  * UART (open collector on TX + pull-up on RX)
+  * 1-wire half-duplex UART (open collector on TX + pull-up on RX)
+  * 2-wire full-duplex UART (standardowy UART), ale tylko dla połączenia point-to-point, np Web Gateway
 * Wszystkie urządzenia są równorzędne
 * Łącze uznane jest za dostępne, jeżeli ostatni pakiet się zakończył lub nic nie jest transmitowane przed odpowiedni czas (w przypadku, gdy nie jest znany ostani pakiet)
 * Jeżeli urządzenie chce nadawać, czeka losowy czas (rozkład zależny od długości kolejki, czasu oczekiwania pierwszego pakietu w kolejce i najwyższego priorytetu pakietów z kolejki)
