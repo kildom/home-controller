@@ -117,6 +117,10 @@ The client signs the raw bytes of `challenge` (decoded from hex) with ECDSA P-25
 
 The connection is closed immediately after a rejection.
 
+**Note**
+
+The connection should be using HTTPS, so there is no need to encrypt and authenticate following messages.
+
 ---
 
 ### Complete Connection Sequence
