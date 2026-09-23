@@ -41,6 +41,8 @@ The persistent auth configuration is stored in `auth.json` (server-side) and `/a
 
 Before the WebSocket upgrade is allowed, the server validates an HTTP cookie.
 
+This phase does not have to be secure. It is there just to quicly reject invalid connections to avoid processing in further steps where actual secure authentication is done.
+
 **Client steps:**
 
 1. Fetch `/auth.json` to obtain `ch1`, `x`, `y`, `salt`.
