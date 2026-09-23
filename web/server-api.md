@@ -31,6 +31,10 @@ The persistent auth configuration is stored in `auth.json` (server-side) and `/a
 }
 ```
 
+> **TODO**
+>
+> There should be two variants of this file: one accesible over HTTP without `x` and `y`. Second accesible only by server with all data.
+
 ---
 
 ### Phase 1 — Cookie-Based Pre-Authentication (HTTP Upgrade Gate)
