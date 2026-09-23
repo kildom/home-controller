@@ -35,7 +35,33 @@
   * Wysyła ciąg dalszy pakietu
 * Jeżeli pakiet przestał płynąć przez określony czas, następuje reset stanu.
 
-## 2. Data Link Layer
+## 2. Data Link Layer (TODO: Probably better)
+
+* Format pakietu:
+  ```
+  |  1  |    1     | len  |   4   |  1  |  1   |      ESC = 0xFF
+  | ESC | SUB_NEXT | DATA | CRC32 | ESC | STOP |      STOP = 0xFE
+  |     BEGIN      |    CONTENT   |    END     |      len = 0..249
+  ```
+* Sposób dekodowania:
+  1. Ustaw wskaźnik na SUB_NEXT
+  2. Pobierz wartość ze wskaźnika do `tmp`
+  3. Jeżeli `tmp` == 0xFD, zakończ
+  4. Jeżeli `tmp` > 0xFD, oznacz pakiet jako uszkodzony i zakończ
+  5. Inkrementuj wskaźnik o `tmp + 1`
+  6. Jeżeli wskaźnik wyszedł poza pakiet, oznacz pakiet jako uszkodzony i zakończ
+  7. Pobierz wartość ze wskaźnika do `tmp`
+  8. Zapisz wartość ESC do wskaźnika
+  9. Wróć do 3
+* Sposób kodowania: bardzo prosty, odwrotny do dekodowania.
+* Jeżeli wystąpił ponownie BEGIN, zakończ aktualny pakiet i rozpocznij nowy pakiet
+* Jeżeli wystąpił STOP, zakończ pakiet i uznaj łącze za dostępne.
+* Wszystkie bajty poza pakietem są ignorowane.
+* Jeżeli urządzenie ma kilka pakietów do wysłania i łącznie nie przekraczają danego
+  rozmiaru, to może wysłać jeden po drugim oddzielając je BEGIN, a END jest
+  na końcu ostatniego pakietu.
+
+## ~~2. Data Link Layer (OLD)~~
 
 * Format pakietu:
   ```
