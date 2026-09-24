@@ -22,9 +22,9 @@ start_sending_state:
     fifo_event.clear();
     if (fifo.empty()) goto idle_state;
     timer_event.clear_and_set_timeout(uart_bits_time(17));
-    start_tx_pin_monitor(); // Maybe we can use UART IDLE line detection instead
-    AWAIT(tx_pin_low_event, timer_event);
-    if (tx_pin_low_event.get_and_clear()) {
+    start_tx_pin_monitor(); // Connect external interrupte with AFIO_EXTICRn and EXTI_FTSR+EXTI_RTSR (also clear EXTI_PR)
+    AWAIT(timer_event);
+    if (tx_pin_activity_detected()) { // Check current line state and EXTI_PR
         goto rx_active_state;
     } else {
         goto send_startup_state;
