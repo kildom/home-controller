@@ -32,21 +32,22 @@ start_sending_state:
 
 send_startup_state:
 
+    /* switch_rx_to_6_bytes_direct_buffer - this will suspend output from PacketInQueue.
+    Save current position in PacketInQueue.
+    Later, when we are sure that we sent all startup bytes and we should receive them, we can do
+    comsumeBytes on UART to make sure they are in the PacketInQueue. Next, we will ask for
+    recent raw bytes from PacketInQueue and resume output from PacketInQueue. The starting position
+    should be the saved before.
+    */
     switch_rx_to_6_bytes_direct_buffer();
     send_startup_sequence();
     stop_tx_pin_monitor();
-    timer_event.clear_and_set_timeout(uart_bits_time(11 * 6 + 17));
-    AWAIT(rx_direct_buffer_event, timer_event);
+    timer_event.clear_and_set_timeout(uart_bits_time(11 * 5)); // TODO: This can be smaller < 1ms for 115200. Do we need HiResDelayedWork?
+    AWAIT(timer_event);
     
-    if (timer_event.get_and_clear()) {
-        t = line_collision_rand_time();
-        goto line_collision;
-    }
-    if (rx_direct_buffer_event.get_and_clear()) {
-        t = verify_startup_sequence();
-        if (t > 0) goto line_collision;
-        goto tx_start;
-    }
+    t = verify_startup_sequence();
+    if (t > 0) goto line_collision;
+    goto tx_start;
 
 tx_start:
 
@@ -60,7 +61,7 @@ tx_start:
     goto rx_active_state;
 
 line_collision:
-    timer_event.clear_and_set_timeout(t);
+    timer_event.clear_and_set_timeout(t); // TODO: Do we need HiResDelayedWork?
     AWAIT(timer_event);
     goto send_startup_state;
 
